@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controller.MakeOrJoinController"
+            fx:id="MakeOrJoinPagePane"
+            nodeOrientation="RIGHT_TO_LEFT"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <top>
+
+        <Button fx:id="goruhJadid" prefHeight="68.0" prefWidth="845.0" text="ایجاد بازی جدید" />
+
+    </top>
+
+    <center>
+        <ListView fx:id="lBHa"/>
+    </center>
+
+
+
+
+</BorderPane>
