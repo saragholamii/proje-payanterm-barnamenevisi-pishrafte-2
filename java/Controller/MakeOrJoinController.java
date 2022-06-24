@@ -26,12 +26,11 @@ public class MakeOrJoinController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        lBHa.getItems().addAll(listBaziHa);
     }
 
     //***** set kardan list bazi ha dar field listBaziHa ta initialize az an baraye listView khod estefade konad.
     public void setListBaziHa(ArrayList<BaziSamtClient> list){
-        listBaziHa = list;
+        lBHa.getItems().addAll(list);
     }
 
 }
