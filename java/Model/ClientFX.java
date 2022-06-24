@@ -32,6 +32,8 @@ public class ClientFX extends Application {
 
         //***** list bazi hara be controller miferestim ta betavanad dar zaman bala amadn page, ruye safhe namayesh dade shavad.
         c.setListBaziHa(listBaziHa);
+        //***** ferestadan clientFX be controller safhe baraye dastresi dashtan be method haye client mojud dar in clientFX.
+        c.setClientFX(this);
 
 
         Scene sc = new Scene(p);

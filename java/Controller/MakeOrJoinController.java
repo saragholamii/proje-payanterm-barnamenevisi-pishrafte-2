@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 
 public class MakeOrJoinController implements Initializable {
     ArrayList<BaziSamtClient> listBaziHa = new ArrayList<>();
+    ClientFX clientFX;
 
     @FXML
     private Button goruhJadid;
@@ -33,4 +34,12 @@ public class MakeOrJoinController implements Initializable {
         lBHa.getItems().addAll(list);
     }
 
+    //***** set kardan clientFX marbute dar yek field clientFX, baraye dastresi dashtan be method haye an, baraye ertebat ba server.
+    public void setClientFX(ClientFX clientFX){
+        this.clientFX = clientFX;
+    }
+
+    public void ijadBaziJadidBtn(ActionEvent actionEvent) {
+
+    }
 }

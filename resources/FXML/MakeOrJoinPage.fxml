@@ -15,7 +15,7 @@
 
     <top>
 
-        <Button fx:id="goruhJadid" prefHeight="68.0" prefWidth="845.0" text="ایجاد بازی جدید" />
+        <Button fx:id="goruhJadid" onAction="#ijadBaziJadidBtn" prefHeight="68.0" prefWidth="845.0" text="ایجاد بازی جدید" />
 
     </top>
 
