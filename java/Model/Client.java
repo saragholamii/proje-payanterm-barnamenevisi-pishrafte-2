@@ -57,4 +57,11 @@ public class Client {
         //***** sepas tedad dor bazi ersal mishavad.
         out.println(tedadDor);
     }
+
+    public void addShodanBeBazi(int idBazi){
+        //***** be server payam midahad ke mikhahad be yek bazi add shavad.
+        out.println("JoinG");
+        //***** sepas id bazi mored nazar ra miferestad.
+        out.println(idBazi);
+    }
 }

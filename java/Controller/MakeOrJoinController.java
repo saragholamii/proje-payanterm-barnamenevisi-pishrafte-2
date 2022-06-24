@@ -9,6 +9,7 @@ import Model.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
@@ -62,4 +63,11 @@ public class MakeOrJoinController implements Initializable {
         Scene sc = new Scene(p);
         clientFX.setSceneJadid(sc);
     }
+
+    public void entekhabYekBazi(MouseEvent mouseEvent) {
+        //***** id bazi entekhab shode ra migirad va be server miferestad.
+        int id = lBHa.getSelectionModel().getSelectedItem().getIdBazi();
+        clientFX.client.addShodanBeBazi(id);
+    }
+
 }

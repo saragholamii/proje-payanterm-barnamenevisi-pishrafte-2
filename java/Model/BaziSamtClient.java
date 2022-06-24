@@ -3,12 +3,14 @@ package Model;
 import java.util.Scanner;
 
 public class BaziSamtClient {
+    int idBazi;
     String mozuat;
     String type;
     String tedadDor;
     String idPlayerHa;
 
-    public BaziSamtClient(String mozuat, String type, String tedadDor, String idPlayerHa) {
+    public BaziSamtClient(String mozuat, String type, String tedadDor, String idPlayerHa, String idBazi) {
+        this.idBazi = Integer.parseInt(idBazi);
         this.mozuat = mozuat;
         this.type = type;
         this.tedadDor = tedadDor;
@@ -34,5 +36,9 @@ public class BaziSamtClient {
         }*/
 
         return onList;
+    }
+
+    public int getIdBazi(){
+        return idBazi;
     }
 }

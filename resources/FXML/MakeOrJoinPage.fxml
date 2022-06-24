@@ -20,7 +20,7 @@
     </top>
 
     <center>
-        <ListView fx:id="lBHa" nodeOrientation="LEFT_TO_RIGHT"/>
+        <ListView fx:id="lBHa" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#entekhabYekBazi"/>
     </center>
 
 

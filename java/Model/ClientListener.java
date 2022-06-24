@@ -50,8 +50,10 @@ public class ClientListener implements Runnable {
             String type = in.readLine();
             //***** tedad dor
             String tedadDor = in.readLine();
+            //***** id bazi
+            String idBazi = in.readLine();
             //***** sakht shey bazi va add an be list dar ClientFX
-            clientFX.addBazi(new BaziSamtClient(mozuat, client, type, tedadDor));
+            clientFX.addBazi(new BaziSamtClient(mozuat, client, type, tedadDor, idBazi));
         }
     }
 }

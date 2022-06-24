@@ -55,4 +55,16 @@ public class Server {
     public ArrayList<BaziRuyeServer> getListBaziHa(){
         return listBaziHa;
     }
+
+    //***** add kardan yek client manager be yek bazi
+    public void addClientManagerToAGame(int idBazi, ClientManager clientManager){
+
+        //***** migardad agr bazi ba id mored nazar peida shod, bazikon ra be list bazikonhayash add mikonad.
+        for(BaziRuyeServer b : listBaziHa){
+            if(b.getIDBazi() == idBazi)
+                b.addPlayerToGame(clientManager);
+        }
+
+        System.out.println("added ");
+    }
 }

@@ -64,16 +64,22 @@ public class ClientManager implements Runnable{
         out.println(Integer.toString(listBazi.size()));
 
         //***** hala etelaat har bazi ra miferestad. 1-mozuat besurat reshte(joda shode ba -) 2-id clientha be surat
-        // reshte (joda shode ba -) 3- type bazi(agar zamani bashad(2), joda shode ba -) 4- tedad dor bazi.
+        // reshte (joda shode ba -) 3- type bazi(agar zamani bashad(2), joda shode ba -) 4- tedad dor bazi. 5-idBazi
         for(BaziRuyeServer b : listBazi){
             out.println(b.mozuatBaziBesuratReshte());
             out.println(b.idClientHaBeSuratReshte());
             out.println(b.getTypeBaziBeSuratReshte());
             out.println(b.getTedadDor());
+            out.println(b.getIDBazi());
         }
     }
 
-    public void joinBePlatform(){
+    public void joinBePlatform() throws IOException {
+        //***** id bazi mored nazar ra migirad.
+        int id = Integer.parseInt(in.readLine());
+
+        //***** ba seda zadan method addBazikonBeYekBazi, in client ra be list bazikon haye bazi add mikonad.
+        ServerHolder.addClientManagerToAGame(id, this);
     }
 
     public void sakhtBaziJadid() throws IOException {
