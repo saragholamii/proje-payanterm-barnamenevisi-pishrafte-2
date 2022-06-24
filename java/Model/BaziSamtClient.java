@@ -14,6 +14,7 @@ public class BaziSamtClient {
     }
 
     public String toString(){
-        return mozuat;
+        String onList = "mozuat: " + mozuat + "\n" + "type bazi: " +  type + "\n" + "tedad dor bazi: " + tedadDor + "\n" + "bazikonan: " + idPlayerHa;
+        return onList;
     }
 }
