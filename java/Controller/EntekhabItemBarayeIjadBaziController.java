@@ -3,11 +3,15 @@ package Controller;
 import Model.ClientFX;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -61,7 +65,7 @@ public class EntekhabItemBarayeIjadBaziController implements Initializable {
         this.clientFX = clientFX;
     }
 
-    public void sakhtanSafheBazi(ActionEvent actionEvent) {
+    public void sakhtanSafheBazi(ActionEvent actionEvent) throws IOException {
         //***** sakhtan string mozuat bazi ke ba - az ham joda mishavand.
         String mozuat = "";
         if(esm.isSelected()){ mozuat += "esm-";}
@@ -91,5 +95,19 @@ public class EntekhabItemBarayeIjadBaziController implements Initializable {
         //***** seda zadan method sakht bazi va dadan string moshakhasat be an, ta baraye client manager beferestad.
         // sepas client manager yek shey bazi ruye server sakhte va dar list bazi ha add mikonad.
         clientFX.client.sakhtBazi(mozuat, type, tedadDor);
+
+        //***** hala bayad dockme shoru bazi ruye safhe namayesh dade shavad.
+        FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/ShorueBaziPage.fxml"));
+        Pane p = l.load();
+
+        //***** gereftan controller shoruBaziPage baraye dashtan dastresi be method hayash.
+        ShoruBaziPageController c = (ShoruBaziPageController) l.getController();
+
+        //***** ferestadan clientFX.
+        c.setClientFX(clientFX);
+
+        //***** sakht scene jadid va gozashtan an ruye stage asli.
+        Scene sc = new Scene(p);
+        clientFX.setSceneJadid(sc);
     }
 }
