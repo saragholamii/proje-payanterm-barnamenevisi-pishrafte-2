@@ -74,7 +74,7 @@ public class BaziRuyeServer {
     }
 
     public String mozuatBaziBesuratReshte(){
-        String str = null;
+        String str = "";
 
         for(String s : listMozuat){
             str += s;
