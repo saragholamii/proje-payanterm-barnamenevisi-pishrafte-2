@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
-<BorderPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EntekhabItemBarayeIjadBaziController">
+<BorderPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EntekhabItemBarayeIjadBaziController">
     <padding>
         <Insets bottom="10" right="10" left="10" top="10"/>
     </padding>
@@ -44,6 +44,10 @@
             </HBox>
 
             <CheckBox fx:id="soonerChBox" text="هر کس زودتر تموم کرد" />
+
+            <Label nodeOrientation="RIGHT_TO_LEFT" text="لطفا تعداد دور مورد نظر خود را برای بازی مشخص کنید" />
+
+            <TextField fx:id="tedadDor" promptText="تعداد دور" prefWidth="60"/>
 
         </VBox>
     </center>

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Server {
-    final static int PORT = 9020;
+    final static int PORT = 9010;
     ArrayList<ClientManager> listClientManager = new ArrayList<>();
     ArrayList<BaziRuyeServer> listBaziHa = new ArrayList<>();
 
@@ -26,7 +26,7 @@ public class Server {
 
         while(true){
 
-            System.out.println("2");
+            System.out.println("waiting for new client");
             //******montazer client badi shodan, pas az darkhast bargharari ertebat yek socket sakhte misjavad ****
             Socket socket = s.accept();
             //****** yek client manager sakhte va client ra be an pas midahim.
@@ -48,6 +48,7 @@ public class Server {
     //***** in method yek shey bazi daryaft karde va an ra be list bazi ha ezafe mikonad.
     public void addNewGame(BaziRuyeServer bazi){
         listBaziHa.add(bazi);
+        System.out.println(listBaziHa.size());
     }
 
     //***** list bazi hara be surat array list miferestad.

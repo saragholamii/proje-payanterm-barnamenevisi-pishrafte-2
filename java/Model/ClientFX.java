@@ -12,10 +12,12 @@ import java.util.ArrayList;
 public class ClientFX extends Application {
     public Client client;
     ArrayList<BaziSamtClient> listBaziHa = new ArrayList<>();
+    Stage stageAsli;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        //***** sakht yek client.
         client = new Client(this);
         //***** dar in method karhaye avalie ertebat ba server anjam mishavad.
         client.start();
@@ -37,8 +39,10 @@ public class ClientFX extends Application {
 
 
         Scene sc = new Scene(p);
-        primaryStage.setScene(sc);
-        primaryStage.show();
+        //***** sakht yek stage ba scope dar sath class.
+        stageAsli = new Stage();
+        stageAsli.setScene(sc);
+        stageAsli.show();
 
 
     }
@@ -51,5 +55,10 @@ public class ClientFX extends Application {
     public void addBazi(BaziSamtClient b){
         listBaziHa.add(b);
         System.out.println(b);
+    }
+
+    //***** set kardan scene jadid ruye stage Asli.
+    public void setSceneJadid(Scene sc){
+        stageAsli.setScene(sc);
     }
 }

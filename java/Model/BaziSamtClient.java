@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Scanner;
+
 public class BaziSamtClient {
     String mozuat;
     String type;
@@ -14,7 +16,23 @@ public class BaziSamtClient {
     }
 
     public String toString(){
-        String onList = "mozuat: " + mozuat + "\n" + "type bazi: " +  type + "\n" + "tedad dor bazi: " + tedadDor + "\n" + "bazikonan: " + idPlayerHa;
+        String onList = "mozuat: " + mozuat + "\n" + "tedad dor bazi: " + tedadDor + "\n" + "bazikonan: " + idPlayerHa + "\n";
+
+        //***** type agar saati bashad, saat daghighe va sanie ba - az ham joda shode and.
+        Scanner sc = new Scanner(type);
+        sc.useDelimiter("-");
+
+        //***** agar type 1 bashad, yani harkas zudtar tamam kard.
+        /*if(Integer.parseInt(sc.next()) == 1){
+            onList += "type bazi: " + "har kas zudtar ramam kard.";
+        }
+
+        //***** agar 2 bud, yani time darad va saat, daghighe va sanie bad az ba - az ham joda shode and.
+        else{
+            sc.next();
+            onList += "type bazi: " + sc.next() + " h " + sc.next() + " min " + sc.next() + " sec ";
+        }*/
+
         return onList;
     }
 }

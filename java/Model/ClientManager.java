@@ -10,6 +10,7 @@ public class ClientManager implements Runnable{
     Server ServerHolder;
     DataInputStream in;
     PrintWriter out;
+    int game_That_I_Am_The_Host_ID;
 
     public ClientManager(Server server, Socket socket) {
         socketClient = socket;
@@ -78,6 +79,10 @@ public class ClientManager implements Runnable{
     public void sakhtBaziJadid() throws IOException {
         //***** inja yek bazi jadid sakhte meshavad, sapas method addNewGame server seda zade shode va bazi be list ezafe mishavad.
         BaziRuyeServer bazi = new BaziRuyeServer();
+        //***** negah dashtan id bazi, baraye ferestadan payam shoru be bazikonan an.
+        game_That_I_Am_The_Host_ID = bazi.getIDBazi();
+
+        //***** khandan 3 reshte mozuaat, type, tedad dor, baraye sakht yek shey bazi samt server.
         String mozuat = in.readLine();
         String type = in.readLine();
         String tedadDor = in.readLine();
@@ -101,8 +106,8 @@ public class ClientManager implements Runnable{
             bazi.setSanie(Integer.parseInt(sc.next()));
         }
 
-        //***** set kardan tedad dor bazi.
-        bazi.setTedadDor(Integer.parseInt(sc.next()));
+        //***** set kardan tedad dor bazi(int).
+        bazi.setTedadDor(Integer.parseInt(tedadDor));
 
         //***** ferestadn bazi sakhte shode be saever asli ta dar list bazi ha adash konad.
         ServerHolder.addNewGame(bazi);
