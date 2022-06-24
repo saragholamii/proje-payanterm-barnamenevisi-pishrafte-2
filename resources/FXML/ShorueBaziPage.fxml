@@ -3,10 +3,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ShoruBaziPageController">
+<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ShoruBaziPageController" nodeOrientation="RIGHT_TO_LEFT">
 
+    <top>
+    </top>
     <center>
-        <Button fx:id="shoruBaziBtn" prefHeight="84.0" prefWidth="313.0" text="شروع بازی" />
+        <VBox>
+            <HBox>
+                <Label text="شروع بازی با حرف : "/>
+                <TextField fx:id="harfAval"/>
+            </HBox>
+            <Button fx:id="shoruBaziBtn" prefHeight="84.0" prefWidth="313.0" text="شروع بازی" />
+        </VBox>
     </center>
 
 </BorderPane>
