@@ -64,10 +64,18 @@ public class MakeOrJoinController implements Initializable {
         clientFX.setSceneJadid(sc);
     }
 
-    public void entekhabYekBazi(MouseEvent mouseEvent) {
+    public void entekhabYekBazi(MouseEvent mouseEvent) throws IOException {
         //***** id bazi entekhab shode ra migirad va be server miferestad.
         int id = lBHa.getSelectionModel().getSelectedItem().getIdBazi();
         clientFX.client.addShodanBeBazi(id);
+
+        //***** safhe dar entezar shoru bazi ra ruye safhe miandazim.
+        FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/DarEntezarShoruBaziPage.fxml"));
+        Pane p = l.load();
+
+        //****** sakht scene jadid va add kardan an ruye stage asli.
+        Scene sc = new Scene(p);
+        clientFX.setSceneJadid(sc);
     }
 
 }

@@ -61,8 +61,10 @@ public class Server {
 
         //***** migardad agr bazi ba id mored nazar peida shod, bazikon ra be list bazikonhayash add mikonad.
         for(BaziRuyeServer b : listBaziHa){
-            if(b.getIDBazi() == idBazi)
+            if(b.getIDBazi() == idBazi) {
                 b.addPlayerToGame(clientManager);
+                System.out.println(b.listPlayerHa.size());
+            }
         }
 
         System.out.println("added ");
