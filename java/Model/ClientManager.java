@@ -12,7 +12,9 @@ public class ClientManager implements Runnable{
     PrintWriter out;
     int game_That_I_Am_The_Host_ID;
     int game_That_I_Join_ID;
-    int idClient;
+
+    static int tedadClientManager;
+    int idClientManager = tedadClientManager++;
 
     public ClientManager(Server server, Socket socket) {
         socketClient = socket;
@@ -43,11 +45,11 @@ public class ClientManager implements Runnable{
                     case "NewG":
                         sakhtBaziJadid();
                         break;
-                    case "setID":
-                        setID();
-                        break;
-                    case "startG":
+                    case "startGWhenIAmHost": //shoru bazi baraye avalin bar ke harf tavasot mizban tayin mishavad.
                         startGameBtnWhenIAmHost();
+                        break;
+                    case "addClientManager":
+                        addClientManagerToList();
                         break;
                 }
             }
@@ -132,28 +134,34 @@ public class ClientManager implements Runnable{
     }
 
     //***** in method client manager ra ba kelid id client da list server zakhire mikonad.
-    public void setID() throws IOException {
-        int id = Integer.parseInt(in.readLine());
-        out.println(id);
-        idClient = id;
-        ServerHolder.addClientManager(id, this);
+    public void addClientManagerToList() throws IOException {
+        ServerHolder.addClientManager(idClientManager, this);
+        ServerHolder.print("id client manager: " + idClientManager);
     }
 
     //***** in method zamani seda zade mishavad ke client dokme start bazi ra, be hamrah yek harf baraye shoru bazi bezanad.
     public void startGameBtnWhenIAmHost() throws IOException {
         //***** harf mored nazar ra daryaft mikonad.
         char harf = (in.readLine()).charAt(0);
+        ServerHolder.print(String.valueOf(harf));
 
+        ServerHolder.print("method start game samt server seda zade shod");
         //method shoru bazi ruye server seda zade mishavad ta be baghi bazikonan peyhgam shoru bazi ferestade shavad.
-        ServerHolder.startGame(game_That_I_Am_The_Host_ID, idClient, harf);
+        ServerHolder.print("id host dar client manager: " + idClientManager);
+
+        ServerHolder.startGame(game_That_I_Am_The_Host_ID, idClientManager, harf);
+
     }
 
     //***** in method az taraf server seda zade mishavad va harf bazi baraye in dor ra be client ersal mikonad.
     public void startGameWithTHisLetter(char harf){
+        ServerHolder.print("dakhel method startGameWithTHisLetter");
         //***** ba in command be client mifahmanad ke mikhahad harf jadid ra baraye shoru bazi jadid beferestad.
         out.println("startNRound");
 
         //***** hala harf ra baraye client ersal mikonad.
         out.println(harf);
+
+        ServerHolder.print("harf ferestade shod");
     }
 }

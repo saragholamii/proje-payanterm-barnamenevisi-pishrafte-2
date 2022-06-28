@@ -30,6 +30,11 @@ public class ShoruBaziPageController implements Initializable {
     //***** bayad vaghti ruye dokme shru click kard, method startAzSamtMizban samt server seda zade shavad ta be bahgi
     //player ha payam shoru ferestade shavad.
     public void startGBtn(ActionEvent actionEvent) {
-        //*****
+        //***** seda zadan method startGameAzSamtMizban va dadan harf dakhel textField.
+        clientFX.client.startGameAzSamtMizban(harfAval.getText().charAt(0));
+        clientFX.print("method start game az samt mizban seda zade shod");
+
+        //***** hala bayad safhe bazi load shavad.
+        //....
     }
 }

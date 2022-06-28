@@ -1,12 +1,14 @@
 package Model;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import Controller.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ClientFX extends Application {
@@ -14,12 +16,13 @@ public class ClientFX extends Application {
     ArrayList<BaziSamtClient> listBaziHa = new ArrayList<>();
     Stage stageAsli;
     String mozuat;
+    String type;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         //***** sakht yek client.
-        client = new Client(this);
+        client = new Client( this);
         //***** dar in method karhaye avalie ertebat ba server anjam mishavad.
         client.start();
         //***** ghabl az baz kardan panjere, in method be server miguyad list bazi hara beferesad.
@@ -64,13 +67,64 @@ public class ClientFX extends Application {
     }
 
     //***** safhe bazi ra ba harf mored nazar va elemant haye dakhel string mozuat bala, misazad va ruye stage asli miandazad.
-    public void sakht_Safhe_Ba_In_Harf(char harf){
+    public void sakht_Safhe_Ba_In_Harf(char harf) throws IOException {
 
+        System.out.println("dakhel method sakht safhe");
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                //***** sakht FXML loader...
+                FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/SafheBazi.fxml"));
+                Pane p = null;
+                try {
+                    p = l.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println("baz az load");
+
+                //***** gereftan controller bazi
+                SafheBaziController c = (SafheBaziController) l.getController();
+
+                //***** set kardan client FX baraye dashtan dastresi be method haye client
+                c.setClientFX(this);
+
+                //***** mozuat va type ra be controller midahad ta safhe sakhte shavad.
+                //c.getMozuat(mozuat);
+
+                //***** gozashan harf entekhab shode ruye lable
+                c.getHarf(harf);
+
+                //***** chon p momken ast null bashad dakhel if gozashtim.
+                if(p != null){
+                    //***** sakht Scene baraye in pane
+                    Scene sc = new Scene(p);
+                    System.out.println("baz az sakht scene");
+
+                    //***** andakhtan in scene ruye safhe asli
+                    stageAsli.setScene(sc);
+                }
+                System.out.println("bad az set kardan scene");
+            }
+        });
     }
 
     //***** set kardan mozuat bazi
     public void setMozuat(String mozuat){
         this.mozuat = mozuat;
         System.out.println(mozuat);
+    }
+
+    //***** set kardan type bazi
+    public void setType(String type){
+        this.type = type;
+        System.out.println(type);
+    }
+
+    //method baraye chap
+    public void print(String p){
+        System.out.println(p);
     }
 }

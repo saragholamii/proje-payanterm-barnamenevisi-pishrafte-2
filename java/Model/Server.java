@@ -72,11 +72,24 @@ public class Server {
 
     //***** method shoru bazi baraye ferestadan peygham shoru bazi be bazikonan digar.
     public void startGame(int idBazi, int idBazikonShoruKonande, char harf){
+        System.out.println("dakhel method start game server");
+
+        System.out.println("id bazi: " + idBazi);
+        System.out.println("id host: " + idBazikonShoruKonande);
 
         for (BaziRuyeServer b : listBaziHa) {
+            System.out.println("id bazi dakhel list: " + b.getIDBazi());
             if (b.getIDBazi() == idBazi) {
+                System.out.println("bazi peida shod.");
+                System.out.println("size lsit bazikonan bazi: " + b.listPlayerHa.size());
+                System.out.println("id list bazikonan bazi: ");
+                for(int o = 0; o < b.listPlayerHa.size(); o++){
+                    System.out.println(b.listPlayerHa.get(o).idClientManager);
+                }
                 for (int j = 0; j < b.listPlayerHa.size(); j++) {
-                    if (b.listPlayerHa.get(j).idClient != idBazikonShoruKonande) {
+                    System.out.println("id bazikonan bazi peida shode " + b.listPlayerHa.get(j).idClientManager);
+                    if (b.listPlayerHa.get(j).idClientManager != idBazikonShoruKonande) {
+                        System.out.println("method startGameWithTHisLetter seda zade shod");
                         b.listPlayerHa.get(j).startGameWithTHisLetter(harf);
                     }
                 }
@@ -84,4 +97,7 @@ public class Server {
         }
     }
 
+    public void print(String s){
+        System.out.println(s);
+    }
 }

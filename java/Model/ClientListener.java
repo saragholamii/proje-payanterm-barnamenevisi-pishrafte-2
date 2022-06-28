@@ -63,9 +63,13 @@ public class ClientListener implements Runnable {
     }
 
     public void shoruDorJadidBaInHarf() throws IOException {
+        clientFX.print("dakhel method shoru dor jadid dar client listener");
+
         //***** daryaft harf baraye dor jadid.
         char harf = (in.readLine()).charAt(0);
 
-
+        //***** seda zadan method clientFX ke safhe bazi ra ijad konad va ruye stage biandazad.
+        clientFX.sakht_Safhe_Ba_In_Harf(harf);
+        clientFX.print("seda zadan method sakht safhe ba in harf");
     }
 }

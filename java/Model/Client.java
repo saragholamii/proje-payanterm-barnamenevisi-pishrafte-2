@@ -5,8 +5,6 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 public class Client {
-    public static int tedadClientha = 0;
-    private int idClient = tedadClientha ++;
     BufferedReader in;
     PrintWriter out;
     ClientFX clientGUI;
@@ -32,10 +30,8 @@ public class Client {
         Thread t = new Thread(listener);
         t.start();
 
-        //***** avalin kar in ast ke id client ra miferestad ta client manager ra ba in id dar list server zakhire konad.
-        out.println("setID");
-        out.println(idClient);
-
+        //*****  vahgti client sakhte mishavad ab client manager dastur midahad ke khodash ra dar list client ha dar server zakhire konad.
+        out.println("addClientManager");
     }
 
     public void DaryaftListBaziHayeDarhalEjra(){
@@ -66,7 +62,13 @@ public class Client {
     }
 
     public void startGameAzSamtMizban(char harf){
+        //***** be server mifahmanad ke mikhahad bazi ra shoru konad.
+        out.println("startGWhenIAmHost");
+
         //***** harf shoru konande bazi ra baraye server ersal mikonad.
         out.println(harf);
+
+        clientGUI.print("startGWhenIAmHost be client manager ferestade shod");
+
     }
 }

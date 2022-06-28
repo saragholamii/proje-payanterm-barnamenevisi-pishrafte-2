@@ -45,4 +45,8 @@ public class BaziSamtClient {
     public String getMozuatBazi(){
         return mozuat;
     }
+
+    public String getType(){
+        return type;
+    }
 }
