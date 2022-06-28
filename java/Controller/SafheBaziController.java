@@ -74,8 +74,8 @@ public class SafheBaziController implements Initializable {
     }
 
     //***** set kardan clientFX baraye estefade az method haey client va ferestadan payam be server
-    public void setClientFX(Runnable clientFX){
-        this.clientFX = (ClientFX) clientFX;
+    public void setClientFX(ClientFX clientFX){
+        this.clientFX = clientFX;
     }
 
     //***** gereftan reshte mozuat baraye in ke chek shavad che mozuati negah dashte shavand.

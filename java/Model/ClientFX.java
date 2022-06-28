@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class ClientFX extends Application {
     public Client client;
+    ClientFX thisClientFX;
     ArrayList<BaziSamtClient> listBaziHa = new ArrayList<>();
     Stage stageAsli;
     String mozuat;
@@ -20,7 +21,7 @@ public class ClientFX extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        thisClientFX = this;
         //***** sakht yek client.
         client = new Client( this);
         //***** dar in method karhaye avalie ertebat ba server anjam mishavad.
@@ -71,6 +72,8 @@ public class ClientFX extends Application {
 
         System.out.println("dakhel method sakht safhe");
 
+        //***** chon component haye javaFX ra faghat dakhel hamin tread mitavan taghir dad, bayad dakhel yek
+        //platform.runLater component hara taghir dahim.
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -89,7 +92,7 @@ public class ClientFX extends Application {
                 SafheBaziController c = (SafheBaziController) l.getController();
 
                 //***** set kardan client FX baraye dashtan dastresi be method haye client
-                //c.setClientFX(this);
+                c.setClientFX(thisClientFX);
 
                 //***** mozuat va type ra be controller midahad ta safhe sakhte shavad.
                 c.getMozuat(mozuat);
