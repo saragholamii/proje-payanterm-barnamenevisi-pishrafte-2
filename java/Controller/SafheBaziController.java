@@ -15,9 +15,31 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SafheBaziController implements Initializable {
-    ClientFX clientFX;
-    char harfInDor;
 
+    ClientFX clientFX;
+
+    @FXML
+    private Label esmLBL;
+    @FXML
+    private Label familLBL;
+    @FXML
+    private Label shahrLBL;
+    @FXML
+    private Label keshvarLBL;
+    @FXML
+    private Label ghazaLBL;
+    @FXML
+    private Label pushakLBL;
+    @FXML
+    private Label miveLBL;
+    @FXML
+    private Label mashinLBL;
+    @FXML
+    private Label golLBL;
+    @FXML
+    private Label heyvanLBL;
+    @FXML
+    private Label ashyaLBL;
     @FXML
     private BorderPane safheBazi;
     @FXML
@@ -59,17 +81,50 @@ public class SafheBaziController implements Initializable {
     //***** gereftan reshte mozuat baraye in ke chek shavad che mozuati negah dashte shavand.
     public void getMozuat(String mozuat){
 
-        if(mozuat.contains("name")) name.setVisible(true);
-        if(mozuat.contains("famil")) famil.setVisible(true);
-        if(mozuat.contains("shahr")) shahr.setVisible(true);
-        if(mozuat.contains("keshvar")) keshvar.setVisible(true);
-        if(mozuat.contains("ghaza")) ghaza.setVisible(true);
-        if(mozuat.contains("pushak")) pushak.setVisible(true);
-        if(mozuat.contains("mive")) mive.setVisible(true);
-        if(mozuat.contains("mashin")) mashin.setVisible(true);
-        if(mozuat.contains("gol")) gol.setVisible(true);
-        if(mozuat.contains("heyvan")) heyvan.setVisible(true);
-        if(mozuat.contains("ashya")) ashya.setVisible(true);
+        if(mozuat.contains("esm")){
+            name.setVisible(true);
+            esmLBL.setVisible(true);
+        }
+        if(mozuat.contains("famil")){
+            famil.setVisible(true);
+            familLBL.setVisible(true);
+        }
+        if(mozuat.contains("shahr")){
+            shahr.setVisible(true);
+            shahrLBL.setVisible(true);
+        }
+        if(mozuat.contains("keshvar")){
+            keshvar.setVisible(true);
+            keshvarLBL.setVisible(true);
+        }
+        if(mozuat.contains("ghaza")){
+            ghaza.setVisible(true);
+            ghazaLBL.setVisible(true);
+        }
+        if(mozuat.contains("pushak")){
+            pushak.setVisible(true);
+            pushakLBL.setVisible(true);
+        }
+        if(mozuat.contains("mive")){
+            mive.setVisible(true);
+            miveLBL.setVisible(true);
+        }
+        if(mozuat.contains("mashin")){
+            mashin.setVisible(true);
+            mashinLBL.setVisible(true);
+        }
+        if(mozuat.contains("gol")){
+            gol.setVisible(true);
+            golLBL.setVisible(true);
+        }
+        if(mozuat.contains("heyvan")){
+            heyvan.setVisible(true);
+            heyvanLBL.setVisible(true);
+        }
+        if(mozuat.contains("ashya")){
+            ashya.setVisible(true);
+            ashyaLBL.setVisible(true);
+        }
 
     }
 

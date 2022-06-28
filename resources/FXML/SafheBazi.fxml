@@ -7,11 +7,11 @@
 
 <BorderPane fx:id="safheBazi" nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SafheBaziController">
     <padding>
-        <Insets bottom="10" left="20" top="20" />
+        <Insets bottom="10" left="20" right="20" top="20" />
     </padding>
 
     <top>
-        <Label fx:id="harf" prefHeight="51.0" prefWidth="300.0" text="حرف" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="5">
+        <Label fx:id="harf" prefHeight="56.0" prefWidth="300.0" text="حرف" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="5">
          <font>
             <Font size="18.0" />
          </font></Label>
@@ -20,21 +20,37 @@
     <center>
         <GridPane hgap="10" vgap="10">
 
-            <TextField visible="false" fx:id="name" prefHeight="35.0" prefWidth="300.0" promptText="نام" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <TextField visible="false" fx:id="famil" prefHeight="35.0" prefWidth="300.0" promptText="نام خانوادگی" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <TextField visible="false" fx:id="shahr" prefHeight="35.0" promptText="شهر" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <TextField visible="false" fx:id="keshvar" prefHeight="35.0" promptText="کشور" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-            <TextField visible="false" fx:id="ghaza" prefHeight="35.0" promptText="غذا" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-            <TextField visible="false" fx:id="pushak" prefHeight="35.0" promptText="پوشاک" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-            <TextField visible="false" fx:id="mive" prefHeight="35.0" promptText="میوه" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-            <TextField visible="false" fx:id="mashin" prefHeight="35.0" promptText="ماشین" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-            <TextField visible="false" fx:id="gol" prefHeight="35.0" promptText="گل" GridPane.columnIndex="0" GridPane.rowIndex="8" />
-            <TextField visible="false" fx:id="heyvan" prefHeight="35.0" promptText="حیوان" GridPane.columnIndex="0" GridPane.rowIndex="9" />
-            <TextField visible="false" fx:id="ashya" prefHeight="35.0" promptText="اشیا" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+            <Label visible="false" fx:id="esmLBL" text="اسم" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField visible="false" fx:id="name" prefHeight="35.0" prefWidth="300.0" promptText="اسم" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Label visible="false" fx:id="familLBL" text="فامیل" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField visible="false" fx:id="famil" prefHeight="35.0" prefWidth="300.0" promptText="فامیل" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label visible="false" fx:id="shahrLBL" text="شهر" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField visible="false" fx:id="shahr" prefHeight="35.0" promptText="شهر" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label visible="false" fx:id="keshvarLBL" text="کشور" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField visible="false" fx:id="keshvar" prefHeight="35.0" promptText="کشور" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label visible="false" fx:id="ghazaLBL" text="غذا" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <TextField visible="false" fx:id="ghaza" prefHeight="35.0" promptText="غذا" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label visible="false" fx:id="pushakLBL" text="پوشاک" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <TextField visible="false" fx:id="pushak" prefHeight="35.0" promptText="پوشاک" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label visible="false" fx:id="miveLBL" text="میوه" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+            <TextField visible="false" fx:id="mive" prefHeight="35.0" promptText="میوه" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label visible="false" fx:id="mashinLBL" text="ماشین" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+            <TextField visible="false" fx:id="mashin" prefHeight="35.0" promptText="ماشین" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label visible="false" fx:id="golLBL" text="گل" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+            <TextField visible="false" fx:id="gol" prefHeight="35.0" promptText="گل" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label visible="false" fx:id="heyvanLBL" text="حیوان" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+            <TextField visible="false" fx:id="heyvan" prefHeight="35.0" promptText="حیوان" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label visible="false" fx:id="ashyaLBL" text="اشیا" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+            <TextField visible="false" fx:id="ashya" prefHeight="35.0" promptText="اشیا" GridPane.columnIndex="1" GridPane.rowIndex="10" />
          <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
             <ColumnConstraints />
          </columnConstraints>
          <rowConstraints>
+            <RowConstraints />
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
@@ -51,10 +67,9 @@
 
         </GridPane>
     </center>
-
-    <bottom>
-        <Button fx:id="tamamBtn" prefHeight="46.0" prefWidth="306.0" text="تمام!" />
-    </bottom>
+   <bottom>
+        <Button text="تمام!" textAlignment="CENTER" fx:id="tamamBtn" alignment="BOTTOM_RIGHT" prefHeight="42.0" prefWidth="177.0" BorderPane.alignment="CENTER_RIGHT" />
+   </bottom>
 
 
 
