@@ -69,4 +69,19 @@ public class Server {
 
         System.out.println("added ");
     }
+
+    //***** method shoru bazi baraye ferestadan peygham shoru bazi be bazikonan digar.
+    public void startGame(int idBazi, int idBazikonShoruKonande, char harf){
+
+        for (BaziRuyeServer b : listBaziHa) {
+            if (b.getIDBazi() == idBazi) {
+                for (int j = 0; j < b.listPlayerHa.size(); j++) {
+                    if (b.listPlayerHa.get(j).idClient != idBazikonShoruKonande) {
+                        b.listPlayerHa.get(j).startGameWithTHisLetter(harf);
+                    }
+                }
+            }
+        }
+    }
+
 }

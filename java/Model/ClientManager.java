@@ -11,6 +11,8 @@ public class ClientManager implements Runnable{
     DataInputStream in;
     PrintWriter out;
     int game_That_I_Am_The_Host_ID;
+    int game_That_I_Join_ID;
+    int idClient;
 
     public ClientManager(Server server, Socket socket) {
         socketClient = socket;
@@ -43,6 +45,10 @@ public class ClientManager implements Runnable{
                         break;
                     case "setID":
                         setID();
+                        break;
+                    case "startG":
+                        startGameBtnWhenIAmHost();
+                        break;
                 }
             }
 
@@ -77,6 +83,9 @@ public class ClientManager implements Runnable{
     public void joinBePlatform() throws IOException {
         //***** id bazi mored nazar ra migirad.
         int id = Integer.parseInt(in.readLine());
+
+        //***** id bazi ke be an add shode ast ra negah midarim.
+        game_That_I_Join_ID = id;
 
         //***** ba seda zadan method addBazikonBeYekBazi, in client ra be list bazikon haye bazi add mikonad.
         ServerHolder.addClientManagerToAGame(id, this);
@@ -123,6 +132,25 @@ public class ClientManager implements Runnable{
     public void setID() throws IOException {
         int id = Integer.parseInt(in.readLine());
         out.println(id);
+        idClient = id;
         ServerHolder.addClientManager(id, this);
+    }
+
+    //***** in method zamani seda zade mishavad ke client dokme start bazi ra, be hamrah yek harf baraye shoru bazi bezanad.
+    public void startGameBtnWhenIAmHost() throws IOException {
+        //***** harf mored nazar ra daryaft mikonad.
+        char harf = (in.readLine()).charAt(0);
+
+        //method shoru bazi ruye server seda zade mishavad ta be baghi bazikonan peyhgam shoru bazi ferestade shavad.
+        ServerHolder.startGame(game_That_I_Am_The_Host_ID, idClient, harf);
+    }
+
+    //***** in method az taraf server seda zade mishavad va harf bazi baraye in dor ra be client ersal mikonad.
+    public void startGameWithTHisLetter(char harf){
+        //***** ba in command be client mifahmanad ke mikhahad harf jadid ra baraye shoru bazi jadid beferestad.
+        out.println("startNRound");
+
+        //***** hala harf ra baraye client ersal mikonad.
+        out.println(harf);
     }
 }

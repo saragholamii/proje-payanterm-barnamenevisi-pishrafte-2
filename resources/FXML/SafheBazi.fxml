@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SafheBaziController">
+    <padding>
+        <Insets bottom="10" left="20" top="20" />
+    </padding>
+
+    <top>
+        <Label fx:id="harf" prefHeight="51.0" prefWidth="300.0" text="حرف" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="5">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+    </top>
+
+    <center>
+        <GridPane hgap="10" vgap="10">
+
+            <TextField fx:id="name" prefHeight="35.0" prefWidth="300.0" promptText="نام" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="famil" prefHeight="35.0" prefWidth="300.0" promptText="نام خانوادگی" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="shahr" prefHeight="35.0" promptText="شهر" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="keshvar" prefHeight="35.0" promptText="کشور" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField fx:id="ghaza" prefHeight="35.0" promptText="غذا" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <TextField fx:id="pushak" prefHeight="35.0" promptText="پوشاک" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <TextField fx:id="mive" prefHeight="35.0" promptText="میوه" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+            <TextField fx:id="mashin" prefHeight="35.0" promptText="ماشین" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+            <TextField fx:id="gol" prefHeight="35.0" promptText="گل" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+            <TextField fx:id="heyvan" prefHeight="35.0" promptText="حیوان" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+            <TextField fx:id="ashya" prefHeight="35.0" promptText="اشیا" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+
+
+        </GridPane>
+    </center>
+
+    <bottom>
+        <Button fx:id="tamamBtn" prefHeight="46.0" prefWidth="306.0" text="تمام!" />
+    </bottom>
+
+
+
+</BorderPane>

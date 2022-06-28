@@ -25,6 +25,11 @@ public class ClientListener implements Runnable {
                     //***** yani mikhahad list bazi hara bafrestad.
                     case "listG" :
                         addGameBeClientFX();
+                        break;
+                    //***** yani mikhahad harf shoru dor jadid ra beferestad.
+                    case "startNRound":
+                        shoruDorJadidBaInHarf();
+                        break;
                 }
 
 
@@ -55,5 +60,12 @@ public class ClientListener implements Runnable {
             //***** sakht shey bazi va add an be list dar ClientFX
             clientFX.addBazi(new BaziSamtClient(mozuat, client, type, tedadDor, idBazi));
         }
+    }
+
+    public void shoruDorJadidBaInHarf() throws IOException {
+        //***** daryaft harf baraye dor jadid.
+        char harf = (in.readLine()).charAt(0);
+
+
     }
 }
