@@ -13,6 +13,7 @@ public class ClientFX extends Application {
     public Client client;
     ArrayList<BaziSamtClient> listBaziHa = new ArrayList<>();
     Stage stageAsli;
+    String mozuat;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -60,5 +61,16 @@ public class ClientFX extends Application {
     //***** set kardan scene jadid ruye stage Asli.
     public void setSceneJadid(Scene sc){
         stageAsli.setScene(sc);
+    }
+
+    //***** safhe bazi ra ba harf mored nazar va elemant haye dakhel string mozuat bala, misazad va ruye stage asli miandazad.
+    public void sakht_Safhe_Ba_In_Harf(char harf){
+
+    }
+
+    //***** set kardan mozuat bazi
+    public void setMozuat(String mozuat){
+        this.mozuat = mozuat;
+        System.out.println(mozuat);
     }
 }

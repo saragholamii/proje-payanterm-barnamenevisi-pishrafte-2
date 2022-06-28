@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.ClientFX;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -24,5 +25,11 @@ public class ShoruBaziPageController implements Initializable {
     //***** set kardan clientFX in safhe, baraye dashtan dastresi be method haye client.
     public void setClientFX(ClientFX clientFX){
         this.clientFX = clientFX;
+    }
+
+    //***** bayad vaghti ruye dokme shru click kard, method startAzSamtMizban samt server seda zade shavad ta be bahgi
+    //player ha payam shoru ferestade shavad.
+    public void startGBtn(ActionEvent actionEvent) {
+        //*****
     }
 }

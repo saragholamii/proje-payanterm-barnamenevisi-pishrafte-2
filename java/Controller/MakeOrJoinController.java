@@ -69,6 +69,9 @@ public class MakeOrJoinController implements Initializable {
         int id = lBHa.getSelectionModel().getSelectedItem().getIdBazi();
         clientFX.client.addShodanBeBazi(id);
 
+        //***** mozuat bazi bazi entekhab shode ra ruye string mozuat client fx zakhire mikonad.
+        clientFX.setMozuat(lBHa.getSelectionModel().getSelectedItem().getMozuatBazi());
+
         //***** safhe dar entezar shoru bazi ra ruye safhe miandazim.
         FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/DarEntezarShoruBaziPage.fxml"));
         Pane p = l.load();

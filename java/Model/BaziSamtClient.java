@@ -9,7 +9,7 @@ public class BaziSamtClient {
     String tedadDor;
     String idPlayerHa;
 
-    public BaziSamtClient(String mozuat, String type, String tedadDor, String idPlayerHa, String idBazi) {
+    public BaziSamtClient(String mozuat, String idPlayerHa, String type, String tedadDor,  String idBazi) {
         this.idBazi = Integer.parseInt(idBazi);
         this.mozuat = mozuat;
         this.type = type;
@@ -40,5 +40,9 @@ public class BaziSamtClient {
 
     public int getIdBazi(){
         return idBazi;
+    }
+
+    public String getMozuatBazi(){
+        return mozuat;
     }
 }

@@ -124,6 +124,9 @@ public class ClientManager implements Runnable{
         //***** set kardan tedad dor bazi(int).
         bazi.setTedadDor(Integer.parseInt(tedadDor));
 
+        //***** add kardan khod mizban be list playerHaye bazi.
+        bazi.addPlayerToGame(this);
+
         //***** ferestadn bazi sakhte shode be saever asli ta dar list bazi ha adash konad.
         ServerHolder.addNewGame(bazi);
     }

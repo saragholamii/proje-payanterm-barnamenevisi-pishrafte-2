@@ -13,7 +13,7 @@
                 <Label text="شروع بازی با حرف : "/>
                 <TextField fx:id="harfAval"/>
             </HBox>
-            <Button fx:id="shoruBaziBtn" prefHeight="84.0" prefWidth="313.0" text="شروع بازی" />
+            <Button onAction="#startGBtn" fx:id="shoruBaziBtn" prefHeight="84.0" prefWidth="313.0" text="شروع بازی" />
         </VBox>
     </center>
 

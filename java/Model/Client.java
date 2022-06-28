@@ -64,4 +64,9 @@ public class Client {
         //***** sepas id bazi mored nazar ra miferestad.
         out.println(idBazi);
     }
+
+    public void startGameAzSamtMizban(char harf){
+        //***** harf shoru konande bazi ra baraye server ersal mikonad.
+        out.println(harf);
+    }
 }
