@@ -89,10 +89,10 @@ public class ClientFX extends Application {
                 SafheBaziController c = (SafheBaziController) l.getController();
 
                 //***** set kardan client FX baraye dashtan dastresi be method haye client
-                c.setClientFX(this);
+                //c.setClientFX(this);
 
                 //***** mozuat va type ra be controller midahad ta safhe sakhte shavad.
-                //c.getMozuat(mozuat);
+                c.getMozuat(mozuat);
 
                 //***** gozashan harf entekhab shode ruye lable
                 c.getHarf(harf);

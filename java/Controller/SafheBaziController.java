@@ -58,7 +58,6 @@ public class SafheBaziController implements Initializable {
 
     //***** gereftan reshte mozuat baraye in ke chek shavad che mozuati negah dashte shavand.
     public void getMozuat(String mozuat){
-        clientFX.print("dakhel method get mozuat");
 
         if(mozuat.contains("name")) name.setVisible(true);
         if(mozuat.contains("famil")) famil.setVisible(true);
@@ -77,7 +76,6 @@ public class SafheBaziController implements Initializable {
     
     //***** gereftan harf bazi baraye set kardan dar lable
     public void getHarf(char harff){
-        clientFX.print("dakhel method get harf");
         harf.setText("حرف این دور: " + harff);
     }
 
