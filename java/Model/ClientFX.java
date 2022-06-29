@@ -103,6 +103,9 @@ public class ClientFX extends Application {
                 //***** gozashan harf entekhab shode ruye lable
                 c.getHarf(harf);
 
+                //***** gereftan type bazi, baraye set kardan dokme tamam ya timer.
+                c.getType(type);
+
                 //***** chon p momken ast null bashad dakhel if gozashtim.
                 if(p != null){
                     //***** sakht Scene baraye in pane
@@ -150,5 +153,11 @@ public class ClientFX extends Application {
     }
     public String getTypeHost(){
         return typeHost;
+    }
+    public String getType(){
+        return type;
+    }
+    public String getMozuat(){
+        return mozuat;
     }
 }
