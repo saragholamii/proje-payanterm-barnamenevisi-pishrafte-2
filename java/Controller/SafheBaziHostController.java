@@ -3,11 +3,15 @@ package Controller;
 import Model.ClientFX;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -205,15 +209,99 @@ public class SafheBaziHostController implements Initializable {
                     }
 
                     //***** yani mohkat bazi tamam shode, dor jadid bayad shoru shavad.
-                    else{
+                    else {
                         //bazi tamam...
                         //reshte javab sakhte shode va zakhire mishavad.
                         //sepas be safhe entezar rafte ta dor badi tavasot yeki shoru shavad.
+
+                        timer.cancel();
+
+                        //***** ersal reshte javab.
+                        clientFX.client.addJavab(getJavab());
+
+                        //***** load shodan safhe entezar
+                        loadWaitingPage();
+
+                        //***** be ellat tadakhol thread ha lazem ast ke in tread bekhabad.
+                        try {
+                            Thread.sleep(1500);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        //***** hala mizban bayad be server payam bedahad ke bazi tamam shode, yek nafar digar az player ha ra
+                        //entekhab va dokme shoru bazi ra be an bede.
+                        clientFX.client.DJadid();
+
                     }
                 }
 
             }, 1000, 1000);
 
         }
+    }
+
+    //***** in method check mikonad dar reshte mozuat che chizhayi hast va javab ra misazad.
+    public String getJavab(){
+        String javab = "";
+        String mozuat = clientFX.getMozuat();
+
+        if(mozuat.contains("esm")){
+            javab += name.getText();
+        }
+        if(mozuat.contains("famil")){
+            javab += famil.getText();
+        }
+        if(mozuat.contains("shahr")){
+            javab += shahr.getText();
+        }
+        if(mozuat.contains("keshvar")){
+            javab += keshvar.getText();
+        }
+        if(mozuat.contains("ghaza")){
+            javab += ghaza.getText();
+        }
+        if(mozuat.contains("pushak")){
+            javab += pushak.getText();
+        }
+        if(mozuat.contains("mive")){
+            javab += mive.getText();
+        }
+        if(mozuat.contains("mashin")){
+            javab += mashin.getText();
+        }
+        if(mozuat.contains("gol")){
+            javab += gol.getText();
+        }
+        if(mozuat.contains("heyvan")){
+            javab += heyvan.getText();
+        }
+        if(mozuat.contains("ashya")){
+            javab += ashya.getText();
+        }
+
+        return javab;
+    }
+
+    //***** in method safhe dar entezar bazi ra load mikonad.
+    public void loadWaitingPage(){
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/DarEntezarShoruBaziPage.fxml"));
+                Pane p = null;
+                try {
+                    p = l.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if(p != null){
+                    Scene sc = new Scene(p);
+                    clientFX.setSceneJadid(sc);
+                }
+            }
+        });
     }
 }

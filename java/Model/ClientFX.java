@@ -70,7 +70,6 @@ public class ClientFX extends Application {
     //***** safhe bazi ra ba harf mored nazar va elemant haye dakhel string mozuat bala, misazad va ruye stage asli miandazad.
     public void sakht_Safhe_Ba_In_Harf(char harf) throws IOException {
 
-        System.out.println("dakhel method sakht safhe");
 
         //***** chon component haye javaFX ra faghat dakhel hamin tread mitavan taghir dad, bayad dakhel yek
         //platform.runLater component hara taghir dahim.
@@ -86,7 +85,6 @@ public class ClientFX extends Application {
                     e.printStackTrace();
                 }
 
-                System.out.println("baz az load");
 
                 //***** gereftan controller bazi
                 SafheBaziController c = (SafheBaziController) l.getController();
@@ -107,13 +105,46 @@ public class ClientFX extends Application {
                 if(p != null){
                     //***** sakht Scene baraye in pane
                     Scene sc = new Scene(p);
-                    System.out.println("baz az sakht scene");
 
                     //***** andakhtan in scene ruye safhe asli
                     stageAsli.setScene(sc);
                 }
 
 
+            }
+        });
+    }
+
+    //***** in method safhe daraye dokme bazi ra load mikonad.
+    public void myTurn(){
+
+        System.out.println("dakhel method myturn");
+        //***** chon ruye yek tread digar hastim bayad dakhel runLater benevisim.
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+
+                System.out.println("ghabl load");
+                FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/ShoruBaziGuestPage.fxml"));
+
+                Pane p = null;
+                try {
+                    p = l.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println("bad load");
+                ShoruBaziGuestPageController c = (ShoruBaziGuestPageController) l.getController();
+
+                //***** set kardan client fx baraye dashtan dastresi be method haye client.
+                c.setClientFX(thisClientFX);
+
+                if(p != null){
+                    System.out.println("dakhel shart");
+                    Scene sc = new Scene(p);
+                    setSceneJadid(sc);
+                }
             }
         });
     }

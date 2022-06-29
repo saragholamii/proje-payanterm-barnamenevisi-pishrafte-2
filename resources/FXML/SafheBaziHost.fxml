@@ -72,11 +72,11 @@
                 <font>
                     <Font size="30.0" />
                 </font></Label>
-            <Label fx:id="daghigheLbl" prefHeight="46.0" prefWidth="35.0" text="m" GridPane.columnIndex="3" GridPane.rowIndex="0">
+            <Label fx:id="daghigheLbl" prefHeight="46.0" prefWidth="61.0" text="m" GridPane.columnIndex="3" GridPane.rowIndex="0">
                 <font>
                     <Font size="30.0" />
                 </font></Label>
-            <Label fx:id="saatLbl" prefHeight="46.0" prefWidth="89.0" text="h" GridPane.columnIndex="4" GridPane.rowIndex="0">
+            <Label fx:id="saatLbl" prefHeight="46.0" prefWidth="70.0" text="h" GridPane.columnIndex="4" GridPane.rowIndex="0">
                 <font>
                     <Font size="30.0" />
                 </font></Label>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controller.ShoruBaziGuestPageController"
+            nodeOrientation="RIGHT_TO_LEFT"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <padding>
+        <Insets left="220" top="220" />
+    </padding>
+
+    <center>
+        <VBox spacing="20">
+            <HBox spacing="10">
+                <Label text="شروع بازی با حرف : "/>
+                <TextField fx:id="harfAval"/>
+            </HBox>
+            <Button onAction="#startGBtn" fx:id="shoruBaziBtn" prefHeight="84.0" prefWidth="313.0" text="شروع بازی" />
+        </VBox>
+    </center>
+
+</BorderPane>

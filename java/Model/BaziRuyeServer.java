@@ -13,6 +13,7 @@ public class BaziRuyeServer {
     int saat;
     int daghighe;
     int sanie;
+    int IDHost;
 
     public String getTypeBaziBeSuratReshte(){
         if(type.equalsIgnoreCase("zoodtar"))
@@ -93,6 +94,10 @@ public class BaziRuyeServer {
 
     public void setSaat(int saat) {
         this.saat = saat;
+    }
+
+    public void setIDHost(int idHost){
+        IDHost = idHost;
     }
 
 }

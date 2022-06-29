@@ -30,6 +30,9 @@ public class ClientListener implements Runnable {
                     case "startNRound":
                         shoruDorJadidBaInHarf();
                         break;
+                    //***** yani nobat mast ke bazi ra shoru konim.
+                    case "YourTurn":
+                        myTurn();
                 }
 
 
@@ -45,38 +48,35 @@ public class ClientListener implements Runnable {
     public void addGameBeClientFX() throws IOException {
         //***** aval tedad bazi hara mikhanad ta haman tedad shey bazi besazad.
         int tedadBazi = Integer.parseInt(in.readLine());
-        clientFX.print("dakhel method addgame");
 
         for(int i = 0; i < tedadBazi; i++){
-            clientFX.print("dakhel halghe");
             //***** mozuat be surat reshte
             String mozuat = in.readLine();
-            clientFX.print("mozuat: " + mozuat);
             //***** clientHaye Bazi be surat reshte
             String client = in.readLine();
-            clientFX.print("list client ha: " + client);
             //***** type bazi
             String type = in.readLine();
-            clientFX.print("type bazi: " + type);
             //***** tedad dor
             String tedadDor = in.readLine();
-            clientFX.print("tedad dor: " + tedadDor);
             //***** id bazi
             String idBazi = in.readLine();
-            clientFX.print("id : " + idBazi);
             //***** sakht shey bazi va add an be list dar ClientFX
             clientFX.addBazi(new BaziSamtClient(mozuat, client, type, tedadDor, idBazi));
         }
     }
 
     public void shoruDorJadidBaInHarf() throws IOException {
-        clientFX.print("dakhel method shoru dor jadid dar client listener");
 
         //***** daryaft harf baraye dor jadid.
         char harf = (in.readLine()).charAt(0);
 
         //***** seda zadan method clientFX ke safhe bazi ra ijad konad va ruye stage biandazad.
         clientFX.sakht_Safhe_Ba_In_Harf(harf);
-        clientFX.print("seda zadan method sakht safhe ba in harf");
+    }
+
+    public void myTurn(){
+        //***** seda zadan method my turn dar clientFX.
+        clientFX.print("dakhel method my turn");
+        clientFX.myTurn();
     }
 }

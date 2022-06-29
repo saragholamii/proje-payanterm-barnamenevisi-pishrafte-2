@@ -51,6 +51,9 @@ public class ClientManager implements Runnable{
                     case "addClientManager":
                         addClientManagerToList();
                         break;
+                    case "NDor":
+                        DorJadid();
+                        break;
                 }
             }
 
@@ -64,12 +67,10 @@ public class ClientManager implements Runnable{
         //***** aval payam midahad ke mikhahad list bazi hara beferestad.
         out.println("listG");
 
-        ServerHolder.print("dakhel method");
 
         //***** list bazi hara az server daryaft mikonad.
         ArrayList<BaziRuyeServer> listBazi = new ArrayList<>();
         listBazi = ServerHolder.getListBaziHa();
-        ServerHolder.print("size bazi ha: " + listBazi.size());
 
         //***** tedad bazi hara miferestad.
         out.println(listBazi.size());
@@ -77,7 +78,6 @@ public class ClientManager implements Runnable{
         //***** hala etelaat har bazi ra miferestad. 1-mozuat besurat reshte(joda shode ba -) 2-id clientha be surat
         // reshte (joda shode ba -) 3- type bazi(agar zamani bashad(2), joda shode ba -) 4- tedad dor bazi. 5-idBazi
         for(BaziRuyeServer b : listBazi){
-            ServerHolder.print("dakhel halghe");
 
             out.println(b.mozuatBaziBesuratReshte());
             ServerHolder.print(b.mozuatBaziBesuratReshte());
@@ -112,6 +112,9 @@ public class ClientManager implements Runnable{
         BaziRuyeServer bazi = new BaziRuyeServer();
         //***** negah dashtan id bazi, baraye ferestadan payam shoru be bazikonan an.
         game_That_I_Am_The_Host_ID = bazi.getIDBazi();
+
+        //***** set kardan id host bazi ruye bazi.
+        bazi.setIDHost(idClientManager);
 
         //***** khandan 3 reshte mozuaat, type, tedad dor, baraye sakht yek shey bazi samt server.
         String mozuat = in.readLine();
@@ -151,7 +154,6 @@ public class ClientManager implements Runnable{
     //***** in method client manager ra ba kelid id client da list server zakhire mikonad.
     public void addClientManagerToList() throws IOException {
         ServerHolder.addClientManager(idClientManager, this);
-        ServerHolder.print("id client manager: " + idClientManager);
     }
 
     //***** in method zamani seda zade mishavad ke client dokme start bazi ra, be hamrah yek harf baraye shoru bazi bezanad.
@@ -160,23 +162,32 @@ public class ClientManager implements Runnable{
         char harf = (in.readLine()).charAt(0);
         ServerHolder.print(String.valueOf(harf));
 
-        ServerHolder.print("method start game samt server seda zade shod");
         //method shoru bazi ruye server seda zade mishavad ta be baghi bazikonan peyhgam shoru bazi ferestade shavad.
-        ServerHolder.print("id host dar client manager: " + idClientManager);
-
         ServerHolder.startGame(game_That_I_Am_The_Host_ID, idClientManager, harf);
 
     }
 
     //***** in method az taraf server seda zade mishavad va harf bazi baraye in dor ra be client ersal mikonad.
     public void startGameWithTHisLetter(char harf){
-        ServerHolder.print("dakhel method startGameWithTHisLetter");
+
         //***** ba in command be client mifahmanad ke mikhahad harf jadid ra baraye shoru bazi jadid beferestad.
         out.println("startNRound");
 
         //***** hala harf ra baraye client ersal mikonad.
         out.println(harf);
 
-        ServerHolder.print("harf ferestade shod");
+    }
+
+    //***** in method be server miguyad az beyn bazikonan bazi, yek nafar baraye shoru kardan bazi entekhab shavad.
+    public void DorJadid(){
+        //***** id host va id bazi be method server ferestad shode ta yek nafar entekhab gardad.
+        ServerHolder.choosingPlayerForStart(game_That_I_Am_The_Host_ID, idClientManager);
+    }
+
+    //***** in method be client miguyad ke nobat ust ke bazi ra shoru konad.
+    public void YourTurn(){
+        //***** be client pegham midahad ke safhe daraye dokme shoru ra load konad.
+        ServerHolder.print("dakhel method your turn");
+        out.println("YourTurn");
     }
 }

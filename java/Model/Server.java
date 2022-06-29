@@ -5,6 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Server {
     final static int PORT = 9010;
@@ -64,29 +65,43 @@ public class Server {
 
     //***** method shoru bazi baraye ferestadan peygham shoru bazi be bazikonan digar.
     public void startGame(int idBazi, int idBazikonShoruKonande, char harf){
-        System.out.println("dakhel method start game server");
-
-        System.out.println("id bazi: " + idBazi);
-        System.out.println("id host: " + idBazikonShoruKonande);
 
         for (BaziRuyeServer b : listBaziHa) {
-            System.out.println("id bazi dakhel list: " + b.getIDBazi());
             if (b.getIDBazi() == idBazi) {
-                System.out.println("bazi peida shod.");
-                System.out.println("size lsit bazikonan bazi: " + b.listPlayerHa.size());
-                System.out.println("id list bazikonan bazi: ");
-                for(int o = 0; o < b.listPlayerHa.size(); o++){
-                    System.out.println(b.listPlayerHa.get(o).idClientManager);
-                }
                 for (int j = 0; j < b.listPlayerHa.size(); j++) {
-                    System.out.println("id bazikonan bazi peida shode " + b.listPlayerHa.get(j).idClientManager);
                     if (b.listPlayerHa.get(j).idClientManager != idBazikonShoruKonande) {
-                        System.out.println("method startGameWithTHisLetter seda zade shod");
                         b.listPlayerHa.get(j).startGameWithTHisLetter(harf);
                     }
                 }
             }
         }
+    }
+
+    //***** entekhab bazikon shoru konande badi.
+    public void choosingPlayerForStart(int idBazi, int idHost){
+
+        System.out.println("dakhel choosin...");
+        System.out.println("id bazi: " + idBazi);
+        System.out.println("id host: " + idHost);
+
+        for (BaziRuyeServer b : listBaziHa) {
+            if (b.getIDBazi() == idBazi) {
+                System.out.println("dakhel if...");
+                //***** peida kardan yek adad random az beyn player haye bazi, va adad nabayad barabar ba id host bashad.
+                Random r = new Random();
+                while(true){
+                    int n = r.nextInt(b.listPlayerHa.size());
+
+                    if(b.listPlayerHa.get(n).idClientManager != idHost){
+                        System.out.println("id bazikon peida shode: " + b.listPlayerHa.get(n).idClientManager);
+                        b.listPlayerHa.get(n).YourTurn();
+                        break;
+                    }
+                }
+
+            }
+        }
+
     }
 
     public void print(String s){

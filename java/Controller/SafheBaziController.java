@@ -217,16 +217,14 @@ public class SafheBaziController implements Initializable {
                     else{
                         //bazi tamam...
 
+                        timer.cancel();
+
                         //***** bayad aval javab ha dar yek reshte zakhire shavand, be in surat ke agar mozu dar reshte
                         //mozuat bud, be reshte javab ezafe shode va ba khat fasele az ham joda mishavand.
                         clientFX.client.addJavab(getJavab());
 
                         //hala safhe dar entezar bazi jadid bayad load shavad ta zamani ke dobare bazi start zade shavad.
-                        try {
-                            loadWaitingPage();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        loadWaitingPage();
 
                     }
                 }
@@ -276,14 +274,27 @@ public class SafheBaziController implements Initializable {
 
         return javab;
     }
-    
-    //***** in method safhe dar entezar bazi ra load mikonad.
-    public void loadWaitingPage() throws IOException {
-        FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/DarEntezarShoruBaziPage.fxml"));
-        Pane p = l.load();
 
-        Scene sc = new Scene(p);
-        clientFX.setSceneJadid(sc);
+    //***** in method safhe dar entezar bazi ra load mikonad.
+    public void loadWaitingPage(){
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/DarEntezarShoruBaziPage.fxml"));
+                Pane p = null;
+                try {
+                    p = l.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if(p != null){
+                    Scene sc = new Scene(p);
+                    clientFX.setSceneJadid(sc);
+                }
+            }
+        });
     }
 
 }

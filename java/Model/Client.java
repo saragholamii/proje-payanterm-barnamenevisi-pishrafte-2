@@ -71,12 +71,18 @@ public class Client {
         //***** harf shoru konande bazi ra baraye server ersal mikonad.
         out.println(harf);
 
-        clientGUI.print("startGWhenIAmHost be client manager ferestade shod");
 
+    }
+
+    //***** in method baraye shoru dor jadid ast.
+    public void DJadid(){
+        //***** be server payam midahad dor ghabli tamam shode ast.
+        out.println("NDor");
     }
 
     //***** javab haye har dor bazi, dar in reshte zakhire mishavad.
     public void addJavab(String javab){
         javabHa.add(javab);
     }
+
 }
