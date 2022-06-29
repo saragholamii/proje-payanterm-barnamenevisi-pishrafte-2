@@ -75,7 +75,7 @@
             <font>
                <Font size="30.0" />
             </font></Label>
-            <Label fx:id="daghigheLbl" prefHeight="46.0" prefWidth="57.0" text="m" GridPane.columnIndex="3" GridPane.rowIndex="0">
+            <Label fx:id="daghigheLbl" prefHeight="46.0" prefWidth="40.0" text="m" GridPane.columnIndex="3" GridPane.rowIndex="0">
             <font>
                <Font size="30.0" />
             </font></Label>

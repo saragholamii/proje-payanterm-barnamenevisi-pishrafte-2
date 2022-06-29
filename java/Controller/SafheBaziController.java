@@ -5,12 +5,16 @@ import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -180,8 +184,8 @@ public class SafheBaziController implements Initializable {
                     //***** az sanie kam mishavad.
                     if(sanie[0] > 0){
                         Platform.runLater(() -> {
-                            saatLbl.setText(Integer.toString(saat[0]));
-                            daghigheLbl.setText(Integer.toString(daghighe[0]));
+                            saatLbl.setText(Integer.toString(saat[0]) + ":");
+                            daghigheLbl.setText(Integer.toString(daghighe[0]) + ":");
                             sanieLbl.setText(Integer.toString(sanie[0]));
                         });
                         sanie[0]--;
@@ -190,8 +194,8 @@ public class SafheBaziController implements Initializable {
                     //***** az daghighe yaki kam shode va 59 ta be sanie ezafe mishavad.
                     else if(daghighe[0] > 0){
                         Platform.runLater(() -> {
-                            saatLbl.setText(Integer.toString(saat[0]));
-                            daghigheLbl.setText(Integer.toString(daghighe[0]));
+                            saatLbl.setText(Integer.toString(saat[0]) + ":");
+                            daghigheLbl.setText(Integer.toString(daghighe[0]) + ":");
                             sanieLbl.setText(Integer.toString(sanie[0]));
                         });
                         sanie[0] = 59;
@@ -212,13 +216,74 @@ public class SafheBaziController implements Initializable {
                     //***** yani mohkat bazi tamam shode, dor jadid bayad shoru shavad.
                     else{
                         //bazi tamam...
-                        //reshte javab sakhte shode va zakhire mishavad.
-                        //sepas be safhe entezar rafte ta dor badi tavasot yeki shoru shavad.
+
+                        //***** bayad aval javab ha dar yek reshte zakhire shavand, be in surat ke agar mozu dar reshte
+                        //mozuat bud, be reshte javab ezafe shode va ba khat fasele az ham joda mishavand.
+                        clientFX.client.addJavab(getJavab());
+
+                        //hala safhe dar entezar bazi jadid bayad load shavad ta zamani ke dobare bazi start zade shavad.
+                        try {
+                            loadWaitingPage();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                 }
 
             }, 1000, 1000);
         }
+    }
+
+    //***** in method check mikonad dar reshte mozuat che chizhayi hast va javab ra misazad.
+    public String getJavab(){
+        String javab = "";
+        String mozuat = clientFX.getMozuat();
+
+        if(mozuat.contains("esm")){
+            javab += name.getText();
+        }
+        if(mozuat.contains("famil")){
+           javab += famil.getText();
+        }
+        if(mozuat.contains("shahr")){
+            javab += shahr.getText();
+        }
+        if(mozuat.contains("keshvar")){
+            javab += keshvar.getText();
+        }
+        if(mozuat.contains("ghaza")){
+            javab += ghaza.getText();
+        }
+        if(mozuat.contains("pushak")){
+            javab += pushak.getText();
+        }
+        if(mozuat.contains("mive")){
+            javab += mive.getText();
+        }
+        if(mozuat.contains("mashin")){
+            javab += mashin.getText();
+        }
+        if(mozuat.contains("gol")){
+            javab += gol.getText();
+        }
+        if(mozuat.contains("heyvan")){
+            javab += heyvan.getText();
+        }
+        if(mozuat.contains("ashya")){
+            javab += ashya.getText();
+        }
+
+        return javab;
+    }
+    
+    //***** in method safhe dar entezar bazi ra load mikonad.
+    public void loadWaitingPage() throws IOException {
+        FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/DarEntezarShoruBaziPage.fxml"));
+        Pane p = l.load();
+
+        Scene sc = new Scene(p);
+        clientFX.setSceneJadid(sc);
     }
 
 }

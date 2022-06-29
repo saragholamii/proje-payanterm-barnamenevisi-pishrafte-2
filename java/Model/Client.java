@@ -3,12 +3,15 @@ package Model;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class Client {
     BufferedReader in;
     PrintWriter out;
     ClientFX clientGUI;
     ClientListener listener;
+
+    ArrayList<String> javabHa = new ArrayList<>();
 
     public Client(ClientFX c){
         //****** baraye inke be field haye GUI dastresi dashte bashim yek eshare gar be an ra inja gharar midahim.
@@ -70,5 +73,10 @@ public class Client {
 
         clientGUI.print("startGWhenIAmHost be client manager ferestade shod");
 
+    }
+
+    //***** javab haye har dor bazi, dar in reshte zakhire mishavad.
+    public void addJavab(String javab){
+        javabHa.add(javab);
     }
 }
