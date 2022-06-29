@@ -14,14 +14,6 @@ public class Server {
 
     public Server() throws IOException {
 
-        BaziRuyeServer b1 = new BaziRuyeServer();
-        b1.addMozuBeBazi("salam");
-        BaziRuyeServer b2 = new BaziRuyeServer();
-        b2.addMozuBeBazi("baba");
-        listBaziHa.add(b1);
-        listBaziHa.add(b2);
-
-
         ServerSocket s = new ServerSocket(PORT);
 
         while(true){

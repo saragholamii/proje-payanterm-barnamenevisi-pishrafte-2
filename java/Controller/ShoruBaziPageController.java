@@ -36,5 +36,7 @@ public class ShoruBaziPageController implements Initializable {
 
         //***** hala bayad safhe bazi load shavad.
         //....
+
+
     }
 }

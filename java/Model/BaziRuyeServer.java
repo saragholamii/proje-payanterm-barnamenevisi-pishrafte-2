@@ -8,69 +8,17 @@ public class BaziRuyeServer {
 
     ArrayList<String> listMozuat = new ArrayList<>();
     ArrayList<ClientManager> listPlayerHa = new ArrayList<>();
-    int type; //1:zudtar 2-time
+    String type;
     int tedadDor;
     int saat;
     int daghighe;
     int sanie;
 
-    public void setType(int type){
-        this.type = type;
-    }
-
-    public int getSaat() {
-        return saat;
-    }
-
-    public int getDaghighe() {
-        return daghighe;
-    }
-
-    public int getSanie() {
-        return sanie;
-    }
-
-    public void setSaat(int saat) {
-        this.saat = saat;
-    }
-
     public String getTypeBaziBeSuratReshte(){
-        if(type == 1)
-            return Integer.toString(1);
+        if(type.equalsIgnoreCase("zoodtar"))
+            return "zoodtar" + "-";
         else
-            return "2" + '-' + Integer.toString(getSaat()) + '-' + Integer.toString(getDaghighe()) + '-' + Integer.toString(getSanie());
-    }
-
-    public void setDaghighe(int daghighe) {
-        this.daghighe = daghighe;
-    }
-
-    public void setSanie(int sanie) {
-        this.sanie = sanie;
-    }
-
-    public void setTedadDor(int tedadDor){
-        this.tedadDor = tedadDor;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public int getTedadDor() {
-        return tedadDor;
-    }
-
-    public void addPlayerToGame(ClientManager c){
-        listPlayerHa.add(c);
-    }
-
-    public void addMozuBeBazi(String s){
-        listMozuat.add(s);
-    }
-
-    public int getIDBazi(){
-        return id;
+            return "time" + "-" + getSaat() + "-" + getDaghighe() + "-" + getSanie();
     }
 
     public String mozuatBaziBesuratReshte(){
@@ -94,4 +42,57 @@ public class BaziRuyeServer {
 
         return str;
     }
+
+    public void setDaghighe(int daghighe) {
+        this.daghighe = daghighe;
+    }
+
+    public void setSanie(int sanie) {
+        this.sanie = sanie;
+    }
+
+    public void setTedadDor(int tedadDor){
+        this.tedadDor = tedadDor;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getTedadDor() {
+        return tedadDor;
+    }
+
+    public void addPlayerToGame(ClientManager c){
+        listPlayerHa.add(c);
+    }
+
+    public void addMozuBeBazi(String s){
+        listMozuat.add(s);
+    }
+
+    public int getIDBazi(){
+        return id;
+    }
+
+    public void setType(String type){
+        this.type = type;
+    }
+
+    public int getSaat() {
+        return saat;
+    }
+
+    public int getDaghighe() {
+        return daghighe;
+    }
+
+    public int getSanie() {
+        return sanie;
+    }
+
+    public void setSaat(int saat) {
+        this.saat = saat;
+    }
+
 }

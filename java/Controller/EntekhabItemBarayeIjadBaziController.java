@@ -83,10 +83,10 @@ public class EntekhabItemBarayeIjadBaziController implements Initializable {
         //***** moshakhas kardan type bazi.
         String type = "";
         if(time.isSelected()){
-            type += 1 + "-" + saat.getText() + "-" + daghighe.getText() + "-" + sanie.getText();
+            type += "zaman" + "-" + saat.getText() + "-" + daghighe.getText() + "-" + sanie.getText();
         }
         else if(soonerChBox.isSelected()){
-            type += 2;
+            type += "sooner";
         }
 
         //***** mashakhas kardan tedad dor bazi

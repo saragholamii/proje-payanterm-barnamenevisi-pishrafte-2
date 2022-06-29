@@ -24,16 +24,15 @@ public class BaziSamtClient {
         Scanner sc = new Scanner(type);
         sc.useDelimiter("-");
 
-        //***** agar type 1 bashad, yani harkas zudtar tamam kard.
-        /*if(Integer.parseInt(sc.next()) == 1){
+        //***** agar type zoodtar bashad, yani harkas zudtar tamam kard.
+        if(sc.next().equalsIgnoreCase("zoodtar")){
             onList += "type bazi: " + "har kas zudtar ramam kard.";
         }
 
-        //***** agar 2 bud, yani time darad va saat, daghighe va sanie bad az ba - az ham joda shode and.
+        //***** agar time bud, yani time darad va saat, daghighe va sanie bad az ba - az ham joda shode and.
         else{
-            sc.next();
-            onList += "type bazi: " + sc.next() + " h " + sc.next() + " min " + sc.next() + " sec ";
-        }*/
+            onList += "type bazi: time( " + sc.next() + " h " + sc.next() + " min " + sc.next() + " sec " + " )";
+        }
 
         return onList;
     }

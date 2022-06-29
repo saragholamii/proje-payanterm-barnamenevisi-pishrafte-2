@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class ClientManager implements Runnable{
     Socket socketClient;
     Server ServerHolder;
-    DataInputStream in;
+    BufferedReader in;
     PrintWriter out;
     int game_That_I_Am_The_Host_ID;
     int game_That_I_Join_ID;
@@ -25,7 +25,7 @@ public class ClientManager implements Runnable{
     public void run() {
         try {
 
-            in = new DataInputStream(socketClient.getInputStream());
+            in = new BufferedReader(new InputStreamReader(socketClient.getInputStream()));
             out = new PrintWriter(new OutputStreamWriter(socketClient.getOutputStream()), true);
             //***** connection ba client bargharar ast, ba pol ertebati in va out.
 
@@ -64,21 +64,35 @@ public class ClientManager implements Runnable{
         //***** aval payam midahad ke mikhahad list bazi hara beferestad.
         out.println("listG");
 
+        ServerHolder.print("dakhel method");
+
         //***** list bazi hara az server daryaft mikonad.
         ArrayList<BaziRuyeServer> listBazi = new ArrayList<>();
         listBazi = ServerHolder.getListBaziHa();
+        ServerHolder.print("size bazi ha: " + listBazi.size());
 
         //***** tedad bazi hara miferestad.
-        out.println(Integer.toString(listBazi.size()));
+        out.println(listBazi.size());
 
         //***** hala etelaat har bazi ra miferestad. 1-mozuat besurat reshte(joda shode ba -) 2-id clientha be surat
         // reshte (joda shode ba -) 3- type bazi(agar zamani bashad(2), joda shode ba -) 4- tedad dor bazi. 5-idBazi
         for(BaziRuyeServer b : listBazi){
+            ServerHolder.print("dakhel halghe");
+
             out.println(b.mozuatBaziBesuratReshte());
+            ServerHolder.print(b.mozuatBaziBesuratReshte());
+
             out.println(b.idClientHaBeSuratReshte());
+            ServerHolder.print(b.idClientHaBeSuratReshte());
+
             out.println(b.getTypeBaziBeSuratReshte());
+            ServerHolder.print(b.getTypeBaziBeSuratReshte());
+
             out.println(b.getTedadDor());
+            ServerHolder.print(Integer.toString(b.getTedadDor()));
+
             out.println(b.getIDBazi());
+            ServerHolder.print(Integer.toString(b.getIDBazi()));
         }
     }
 
@@ -114,10 +128,11 @@ public class ClientManager implements Runnable{
         //***** set kardan type bazi. 1-zudtar. 2-time(ke saat-daghighe-sanie badash miayad.)
         sc = new Scanner(type);
         sc.useDelimiter("-");
-        int typee = Integer.parseInt(sc.next());
-        if(typee == 1)
-            bazi.setType(1);
+        String typee = sc.next();
+        if(typee.equals("zoodtar"))
+            bazi.setType("zoodtar");
         else{
+            bazi.setType("time");
             bazi.setSaat(Integer.parseInt(sc.next()));
             bazi.setDaghighe(Integer.parseInt(sc.next()));
             bazi.setSanie(Integer.parseInt(sc.next()));
