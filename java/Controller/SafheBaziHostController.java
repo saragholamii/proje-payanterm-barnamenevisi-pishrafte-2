@@ -155,6 +155,7 @@ public class SafheBaziHostController implements Initializable {
         }
         //***** agar type, time bashad, dokme harkas zudtar bayad hazf shavad. hamchenin timer bayad shoru be shomaresh konad.
         else {
+            System.out.println("another...");
             tamamBtn.setVisible(false);
 
             //timer....

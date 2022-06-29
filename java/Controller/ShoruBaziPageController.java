@@ -53,6 +53,9 @@ public class ShoruBaziPageController implements Initializable {
         //***** ferestadan harf bazi baraye nashan dadan balaye safhe bazi.
         c.getHarf(harfAval.getText().charAt(0));
 
+        //***** ferestadan type bazi baraye inke btn ya timer ra set konad.
+        c.getType(clientFX.getType());
+
         //sakht scene
         Scene sc = new Scene(p);
 
