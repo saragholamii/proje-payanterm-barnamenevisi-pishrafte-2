@@ -14,6 +14,8 @@ import javafx.scene.layout.BorderPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SafheBaziController implements Initializable {
     ClientFX clientFX;
@@ -163,7 +165,60 @@ public class SafheBaziController implements Initializable {
         else {
             tamamBtn.setVisible(false);
 
-            //timer....
+            //***** dar avardan saat va daghighe va sanie, chon dar inner class estefade shode bayad final tarif shavad.
+            final int[] saat = {Integer.parseInt(sc.next())};
+            final int[] daghighe = {Integer.parseInt(sc.next())};
+            final int[] sanie = {Integer.parseInt(sc.next())};
+
+            //***** set kardan timer.
+            Timer timer = new Timer();
+            timer.scheduleAtFixedRate(new TimerTask() {
+
+                @Override
+                public void run() {
+
+                    //***** az sanie kam mishavad.
+                    if(sanie[0] > 0){
+                        Platform.runLater(() -> {
+                            saatLbl.setText(Integer.toString(saat[0]));
+                            daghigheLbl.setText(Integer.toString(daghighe[0]));
+                            sanieLbl.setText(Integer.toString(sanie[0]));
+                        });
+                        sanie[0]--;
+                    }
+
+                    //***** az daghighe yaki kam shode va 59 ta be sanie ezafe mishavad.
+                    else if(daghighe[0] > 0){
+                        Platform.runLater(() -> {
+                            saatLbl.setText(Integer.toString(saat[0]));
+                            daghigheLbl.setText(Integer.toString(daghighe[0]));
+                            sanieLbl.setText(Integer.toString(sanie[0]));
+                        });
+                        sanie[0] = 59;
+                        daghighe[0]--;
+                    }
+
+                    //***** az saat yeki kam shode va 59 ta be daghighe ezafe mishavad.
+                    else if (saat[0] > 0){
+                        Platform.runLater(() -> {
+                            saatLbl.setText(Integer.toString(saat[0]) + ":");
+                            daghigheLbl.setText(Integer.toString(daghighe[0]) + ":");
+                            sanieLbl.setText(Integer.toString(sanie[0]));
+                        });
+                        daghighe[0] = 59;
+                        saat[0]--;
+                    }
+
+                    //***** yani mohkat bazi tamam shode, dor jadid bayad shoru shavad.
+                    else{
+                        //bazi tamam...
+                        //reshte javab sakhte shode va zakhire mishavad.
+                        //sepas be safhe entezar rafte ta dor badi tavasot yeki shoru shavad.
+                    }
+                }
+
+            }, 1000, 1000);
         }
     }
+
 }

@@ -71,20 +71,20 @@
                     <Font size="18.0" />
                 </font></Label>
 
-            <Label fx:id="sanieLbl" prefHeight="46.0" prefWidth="32.0" text="s" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="0">
+            <Label fx:id="sanieLbl" prefHeight="46.0" prefWidth="47.0" text="s" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="0">
             <font>
                <Font size="30.0" />
             </font></Label>
-            <Label fx:id="daghigheLbl" prefHeight="46.0" prefWidth="45.0" text="m" GridPane.columnIndex="3" GridPane.rowIndex="0">
+            <Label fx:id="daghigheLbl" prefHeight="46.0" prefWidth="57.0" text="m" GridPane.columnIndex="3" GridPane.rowIndex="0">
             <font>
                <Font size="30.0" />
             </font></Label>
-            <Label fx:id="saatLbl" prefHeight="46.0" prefWidth="79.0" text="h" GridPane.columnIndex="4" GridPane.rowIndex="0">
+            <Label fx:id="saatLbl" prefHeight="46.0" prefWidth="89.0" text="h" GridPane.columnIndex="4" GridPane.rowIndex="0">
             <font>
                <Font size="30.0" />
             </font></Label>
 
-            <Label fx:id="zamanWord" prefHeight="18.0" prefWidth="57.0" text="زمان :" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0">
+            <Label fx:id="zamanWord" prefHeight="27.0" prefWidth="72.0" text="زمان :" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="0">
             <font>
                <Font size="18.0" />
             </font></Label>

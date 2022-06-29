@@ -112,7 +112,8 @@ public class ClientFX extends Application {
                     //***** andakhtan in scene ruye safhe asli
                     stageAsli.setScene(sc);
                 }
-                System.out.println("bad az set kardan scene");
+
+
             }
         });
     }
