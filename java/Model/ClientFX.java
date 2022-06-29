@@ -19,6 +19,9 @@ public class ClientFX extends Application {
     String mozuat;
     String type;
 
+    String mozuatHost;
+    String typeHost;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         thisClientFX = this;
@@ -129,5 +132,23 @@ public class ClientFX extends Application {
     //method baraye chap
     public void print(String p){
         System.out.println(p);
+    }
+
+    //***** set kardan type bazi HOST
+    public void setTypeHost(String typeHost){
+        this.typeHost = typeHost;
+    }
+
+    //***** set kardan mozu bazi HOST
+    public void setMozuatHost(String mozuatHost){
+        this.mozuatHost = mozuatHost;
+    }
+
+    //getters...
+    public String getMozuatHost(){
+        return mozuatHost;
+    }
+    public String getTypeHost(){
+        return typeHost;
     }
 }

@@ -83,10 +83,10 @@ public class EntekhabItemBarayeIjadBaziController implements Initializable {
         //***** moshakhas kardan type bazi.
         String type = "";
         if(time.isSelected()){
-            type += "zaman" + "-" + saat.getText() + "-" + daghighe.getText() + "-" + sanie.getText();
+            type += "time" + "-" + saat.getText() + "-" + daghighe.getText() + "-" + sanie.getText();
         }
         else if(soonerChBox.isSelected()){
-            type += "sooner";
+            type += "zoodtar";
         }
 
         //***** mashakhas kardan tedad dor bazi
@@ -95,6 +95,10 @@ public class EntekhabItemBarayeIjadBaziController implements Initializable {
         //***** seda zadan method sakht bazi va dadan string moshakhasat be an, ta baraye client manager beferestad.
         // sepas client manager yek shey bazi ruye server sakhte va dar list bazi ha add mikonad.
         clientFX.client.sakhtBazi(mozuat, type, tedadDor);
+
+        //***** mozuat va type ra dar reshte dar client fx zakhire mikonad ta safhe bazi ra az ruye an besazad.
+        clientFX.setMozuatHost(mozuat);
+        clientFX.setTypeHost(type);
 
         //***** hala bayad dockme shoru bazi ruye safhe namayesh dade shavad.
         FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/ShorueBaziPage.fxml"));
