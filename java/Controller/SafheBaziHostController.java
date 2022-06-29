@@ -9,10 +9,19 @@ import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class SafheBaziHostController implements Initializable {
     ClientFX clientFX;
 
+    @FXML
+    private Label sanieLbl;
+    @FXML
+    private Label daghigheLbl;
+    @FXML
+    private Label saatLbl;
+    @FXML
+    private Label zamanWord;
     @FXML
     private Label harf;
     @FXML
@@ -131,9 +140,24 @@ public class SafheBaziHostController implements Initializable {
 
     //***** gereftan type bazi baraye inke moshakhas shavad bazi dokme payan dashte bashad ya timer.
     public void getType(String type){
-//        Scanner sc = new Scanner(type);
-//        sc.useDelimiter("-");
-//
-//        int typee = Integer.parseInt()
+        Scanner sc = new Scanner(type);
+        sc.useDelimiter("-");
+
+        String t = sc.next();
+        System.out.println("type: " + t);
+
+        //***** agar type, har kas zoodtar tamam kard bashad, timer bayad az safhe hazf shavad.
+        if(t.equalsIgnoreCase("zoodtar")){
+            zamanWord.setVisible(false);
+            saatLbl.setVisible(false);
+            daghigheLbl.setVisible(false);
+            sanieLbl.setVisible(false);
+        }
+        //***** agar type, time bashad, dokme harkas zudtar bayad hazf shavad. hamchenin timer bayad shoru be shomaresh konad.
+        else {
+            tamamBtn.setVisible(false);
+
+            //timer....
+        }
     }
 }

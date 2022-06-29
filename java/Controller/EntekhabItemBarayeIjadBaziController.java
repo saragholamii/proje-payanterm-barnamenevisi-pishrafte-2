@@ -97,8 +97,8 @@ public class EntekhabItemBarayeIjadBaziController implements Initializable {
         clientFX.client.sakhtBazi(mozuat, type, tedadDor);
 
         //***** mozuat va type ra dar reshte dar client fx zakhire mikonad ta safhe bazi ra az ruye an besazad.
-        clientFX.setMozuatHost(mozuat);
-        clientFX.setTypeHost(type);
+        clientFX.setMozuat(mozuat);
+        clientFX.setType(type);
 
         //***** hala bayad dockme shoru bazi ruye safhe namayesh dade shavad.
         FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/ShorueBaziPage.fxml"));

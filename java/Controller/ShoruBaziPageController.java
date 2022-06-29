@@ -39,9 +39,6 @@ public class ShoruBaziPageController implements Initializable {
         clientFX.client.startGameAzSamtMizban(harfAval.getText().charAt(0));
         clientFX.print("method start game az samt mizban seda zade shod");
 
-        //***** hala bayad safhe bazi load shavad.
-        //....
-
         FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/SafheBaziHost.fxml"));
         Pane p = l.load();
 
@@ -51,7 +48,7 @@ public class ShoruBaziPageController implements Initializable {
         c.setClientFX(clientFX);
 
         //***** ferestadn list mozuat ta field ha bar asas an entekhab shavad.
-        c.getMozuat(clientFX.getMozuatHost());
+        c.getMozuat(clientFX.getMozuat());
 
         //***** ferestadan harf bazi baraye nashan dadan balaye safhe bazi.
         c.getHarf(harfAval.getText().charAt(0));
