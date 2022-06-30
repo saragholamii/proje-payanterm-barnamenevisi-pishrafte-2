@@ -2,6 +2,7 @@ package Controller;
 
 import Model.ClientFX;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -303,5 +304,10 @@ public class SafheBaziHostController implements Initializable {
                 }
             }
         });
+    }
+
+    public void finish(ActionEvent actionEvent) {
+        //***** in ja methodi az client ra seda mizanad ke be server miguyad yek nafar bazi ra tamam karde ast.
+        clientFX.client.dorTamamShod();
     }
 }
