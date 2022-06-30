@@ -27,7 +27,7 @@ public class Client {
         out = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
 
         //***** be listener clientGUI ham dade shod ta rahattar betavanad method haye an ra seda bezanad va panjere ra taghir dahad.
-        listener = new ClientListener(in, clientGUI);
+        listener = new ClientListener(in, clientGUI, this);
 
         //***** az in be bad, client hameye daryafti hayash az server ra dar listener migirad.
         Thread t = new Thread(listener);
@@ -93,6 +93,20 @@ public class Client {
     public void dorTamamShod(){
         //***** command
         out.println("SomeoneFinished");
+    }
+
+    //***** in method be server javab hara ersal mikonad.
+    public void sendAnswers(){
+        //***** command
+        out.println("AnswersComming");
+
+        //***** tedad javab hara ersal mikonad
+        out.println(javabHa.size());
+
+        //***** khod javab hara ersal mikonad.
+        for(String s : javabHa){
+            out.println(s);
+        }
     }
 
     //***** javab haye har dor bazi, dar in reshte zakhire mishavad.

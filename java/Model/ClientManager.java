@@ -12,6 +12,7 @@ public class ClientManager implements Runnable{
     PrintWriter out;
     int game_That_I_Am_The_Host_ID;
     int game_That_I_Join_ID;
+    ArrayList<String> javabHa = new ArrayList<>();
 
     static int tedadClientManager;
     int idClientManager = tedadClientManager++;
@@ -60,11 +61,15 @@ public class ClientManager implements Runnable{
                     case "SomeoneFinished":
                         someoneFinishedTheGame();
                         break;
+                    //***** yani mikhahad javab hara beferestad.
+                    case "AnswersComming":
+                        getAnswers();
+                        break;
                 }
             }
 
 
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -191,7 +196,7 @@ public class ClientManager implements Runnable{
     }
 
     //***** in method be server miguyad payam shoru bazi ba in harf ra be bazikon ha beferestad.
-    public void startGameBtnWhenIAmGuest() throws IOException {
+    public void startGameBtnWhenIAmGuest() throws IOException, InterruptedException {
         //***** khandan harf va seda zadan method.
         ServerHolder.startGame(in.readLine().charAt(0), game_That_I_Join_ID);
     }
@@ -214,6 +219,28 @@ public class ClientManager implements Runnable{
     public void waitingPage(){
         //***** command
         out.println("waitingPage");
+    }
+
+    //***** in method be client miguyad ke javab hayash ra ersal konad.
+    public void sendAllAnswers(){
+        //***** command
+        out.println("sendAnswers");
+    }
+
+    //***** in method java haye client ra gerefte va dar araye javab ha zakhire mikonad.
+    public void getAnswers() throws IOException {
+        //***** tedad javab hara migirad.
+        int tedad = Integer.parseInt(in.readLine());
+
+        //***** be tedad ferestade shode javab daryaft karde va dar array list javab ha zakhire mikonad.
+        for(int i = 0; i< tedad; i++){
+            javabHa.add(in.readLine());
+        }
+    }
+
+    //***** in method javab zakhire sode dar khune i om ra barmigardanad.
+    public String sendAnswerNumber(int i){
+        return javabHa.get(i);
     }
 
     public int idClientManager() {

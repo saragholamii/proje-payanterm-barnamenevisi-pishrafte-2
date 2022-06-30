@@ -101,11 +101,13 @@ public class Server {
     }
 
     //***** ersal shoru bazi
-    public void startGame(char harf, int idBazi){
+    public void startGame(char harf, int idBazi) throws InterruptedException {
+        BaziRuyeServer bazi = null;
 
         for (BaziRuyeServer b : listBaziHa){
             if(b.getIDBazi() == idBazi){
-
+                //***** bazi peida shode ra dar fiel bazi zakhire mikonad.
+                bazi = b;
                 //***** check mishavad aya tedad dor ha tamam shode ast ya na
                 if(b.getTedadDorTaAlan() < b.getTedadDor()){
                     //*****id host
@@ -127,7 +129,15 @@ public class Server {
                 }
 
                 else{
-                    // bazi tamam shode ast, bayad String javab ha daryaft shode va tashih shavad, sepas emtiaz neshan dade shavad.
+                    //***** be client ha miguyad ke javab hayesan ra baraye server ersal konan.
+                    ersalJavabHaBeSrever(bazi);
+                    Thread.sleep(500);
+
+                    //***** javabha ha bayad tashih shavand
+                    tashih(bazi);
+
+                    //***** chon ehtemalan tashih tul mikeshad, yek safhe "bazi tamam shod, dar entezar tashih" baraye hame load mikonim.
+                    //.....
                 }
             }
         }
@@ -158,6 +168,34 @@ public class Server {
                 }
             }
         }
+
+    }
+
+    //***** in method be player haye bazi miguyad javab hayesahn ra baraye server ersal konand.
+    public void ersalJavabHaBeSrever(BaziRuyeServer b){
+        for(int i = 0; i < b.listPlayerHa.size(); i++){
+            b.listPlayerHa.get(i).sendAllAnswers();
+        }
+    }
+
+    //***** in method gharar ast emtiaz hara mohasebe konad.
+    public void tashih(BaziRuyeServer b){
+        //***** dar in method bayad har dor bazi ra be surat joda gane tashih konim.
+        for(int i = 0; i < b.getTedadDor(); i++){
+
+            ArrayList<String> javabHayeDor = new ArrayList<>();
+
+            //***** hala be tamam client ha miguyad ke javab haye dore i om ra beferestand.
+            for(int j = 0; j < b.listPlayerHa.size(); j++){
+                javabHayeDor.add(b.listPlayerHa.get(j).sendAnswerNumber(i));
+            }
+
+            TashihDor(javabHayeDor);
+        }
+    }
+
+    //***** in method yek dor ra tashih mikonad.
+    public void TashihDor(ArrayList<String> javabHayeDor){
 
     }
 

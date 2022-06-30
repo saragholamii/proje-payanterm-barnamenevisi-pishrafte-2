@@ -3,14 +3,17 @@ package Model;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ClientListener implements Runnable {
     BufferedReader in;
     ClientFX clientFX;
+    Client client;
 
-    ClientListener(BufferedReader in, ClientFX clientFX){
+    ClientListener(BufferedReader in, ClientFX clientFX, Client client){
         this.in = in;
         this.clientFX = clientFX;
+        this.client = client;
     }
 
     @Override
@@ -42,6 +45,11 @@ public class ClientListener implements Runnable {
                     case "waitingPage":
                         waitingPage();
                         break;
+                    //***** yani javab hara ersal kon.
+                    case "sendAnswers":
+                        sendAnswers();
+                        break;
+
                 }
 
 
@@ -101,4 +109,10 @@ public class ClientListener implements Runnable {
         //***** seda zadan methodi ke safhe entezar ra load mikonad.
         clientFX.waitingPage();
     }
+
+    public void sendAnswers(){
+        //***** methodi dar client ra seda mizanad ke javab hara baraye server ersal konad.
+        client.sendAnswers();
+    }
+
 }
