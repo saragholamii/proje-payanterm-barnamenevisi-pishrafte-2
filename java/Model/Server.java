@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -101,7 +102,7 @@ public class Server {
     }
 
     //***** ersal shoru bazi
-    public void startGame(char harf, int idBazi) throws InterruptedException {
+    public void startGame(char harf, int idBazi) throws InterruptedException, FileNotFoundException {
         BaziRuyeServer bazi = null;
 
         for (BaziRuyeServer b : listBaziHa){
@@ -179,7 +180,7 @@ public class Server {
     }
 
     //***** in method gharar ast emtiaz hara mohasebe konad.
-    public void tashih(BaziRuyeServer b){
+    public void tashih(BaziRuyeServer b) throws FileNotFoundException {
         //***** dar in method bayad har dor bazi ra be surat joda gane tashih konim.
         for(int i = 0; i < b.getTedadDor(); i++){
 
@@ -190,14 +191,17 @@ public class Server {
                 javabHayeDor.add(b.listPlayerHa.get(j).sendAnswerNumber(i));
             }
 
-            TashihDor(javabHayeDor);
+            TashihDor(javabHayeDor, b.mozuatBaziBesuratReshte());
         }
     }
 
     //***** in method yek dor ra tashih mikonad.
-    public void TashihDor(ArrayList<String> javabHayeDor){
-
+    public void TashihDor(ArrayList<String> javabHayeDor, String mozuat) throws FileNotFoundException {
+        //***** aval javab har bazikon be surat joda chek mishavad ke aya dar file vojud darad ya na, sepas emtiaz ha be surat yek
+        //araye az int bargardande mishavad.
+        Tashih.ayaDarFileHast(javabHayeDor, mozuat);
     }
+
 
     public void print(String s){
         System.out.println(s);
