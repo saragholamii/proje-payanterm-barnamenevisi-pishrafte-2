@@ -29,5 +29,7 @@ public class ShoruBaziGuestPageController implements Initializable {
 
     //***** vaghti dokme shoru zade mishavad, be server miguyad ke baraye hameye mehman ha va mizban, safhe bazi ba in harf dobare load shavad.
     public void startGBtn(ActionEvent actionEvent) {
+        //hala bayad methodi az client ra seda bezanad ke be server farman dahad baraye hemeye bazikon ha safhe bazi ghabli load shavad.
+        clientFX.client.startGameAzSamtMehman(harfAval.getText().charAt(0));
     }
 }

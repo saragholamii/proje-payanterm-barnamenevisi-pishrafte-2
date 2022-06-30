@@ -80,6 +80,15 @@ public class Client {
         out.println("NDor");
     }
 
+    //***** in method be server miguyad be hame bazikon ha payam shoru bazi ba in harf ra bedahad.
+    public void startGameAzSamtMehman(char harf){
+        //***** farman shoru bazi jadid
+        out.println("startGameWhenIAmGuest");
+
+        //***** harf shoru konande bazi ra baraye server ersal mikonad.
+        out.println(harf);
+    }
+
     //***** javab haye har dor bazi, dar in reshte zakhire mishavad.
     public void addJavab(String javab){
         javabHa.add(javab);

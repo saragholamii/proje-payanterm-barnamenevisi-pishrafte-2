@@ -115,6 +115,45 @@ public class ClientFX extends Application {
         });
     }
 
+    //***** sakht safhe bazi ba yek harf baraye host
+    public void sakht_Safhe_Ba_In_Harf_HOST(char harf){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+
+                FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/SafheBaziHost.fxml"));
+                Pane p = null;
+                try{
+                    p = l.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                //***** gereftan controller
+                SafheBaziHostController c = (SafheBaziHostController) l.getController();
+
+                //***** set kardan clientFX
+                c.setClientFX(thisClientFX);
+
+                //***** set kardan mozuat
+                c.getMozuat(mozuat);
+
+                //***** set kardan type
+                c.getType(type);
+
+                //***** set kardan harf
+                c.getHarf(harf);
+
+                //***** sakht scene va gozashtan an ruye stage asli
+                if(p != null){
+                    Scene sc = new Scene(p);
+                    stageAsli.setScene(sc);
+                }
+
+            }
+        });
+    }
+
     //***** in method safhe daraye dokme bazi ra load mikonad.
     public void myTurn(){
 

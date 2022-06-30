@@ -64,7 +64,7 @@ public class Server {
     }
 
     //***** method shoru bazi baraye ferestadan peygham shoru bazi be bazikonan digar.
-    public void startGame(int idBazi, int idBazikonShoruKonande, char harf){
+    public void startGameFirst(int idBazi, int idBazikonShoruKonande, char harf){
 
         for (BaziRuyeServer b : listBaziHa) {
             if (b.getIDBazi() == idBazi) {
@@ -80,20 +80,15 @@ public class Server {
     //***** entekhab bazikon shoru konande badi.
     public void choosingPlayerForStart(int idBazi, int idHost){
 
-        System.out.println("dakhel choosin...");
-        System.out.println("id bazi: " + idBazi);
-        System.out.println("id host: " + idHost);
-
         for (BaziRuyeServer b : listBaziHa) {
             if (b.getIDBazi() == idBazi) {
-                System.out.println("dakhel if...");
+
                 //***** peida kardan yek adad random az beyn player haye bazi, va adad nabayad barabar ba id host bashad.
                 Random r = new Random();
                 while(true){
                     int n = r.nextInt(b.listPlayerHa.size());
 
                     if(b.listPlayerHa.get(n).idClientManager != idHost){
-                        System.out.println("id bazikon peida shode: " + b.listPlayerHa.get(n).idClientManager);
                         b.listPlayerHa.get(n).YourTurn();
                         break;
                     }
@@ -102,6 +97,28 @@ public class Server {
             }
         }
 
+    }
+
+    //***** ersal shoru bazi
+    public void startGame(char harf, int idBazi){
+
+        for (BaziRuyeServer b : listBaziHa){
+            if(b.getIDBazi() == idBazi){
+
+                //*****id host
+                int idHost = b.IDHost;
+
+                for (int i = 0; i < b.listPlayerHa.size(); i++){
+                    if(b.listPlayerHa.get(i).idClientManager != idHost){
+
+                        b.listPlayerHa.get(i).startGameWithTHisLetter(harf);
+                    }
+                    else {
+                        b.listPlayerHa.get(i).startGameWithTHisLetterHOST(harf);
+                    }
+                }
+            }
+        }
     }
 
     public void print(String s){

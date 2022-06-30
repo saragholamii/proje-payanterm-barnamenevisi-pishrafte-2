@@ -33,6 +33,11 @@ public class ClientListener implements Runnable {
                     //***** yani nobat mast ke bazi ra shoru konim.
                     case "YourTurn":
                         myTurn();
+                        break;
+                    //***** yai harf shoru konande ra baraye host miferestad.
+                    case "startNRoundHOST":
+                        shoruDorJadidBaInHarfHOST();
+                        break;
                 }
 
 
@@ -78,5 +83,13 @@ public class ClientListener implements Runnable {
         //***** seda zadan method my turn dar clientFX.
         clientFX.print("dakhel method my turn");
         clientFX.myTurn();
+    }
+
+    public void shoruDorJadidBaInHarfHOST() throws IOException {
+        //***** khandan harf
+        char harf = in.readLine().charAt(0);
+
+        //***** seda zadan method load kardan safhe bazi baraye host
+        clientFX.sakht_Safhe_Ba_In_Harf_HOST(harf);
     }
 }

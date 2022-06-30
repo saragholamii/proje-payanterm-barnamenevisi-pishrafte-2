@@ -54,6 +54,9 @@ public class ClientManager implements Runnable{
                     case "NDor":
                         DorJadid();
                         break;
+                    case "startGameWhenIAmGuest":
+                        startGameBtnWhenIAmGuest();
+                        break;
                 }
             }
 
@@ -163,7 +166,7 @@ public class ClientManager implements Runnable{
         ServerHolder.print(String.valueOf(harf));
 
         //method shoru bazi ruye server seda zade mishavad ta be baghi bazikonan peyhgam shoru bazi ferestade shavad.
-        ServerHolder.startGame(game_That_I_Am_The_Host_ID, idClientManager, harf);
+        ServerHolder.startGameFirst(game_That_I_Am_The_Host_ID, idClientManager, harf);
 
     }
 
@@ -187,7 +190,21 @@ public class ClientManager implements Runnable{
     //***** in method be client miguyad ke nobat ust ke bazi ra shoru konad.
     public void YourTurn(){
         //***** be client pegham midahad ke safhe daraye dokme shoru ra load konad.
-        ServerHolder.print("dakhel method your turn");
         out.println("YourTurn");
+    }
+
+    //***** in method be server miguyad payam shoru bazi ba in harf ra be bazikon ha beferestad.
+    public void startGameBtnWhenIAmGuest() throws IOException {
+        //***** khandan harf va seda zadan method.
+        ServerHolder.startGame(in.readLine().charAt(0), game_That_I_Join_ID);
+    }
+
+    //***** in method be clientHOST miguyad ke safhe bazi ghabli ra load konad.
+    public void startGameWithTHisLetterHOST(char harf){
+        //***** command
+        out.println("startNRoundHOST");
+
+        //***** ferestadan harf
+        out.println(harf);
     }
 }
