@@ -35,11 +35,11 @@ public class BaziRuyeServer {
     }
 
     public String idClientHaBeSuratReshte(){
-        String str = null;
+        String str = "";
 
         for(ClientManager c : listPlayerHa){
-           // str += Integer.toString(c.getIdClientManager());
-            str += '-';
+            str += Integer.toString(c.idClientManager());
+            str += "-";
         }
 
         return str;

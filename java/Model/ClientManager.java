@@ -215,4 +215,8 @@ public class ClientManager implements Runnable{
         //***** command
         out.println("waitingPage");
     }
+
+    public int idClientManager() {
+        return idClientManager;
+    }
 }
