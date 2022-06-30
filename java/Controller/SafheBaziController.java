@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
@@ -24,6 +25,7 @@ import java.util.TimerTask;
 
 public class SafheBaziController implements Initializable {
     ClientFX clientFX;
+    char harff;
 
     @FXML
     private Label zamanWord;
@@ -147,6 +149,7 @@ public class SafheBaziController implements Initializable {
     //***** gereftan harf bazi baraye set kardan dar lable
     public void getHarf(char harff){
         harf.setText("حرف این دور: " + harff);
+        this.harff = harff;
     }
 
 
@@ -309,4 +312,5 @@ public class SafheBaziController implements Initializable {
         //***** seda zadan method payan bazi
         clientFX.client.dorTamamShod();
     }
+
 }
