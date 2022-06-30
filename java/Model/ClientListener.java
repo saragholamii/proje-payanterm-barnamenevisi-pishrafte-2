@@ -38,6 +38,10 @@ public class ClientListener implements Runnable {
                     case "startNRoundHOST":
                         shoruDorJadidBaInHarfHOST();
                         break;
+                    //***** yani safhe entezar ra load kon
+                    case "waitingPage":
+                        waitingPage();
+                        break;
                 }
 
 
@@ -91,5 +95,10 @@ public class ClientListener implements Runnable {
 
         //***** seda zadan method load kardan safhe bazi baraye host
         clientFX.sakht_Safhe_Ba_In_Harf_HOST(harf);
+    }
+
+    public void waitingPage(){
+        //***** seda zadan methodi ke safhe entezar ra load mikonad.
+        clientFX.waitingPage();
     }
 }

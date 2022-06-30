@@ -57,6 +57,9 @@ public class ClientManager implements Runnable{
                     case "startGameWhenIAmGuest":
                         startGameBtnWhenIAmGuest();
                         break;
+                    case "SomeoneFinished":
+                        someoneFinishedTheGame();
+                        break;
                 }
             }
 
@@ -83,19 +86,14 @@ public class ClientManager implements Runnable{
         for(BaziRuyeServer b : listBazi){
 
             out.println(b.mozuatBaziBesuratReshte());
-            ServerHolder.print(b.mozuatBaziBesuratReshte());
 
             out.println(b.idClientHaBeSuratReshte());
-            ServerHolder.print(b.idClientHaBeSuratReshte());
 
             out.println(b.getTypeBaziBeSuratReshte());
-            ServerHolder.print(b.getTypeBaziBeSuratReshte());
 
             out.println(b.getTedadDor());
-            ServerHolder.print(Integer.toString(b.getTedadDor()));
 
             out.println(b.getIDBazi());
-            ServerHolder.print(Integer.toString(b.getIDBazi()));
         }
     }
 
@@ -163,7 +161,6 @@ public class ClientManager implements Runnable{
     public void startGameBtnWhenIAmHost() throws IOException {
         //***** harf mored nazar ra daryaft mikonad.
         char harf = (in.readLine()).charAt(0);
-        ServerHolder.print(String.valueOf(harf));
 
         //method shoru bazi ruye server seda zade mishavad ta be baghi bazikonan peyhgam shoru bazi ferestade shavad.
         ServerHolder.startGameFirst(game_That_I_Am_The_Host_ID, idClientManager, harf);
@@ -206,5 +203,16 @@ public class ClientManager implements Runnable{
 
         //***** ferestadan harf
         out.println(harf);
+    }
+
+    //***** in method be server miguyad be player haye bazi payam payan bedahad, sepas dokme shoru ra random be yek nafar bedahad.
+    public void someoneFinishedTheGame(){
+        ServerHolder.someoneFinishedTheGame(game_That_I_Join_ID);
+    }
+
+    //***** in method be client miguyad safhe entezar ra load konad
+    public void waitingPage(){
+        //***** command
+        out.println("waitingPage");
     }
 }

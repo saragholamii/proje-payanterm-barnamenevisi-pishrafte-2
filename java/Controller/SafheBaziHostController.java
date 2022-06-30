@@ -247,37 +247,37 @@ public class SafheBaziHostController implements Initializable {
         String mozuat = clientFX.getMozuat();
 
         if(mozuat.contains("esm")){
-            javab += name.getText();
+            javab += name.getText() + "-";
         }
         if(mozuat.contains("famil")){
-            javab += famil.getText();
+            javab += famil.getText() + "-";
         }
         if(mozuat.contains("shahr")){
-            javab += shahr.getText();
+            javab += shahr.getText() + "-";
         }
         if(mozuat.contains("keshvar")){
-            javab += keshvar.getText();
+            javab += keshvar.getText() + "-";
         }
         if(mozuat.contains("ghaza")){
-            javab += ghaza.getText();
+            javab += ghaza.getText() + "-";
         }
         if(mozuat.contains("pushak")){
-            javab += pushak.getText();
+            javab += pushak.getText() + "-";
         }
         if(mozuat.contains("mive")){
-            javab += mive.getText();
+            javab += mive.getText() + "-";
         }
         if(mozuat.contains("mashin")){
-            javab += mashin.getText();
+            javab += mashin.getText() + "-";
         }
         if(mozuat.contains("gol")){
-            javab += gol.getText();
+            javab += gol.getText() + "-";
         }
         if(mozuat.contains("heyvan")){
-            javab += heyvan.getText();
+            javab += heyvan.getText() + "-";
         }
         if(mozuat.contains("ashya")){
-            javab += ashya.getText();
+            javab += ashya.getText() + "-";
         }
 
         return javab;

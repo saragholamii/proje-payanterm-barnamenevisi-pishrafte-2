@@ -61,7 +61,7 @@
         </GridPane>
     </center>
    <bottom>
-        <Button fx:id="tamamBtn" alignment="BOTTOM_RIGHT" prefHeight="42.0" prefWidth="177.0" text="تمام!" textAlignment="CENTER" BorderPane.alignment="CENTER_RIGHT" />
+        <Button onAction="#finish" fx:id="tamamBtn" alignment="BOTTOM_RIGHT" prefHeight="42.0" prefWidth="177.0" text="تمام!" textAlignment="CENTER" BorderPane.alignment="CENTER_RIGHT" />
    </bottom>
 
     <top>

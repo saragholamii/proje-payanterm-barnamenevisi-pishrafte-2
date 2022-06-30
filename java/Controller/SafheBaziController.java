@@ -4,6 +4,7 @@ import Model.ClientFX;
 import javafx.application.Platform;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -239,37 +240,37 @@ public class SafheBaziController implements Initializable {
         String mozuat = clientFX.getMozuat();
 
         if(mozuat.contains("esm")){
-            javab += name.getText();
+            javab += name.getText() + "-";
         }
         if(mozuat.contains("famil")){
-           javab += famil.getText();
+           javab += famil.getText() + "-";
         }
         if(mozuat.contains("shahr")){
-            javab += shahr.getText();
+            javab += shahr.getText() + "-";
         }
         if(mozuat.contains("keshvar")){
-            javab += keshvar.getText();
+            javab += keshvar.getText() + "-";
         }
         if(mozuat.contains("ghaza")){
-            javab += ghaza.getText();
+            javab += ghaza.getText() + "-";
         }
         if(mozuat.contains("pushak")){
-            javab += pushak.getText();
+            javab += pushak.getText() + "-";
         }
         if(mozuat.contains("mive")){
-            javab += mive.getText();
+            javab += mive.getText() + "-";
         }
         if(mozuat.contains("mashin")){
-            javab += mashin.getText();
+            javab += mashin.getText() + "-";
         }
         if(mozuat.contains("gol")){
-            javab += gol.getText();
+            javab += gol.getText() + "-";
         }
         if(mozuat.contains("heyvan")){
-            javab += heyvan.getText();
+            javab += heyvan.getText() + "-";
         }
         if(mozuat.contains("ashya")){
-            javab += ashya.getText();
+            javab += ashya.getText() + "-";
         }
 
         return javab;
@@ -297,4 +298,15 @@ public class SafheBaziController implements Initializable {
         });
     }
 
+    //***** vaghti dokme payan tavasot yeki zade mishavad, methodi dar client seda zade mishavad ke be server miguyad
+    // be baghie bazikonan payam payan bazi bedahad va dokme shoru bazi ra ba yeki digar beseparad.
+    public void finish(ActionEvent actionEvent) {
+
+        //***** add kardan string javab.
+        clientFX.client.addJavab(getJavab());
+
+        clientFX.print("dakhel method finish");
+        //***** seda zadan method payan bazi
+        clientFX.client.dorTamamShod();
+    }
 }

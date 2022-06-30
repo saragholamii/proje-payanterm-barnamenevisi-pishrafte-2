@@ -14,6 +14,7 @@ public class BaziRuyeServer {
     int daghighe;
     int sanie;
     int IDHost;
+    private int tedadDorTaAlan;
 
     public String getTypeBaziBeSuratReshte(){
         if(type.equalsIgnoreCase("zoodtar"))
@@ -98,6 +99,14 @@ public class BaziRuyeServer {
 
     public void setIDHost(int idHost){
         IDHost = idHost;
+    }
+
+    public int getTedadDorTaAlan(){
+        return tedadDorTaAlan;
+    }
+
+    public void addToTedadDorTaAlan(){
+        tedadDorTaAlan++;
     }
 
 }

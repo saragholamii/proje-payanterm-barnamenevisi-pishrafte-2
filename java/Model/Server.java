@@ -60,7 +60,6 @@ public class Server {
             }
         }
 
-        System.out.println("added ");
     }
 
     //***** method shoru bazi baraye ferestadan peygham shoru bazi be bazikonan digar.
@@ -68,6 +67,7 @@ public class Server {
 
         for (BaziRuyeServer b : listBaziHa) {
             if (b.getIDBazi() == idBazi) {
+                b.addToTedadDorTaAlan();
                 for (int j = 0; j < b.listPlayerHa.size(); j++) {
                     if (b.listPlayerHa.get(j).idClientManager != idBazikonShoruKonande) {
                         b.listPlayerHa.get(j).startGameWithTHisLetter(harf);
@@ -75,6 +75,7 @@ public class Server {
                 }
             }
         }
+
     }
 
     //***** entekhab bazikon shoru konande badi.
@@ -105,20 +106,59 @@ public class Server {
         for (BaziRuyeServer b : listBaziHa){
             if(b.getIDBazi() == idBazi){
 
-                //*****id host
-                int idHost = b.IDHost;
+                //***** check mishavad aya tedad dor ha tamam shode ast ya na
+                if(b.getTedadDorTaAlan() < b.getTedadDor()){
+                    //*****id host
+                    int idHost = b.IDHost;
 
-                for (int i = 0; i < b.listPlayerHa.size(); i++){
-                    if(b.listPlayerHa.get(i).idClientManager != idHost){
+                    for (int i = 0; i < b.listPlayerHa.size(); i++){
+                        if(b.listPlayerHa.get(i).idClientManager != idHost){
 
-                        b.listPlayerHa.get(i).startGameWithTHisLetter(harf);
+                            b.listPlayerHa.get(i).startGameWithTHisLetter(harf);
+                        }
+                        else {
+                            b.listPlayerHa.get(i).startGameWithTHisLetterHOST(harf);
+                        }
                     }
-                    else {
-                        b.listPlayerHa.get(i).startGameWithTHisLetterHOST(harf);
-                    }
+
+                    //***** yek dor digar zade shod, pas be tadad dor ha yeki ezafe mikonim.
+                    b.addToTedadDorTaAlan();
+                    System.out.println("dor ta alan:" + b.getTedadDorTaAlan());
+                }
+
+                else{
+                    // bazi tamam shode ast, bayad String javab ha daryaft shode va tashih shavad, sepas emtiaz neshan dade shavad.
                 }
             }
         }
+    }
+
+    //***** in method be yak nafar az bazikonan dokme shoru va be baghie safhe entezar ra midahad.
+    public void someoneFinishedTheGame(int idBazi){
+
+        System.out.println("someOne finished the game");
+
+        for(BaziRuyeServer b : listBaziHa){
+            if(b.getIDBazi() == idBazi){
+
+                //***** peida kardan 1 nafar random baraye shoru kardan bazi
+                Random r = new Random();
+                int chooser;
+                while(true){
+                    chooser = r.nextInt(b.listPlayerHa.size());
+                    if(b.listPlayerHa.get(chooser).idClientManager != b.IDHost) break;
+                }
+
+                //***** be bazikon entekhab shode dokme shoru midahad.
+                b.listPlayerHa.get(chooser).YourTurn();
+
+                //***** ba baghi bazikonan safhe entezar ra midahad.
+                for(ClientManager p : b.listPlayerHa){
+                    if(p.idClientManager != b.listPlayerHa.get(chooser).idClientManager) p.waitingPage();
+                }
+            }
+        }
+
     }
 
     public void print(String s){

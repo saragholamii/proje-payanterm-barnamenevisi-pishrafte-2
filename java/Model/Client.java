@@ -89,6 +89,13 @@ public class Client {
         out.println(harf);
     }
 
+    //***** in method be server payam midahad bazi tavasot yeki tamam shod, be baghie aza in peygham ra bede
+    public void dorTamamShod(){
+        //***** command
+        clientGUI.print("dakhel method dor tamam shod");
+        out.println("SomeoneFinished");
+    }
+
     //***** javab haye har dor bazi, dar in reshte zakhire mishavad.
     public void addJavab(String javab){
         javabHa.add(javab);
