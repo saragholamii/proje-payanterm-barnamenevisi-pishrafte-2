@@ -211,6 +211,56 @@ public class ClientFX extends Application {
         });
     }
 
+    //***** in method safhe emtiaz ra ba adad dade shode load mikonad.
+    public void chapEmtiaz(int emtiaz){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+
+                FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/ChapEmtiazPage.fxml"));
+                Pane p = null;
+                try {
+                    p = l.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                ChapEmtiazPageController c = (ChapEmtiazPageController) l.getController();
+
+                //***** set kardan matn lable
+                c.chap(emtiaz);
+
+                if(p != null){
+                    Scene sc = new Scene(p);
+                    stageAsli.setScene(sc);
+                }
+            }
+        });
+    }
+
+    //***** in method safhe dar entezar emtiaz ra chap mikonad.
+    public void safheEntezarEmtiaz(){
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/DarEntezarEmtiaz.fxml"));
+                Pane p = null;
+                try {
+                    p = l.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                if(p != null){
+                    Scene sc = new Scene(p);
+                    stageAsli.setScene(sc);
+                }
+
+            }
+        });
+    }
+
     //***** set kardan mozuat bazi
     public void setMozuat(String mozuat){
         this.mozuat = mozuat;

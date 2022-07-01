@@ -49,7 +49,14 @@ public class ClientListener implements Runnable {
                     case "sendAnswers":
                         sendAnswers();
                         break;
-
+                    //***** yani mikhahad emtiaz karbar ra beferestad.
+                    case "chapEmtiaz":
+                        chapEmtiaz();
+                        break;
+                    //***** yani safhe dar entezar mohasebe emtiaz ra chap kon
+                    case "safheEntezarEmtiazHa":
+                        safheEntezarEmtiaz();
+                        break;
                 }
 
 
@@ -113,6 +120,19 @@ public class ClientListener implements Runnable {
     public void sendAnswers(){
         //***** methodi dar client ra seda mizanad ke javab hara baraye server ersal konad.
         client.sendAnswers();
+    }
+
+    public void chapEmtiaz() throws IOException {
+        //***** khandan emtiaz
+        int emtiaz = Integer.parseInt(in.readLine());
+
+        //***** seda zadan methodi az clientFX ke safhe emtiaz ra load mikonad.
+        clientFX.chapEmtiaz(emtiaz);
+    }
+
+    public void safheEntezarEmtiaz(){
+        //***** seda zadan methodi az clientFX ke safhe dar entezar emtiaz ra load mokonad.
+        clientFX.safheEntezarEmtiaz();
     }
 
 }

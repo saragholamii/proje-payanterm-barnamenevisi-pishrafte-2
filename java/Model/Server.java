@@ -139,7 +139,9 @@ public class Server {
                     tashih(bazi);
 
                     //***** chon ehtemalan tashih tul mikeshad, yek safhe "bazi tamam shod, dar entezar tashih" baraye hame load mikonim.
-                    //.....
+                    for(int i = 0; i < bazi.listPlayerHa.size(); i++){
+                        bazi.listPlayerHa.get(i).darEntezarMohasebeEmtiaz();
+                    }
                 }
             }
         }
@@ -181,7 +183,7 @@ public class Server {
     }
 
     //***** in method gharar ast emtiaz hara mohasebe konad.
-    public void tashih(BaziRuyeServer b) throws FileNotFoundException {
+    public void tashih(BaziRuyeServer b) throws FileNotFoundException, InterruptedException {
         //***** yek araye az int ba sath dastresi class dorost mikonim ta emtiazat ra darun an negah darim
         emtiazHa = new int[b.listPlayerHa.size()];
 
@@ -195,7 +197,7 @@ public class Server {
                 javabHayeDor.add(b.listPlayerHa.get(j).sendAnswerNumber(i));
             }
 
-            TashihDor(javabHayeDor, b.mozuatBaziBesuratReshte());
+            TashihDor(javabHayeDor, b.mozuatBaziBesuratReshte(), b.listPlayerHa);
 
         }
 
@@ -203,7 +205,7 @@ public class Server {
     }
 
     //***** in method yek dor ra tashih mikonad.
-    public void TashihDor(ArrayList<String> javabHayeDor, String mozuat) throws FileNotFoundException {
+    public void TashihDor(ArrayList<String> javabHayeDor, String mozuat, ArrayList<ClientManager> listPlayerHa) throws FileNotFoundException, InterruptedException {
         //***** aval javab har bazikon be surat joda chek mishavad ke aya dar file vojud darad ya na, sepas emtiaz ha be surat yek
         //araye az int bargardande mishavad.
         int[] emtiazHa = Tashih.ayaDarFileHast(javabHayeDor, mozuat);
@@ -219,6 +221,14 @@ public class Server {
         //***** jam zadan emtiaz ha ba emtiaz haye zakhire shode dar araye emtiazHa
         for(int i = 0; i < emtiazHa.length; i++){
             this.emtiazHa[i] += emtiazHa[i];
+        }
+
+        //***** tread ra be khab mibarad ta ba safhe entezar tadakhol peida nakonad.
+        Thread.sleep(1500);
+
+        //***** hala methodi az client manager ra seda mizanad ke emtiaz bazikon ra ruye safhe namayesh midahad.
+        for(int i = 0; i < listPlayerHa.size(); i++){
+            listPlayerHa.get(i).chapEmtiaz(emtiazHa[i]);
         }
     }
 

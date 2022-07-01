@@ -243,6 +243,21 @@ public class ClientManager implements Runnable{
         return javabHa.get(i);
     }
 
+    //***** in method be client peygham midahad ke emtiaz ra ruye safhe chap konad.
+    public void chapEmtiaz(int emtiaz){
+        //***** command
+        out.println("chapEmtiaz");
+
+        //***** ferestdan emtiaz karbar
+        out.println(emtiaz);
+    }
+
+    //***** in method be client miguyad ke safhe dar entezar mohasebe emtiaz ra baraye karbar load konad.
+    public void darEntezarMohasebeEmtiaz(){
+        //***** command
+        out.println("safheEntezarEmtiazHa");
+    }
+
     public int idClientManager() {
         return idClientManager;
     }
