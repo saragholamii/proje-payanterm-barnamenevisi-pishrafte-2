@@ -131,44 +131,79 @@ public class Server {
                 }
 
                 else{
-                    //***** be client ha miguyad ke javab hayesan ra baraye server ersal konan.
-                    ersalJavabHaBeSrever(bazi);
-                    Thread.sleep(500);
+                    //***** be client ha miguyad ke jabav dor akhar ra ham dar araye javab zakhire konand.
+                    javabDorAkhar(bazi);
+                    Thread.sleep(1000);
 
-                    //***** javabha ha bayad tashih shavand
-                    tashih(bazi);
+                    //***** be client ha miguyad ke javab hayeshan ra baraye server ersal konan.
+                    ersalJavabHaBeSrever(bazi);
 
                     //***** chon ehtemalan tashih tul mikeshad, yek safhe "bazi tamam shod, dar entezar tashih" baraye hame load mikonim.
                     for(int i = 0; i < bazi.listPlayerHa.size(); i++){
                         bazi.listPlayerHa.get(i).darEntezarMohasebeEmtiaz();
                     }
+
+                    Thread.sleep(1000);
+
+                    //***** javabha ha bayad tashih shavand
+                    //tashih(bazi);
+
                 }
             }
         }
     }
 
     //***** in method be yak nafar az bazikonan dokme shoru va be baghie safhe entezar ra midahad.
-    public void someoneFinishedTheGame(int idBazi){
-
-        System.out.println("someOne finished the game");
+    public void someoneFinishedTheGame(int idBazi) throws InterruptedException, FileNotFoundException {
 
         for(BaziRuyeServer b : listBaziHa){
             if(b.getIDBazi() == idBazi){
 
-                //***** peida kardan 1 nafar random baraye shoru kardan bazi
-                Random r = new Random();
-                int chooser;
-                while(true){
-                    chooser = r.nextInt(b.listPlayerHa.size());
-                    if(b.listPlayerHa.get(chooser).idClientManager != b.IDHost) break;
+                //***** check mishavad aya dor ha tamam shode ast ya na
+                if(b.getTedadDorTaAlan() < b.getTedadDor()){
+                    //***** peida kardan 1 nafar random baraye shoru kardan bazi
+                    Random r = new Random();
+                    int chooser;
+                    while(true){
+                        chooser = r.nextInt(b.listPlayerHa.size());
+                        if(b.listPlayerHa.get(chooser).idClientManager != b.IDHost) break;
+                    }
+
+                    //***** be bazikon entekhab shode dokme shoru midahad.
+                    b.listPlayerHa.get(chooser).YourTurn();
+
+                    //***** ba baghi bazikonan safhe entezar ra midahad.
+                    for(ClientManager p : b.listPlayerHa){
+                        if(p.idClientManager != b.listPlayerHa.get(chooser).idClientManager) p.waitingPage();
+                    }
                 }
 
-                //***** be bazikon entekhab shode dokme shoru midahad.
-                b.listPlayerHa.get(chooser).YourTurn();
+                else{
+                    //***** be client ha miguyad ke jabav dor akhar ra ham dar araye javab zakhire konand.
+                    javabDorAkhar(b);
+                    Thread.sleep(1000);
 
-                //***** ba baghi bazikonan safhe entezar ra midahad.
-                for(ClientManager p : b.listPlayerHa){
-                    if(p.idClientManager != b.listPlayerHa.get(chooser).idClientManager) p.waitingPage();
+                    //***** be client ha miguyad ke javab hayesan ra baraye server ersal konan.
+                    ersalJavabHaBeSrever(b);
+
+                    //***** chon ehtemalan tashih tul mikeshad, yek safhe "bazi tamam shod, dar entezar tashih" baraye hame load mikonim.
+                    for(int i = 0; i < b.listPlayerHa.size(); i++){
+                        b.listPlayerHa.get(i).darEntezarMohasebeEmtiaz();
+                    }
+
+                    System.out.println("dowm to here");
+                    Thread.sleep(1000);
+
+                    for(int i = 0; i < b.listPlayerHa.size(); i++){
+                        System.out.println("number " + i);
+                        for(int j = 0; j < b.listPlayerHa.get(i).javabHa.size(); j++){
+                            System.out.println(b.listPlayerHa.get(i).javabHa.get(j));
+                        }
+                    }
+
+                    //***** javabha ha bayad tashih shavand
+                    //tashih(b);
+
                 }
             }
         }
@@ -192,6 +227,7 @@ public class Server {
 
             ArrayList<String> javabHayeDor = new ArrayList<>();
 
+            Thread.sleep(1000);
             //***** hala be tamam client ha miguyad ke javab haye dore i om ra beferestand.
             for(int j = 0; j < b.listPlayerHa.size(); j++){
                 javabHayeDor.add(b.listPlayerHa.get(j).sendAnswerNumber(i));
@@ -229,6 +265,19 @@ public class Server {
         //***** hala methodi az client manager ra seda mizanad ke emtiaz bazikon ra ruye safhe namayesh midahad.
         for(int i = 0; i < listPlayerHa.size(); i++){
             listPlayerHa.get(i).chapEmtiaz(emtiazHa[i]);
+        }
+    }
+
+    //***** im method be client miguyad ke javab dor akhar ra ham ke zakhire nashode, zakhire konand.
+    public void javabDorAkhar(BaziRuyeServer bazi){
+
+        for(int i = 0; i < bazi.listPlayerHa.size(); i++){
+            if(bazi.listPlayerHa.get(i).idClientManager != bazi.IDHost){
+                bazi.listPlayerHa.get(i).ersalJavabAkhar();
+            }
+            else {
+                bazi.listPlayerHa.get(i).ersalJavabAkharHOST();
+            }
         }
     }
 

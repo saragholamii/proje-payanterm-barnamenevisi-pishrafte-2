@@ -104,7 +104,9 @@ public class Client {
         out.println(javabHa.size());
 
         //***** khod javab hara ersal mikonad.
+        clientGUI.print("dakhel method send answer client");
         for(String s : javabHa){
+            clientGUI.print(s);
             out.println(s);
         }
     }

@@ -307,6 +307,7 @@ public class SafheBaziHostController implements Initializable {
     }
 
     public void finish(ActionEvent actionEvent) {
+
         //***** in ja methodi az client ra seda mizanad ke be server miguyad yek nafar bazi ra tamam karde ast.
         clientFX.client.dorTamamShod();
     }

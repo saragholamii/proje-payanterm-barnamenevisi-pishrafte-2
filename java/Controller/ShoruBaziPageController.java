@@ -37,12 +37,14 @@ public class ShoruBaziPageController implements Initializable {
 
         //***** seda zadan method startGameAzSamtMizban va dadan harf dakhel textField.
         clientFX.client.startGameAzSamtMizban(harfAval.getText().charAt(0));
-        clientFX.print("method start game az samt mizban seda zade shod");
 
         FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/SafheBaziHost.fxml"));
         Pane p = l.load();
 
         SafheBaziHostController c = (SafheBaziHostController) l.getController();
+
+        //***** zakhire kardan controller host dar field dakhel klass clientFX, baraye zakhire reshte dar dor haye badi.
+        clientFX.setHostController(c);
 
         //***** set kardan client fx baraye in safhe jahat dashhtan dastrest be method haye client.
         c.setClientFX(clientFX);

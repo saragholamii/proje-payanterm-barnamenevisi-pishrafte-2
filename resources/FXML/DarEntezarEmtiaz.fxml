@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.DarEntezarEmtiaz">
+<BorderPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" >
 
     <padding>
         <Insets left="300" top="270 " />

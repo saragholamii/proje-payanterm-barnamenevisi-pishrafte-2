@@ -57,6 +57,14 @@ public class ClientListener implements Runnable {
                     case "safheEntezarEmtiazHa":
                         safheEntezarEmtiaz();
                         break;
+                    //***** yani javab dor akhar ra ke zakhire nashode zakhire kon.
+                    case "javabDorAkhar":
+                        zakhireJavabAkhar();
+                        break;
+                    //***** yani javab akhar host ra ke zakhire nashode zakhire kon
+                    case "javabAkharHOST":
+                        zakhireJavabAkharHOST();
+                        break;
                 }
 
 
@@ -133,6 +141,16 @@ public class ClientListener implements Runnable {
     public void safheEntezarEmtiaz(){
         //***** seda zadan methodi az clientFX ke safhe dar entezar emtiaz ra load mokonad.
         clientFX.safheEntezarEmtiaz();
+    }
+
+    public void zakhireJavabAkhar(){
+        //***** methodi az clientFX seda zade mishavad ke javab zakhire shode dar guestController ra ba javab haye client add mikonad.
+        clientFX.zakhireJavabAkhar();
+    }
+
+    public void zakhireJavabAkharHOST(){
+        //***** methodi az clientFX seda zade mishavad ke javab zakhire shode dar hostController ra ba javab haye client add mikonad.
+        clientFX.zakhireJavabAkharHost();
     }
 
 }

@@ -211,7 +211,7 @@ public class ClientManager implements Runnable{
     }
 
     //***** in method be server miguyad be player haye bazi payam payan bedahad, sepas dokme shoru ra random be yek nafar bedahad.
-    public void someoneFinishedTheGame(){
+    public void someoneFinishedTheGame() throws FileNotFoundException, InterruptedException {
         ServerHolder.someoneFinishedTheGame(game_That_I_Join_ID);
     }
 
@@ -234,7 +234,9 @@ public class ClientManager implements Runnable{
 
         //***** be tedad ferestade shode javab daryaft karde va dar array list javab ha zakhire mikonad.
         for(int i = 0; i< tedad; i++){
-            javabHa.add(in.readLine());
+            String javab = in.readLine();
+            javabHa.add(javab);
+            ServerHolder.print(javab);
         }
     }
 
@@ -256,6 +258,18 @@ public class ClientManager implements Runnable{
     public void darEntezarMohasebeEmtiaz(){
         //***** command
         out.println("safheEntezarEmtiazHa");
+    }
+
+    //***** in method be be client miguyad javab dor akhar ra ham ke zakhire nashode ra zakhire konad.
+    public void ersalJavabAkhar(){
+        //***** command
+        out.println("javabDorAkhar");
+    }
+
+    //***** in method be be client ke host ast miguyad javab dor akhar ra ham ke zakhire nashode ra zakhire konad.
+    public void ersalJavabAkharHOST(){
+        //***** command
+        out.println("javabAkharHOST");
     }
 
     public int idClientManager() {

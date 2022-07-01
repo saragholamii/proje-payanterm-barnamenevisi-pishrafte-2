@@ -14,7 +14,12 @@ import java.util.ArrayList;
 public class ClientFX extends Application {
     public Client client;
     ClientFX thisClientFX;
+
+    SafheBaziHostController hostController;
+    SafheBaziController guestController;
+
     ArrayList<BaziSamtClient> listBaziHa = new ArrayList<>();
+
     Stage stageAsli;
     String mozuat;
     String type;
@@ -67,13 +72,18 @@ public class ClientFX extends Application {
         stageAsli.setScene(sc);
     }
 
-    //***** safhe bazi ra ba harf mored nazar va elemant haye dakhel string mozuat bala, misazad va ruye stage asli miandazad.
+    //***** safhe bazi ra ba harf mored nazar va element haye dakhel string mozuat bala, misazad va ruye stage asli miandazad.
     public void sakht_Safhe_Ba_In_Harf(char harf) throws IOException {
 
+        //***** gereftan javab dor ghabli, agar null bashad yani dor aval ast
+        if(guestController != null){
+            client.addJavab(guestController.getJavab());
+        }
 
         //***** chon component haye javaFX ra faghat dakhel hamin tread mitavan taghir dad, bayad dakhel yek
         //platform.runLater component hara taghir dahim.
         Platform.runLater(new Runnable() {
+
             @Override
             public void run() {
                 //***** sakht FXML loader...
@@ -88,6 +98,9 @@ public class ClientFX extends Application {
 
                 //***** gereftan controller bazi
                 SafheBaziController c = (SafheBaziController) l.getController();
+
+                //***** set kardan guestController ba controller in dor
+                guestController = c;
 
                 //***** set kardan client FX baraye dashtan dastresi be method haye client
                 c.setClientFX(thisClientFX);
@@ -117,6 +130,10 @@ public class ClientFX extends Application {
 
     //***** sakht safhe bazi ba yek harf baraye host
     public void sakht_Safhe_Ba_In_Harf_HOST(char harf){
+
+        //***** gereftan javab dor ghabli
+        client.addJavab(hostController.getJavab());
+
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -131,6 +148,9 @@ public class ClientFX extends Application {
 
                 //***** gereftan controller
                 SafheBaziHostController c = (SafheBaziHostController) l.getController();
+
+                //***** set kardan hostController ba controller in dor
+                hostController = c;
 
                 //***** set kardan clientFX
                 c.setClientFX(thisClientFX);
@@ -246,6 +266,7 @@ public class ClientFX extends Application {
             public void run() {
                 FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/DarEntezarEmtiaz.fxml"));
                 Pane p = null;
+
                 try {
                     p = l.load();
                 } catch (IOException e) {
@@ -261,16 +282,29 @@ public class ClientFX extends Application {
         });
     }
 
-    //***** set kardan mozuat bazi
+    //***** in method javab akhar ra ke zakhire nashode dar list javab haye client add mikonad.
+    public void zakhireJavabAkhar(){
+        client.addJavab(guestController.getJavab());
+    }
+
+    //***** in method javab akhar ra ke zakhire nashode dar list javab haye client add mikonad.
+    public void zakhireJavabAkharHost(){
+        client.addJavab(hostController.getJavab());
+    }
+
+    //***** setters...
     public void setMozuat(String mozuat){
         this.mozuat = mozuat;
         System.out.println(mozuat);
     }
 
-    //***** set kardan type bazi
     public void setType(String type){
         this.type = type;
         System.out.println(type);
+    }
+
+    public void setHostController(SafheBaziHostController c){
+        hostController = c;
     }
 
     //method baraye chap

@@ -305,10 +305,6 @@ public class SafheBaziController implements Initializable {
     // be baghie bazikonan payam payan bazi bedahad va dokme shoru bazi ra ba yeki digar beseparad.
     public void finish(ActionEvent actionEvent) {
 
-        //***** add kardan string javab.
-        clientFX.client.addJavab(getJavab());
-
-        clientFX.print("dakhel method finish");
         //***** seda zadan method payan bazi
         clientFX.client.dorTamamShod();
     }
