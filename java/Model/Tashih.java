@@ -224,4 +224,43 @@ public class Tashih {
         //***** agar az halghe birun biayad yani kalame peida nashode ast.
         return false;
     }
+
+    //***** in method yek araye az reshte ra migirad, ruye har kalame har reshte, baghi reshte hara check mikonad ke an kalame ra darand ya na.
+    public static int[] ayaYeksanNeveshteAnd(ArrayList<String> javabHayeDor){
+        int[] emtiazHa = new int[javabHayeDor.size()];
+
+        //tarif 2 scanner baraye itrate kardan reshte javab Ha
+        Scanner sc1;
+        Scanner sc2;
+
+        //2 halghe baraye moghayese har yek az reshte ha ba hameye reshte haye digar.
+        for(int i = 0; i < javabHayeDor.size(); i++){
+            for(int j = 0; j < javabHayeDor.size(); j++){
+
+                //***** agar be reshte haye barabr resid in marhale ra rad konad.
+                if(i == j) continue;
+
+                //meghdar dehi scanner ha
+                sc1 = new Scanner(javabHayeDor.get(i));
+                sc1.useDelimiter("-");
+                sc2 = new Scanner(javabHayeDor.get(j));
+                sc2.useDelimiter("-");
+
+                //***** hala tak tak kalamat 2 scanner ra check mikonad.
+                while(sc1.hasNext()){
+                    String s1 = sc1.next();
+                    String s2 = sc2.next();
+
+                    //***** check mishavad agar khali budand az emtiaz kam nemikonad chon ghablan emtiaz dade nashode ast.
+                    if(s1.isEmpty() || s2.isEmpty()){ continue; }
+
+                    //***** hala ke khali nistand, check mikonad agar barabar bashand az emtiazeshan kam mikonad.
+                    if(s1.equalsIgnoreCase(s2)) { emtiazHa[i] -= 5;}
+                }
+            }
+        }
+
+        //***** emtiaz hara barmigardanad.
+        return emtiazHa;
+    }
 }

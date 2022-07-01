@@ -12,6 +12,7 @@ public class Server {
     final static int PORT = 9010;
     ArrayList<ClientManager> listClientManager = new ArrayList<>();
     ArrayList<BaziRuyeServer> listBaziHa = new ArrayList<>();
+    int[] emtiazHa;
 
 
     public Server() throws IOException {
@@ -181,6 +182,9 @@ public class Server {
 
     //***** in method gharar ast emtiaz hara mohasebe konad.
     public void tashih(BaziRuyeServer b) throws FileNotFoundException {
+        //***** yek araye az int ba sath dastresi class dorost mikonim ta emtiazat ra darun an negah darim
+        emtiazHa = new int[b.listPlayerHa.size()];
+
         //***** dar in method bayad har dor bazi ra be surat joda gane tashih konim.
         for(int i = 0; i < b.getTedadDor(); i++){
 
@@ -192,14 +196,30 @@ public class Server {
             }
 
             TashihDor(javabHayeDor, b.mozuatBaziBesuratReshte());
+
         }
+
+
     }
 
     //***** in method yek dor ra tashih mikonad.
     public void TashihDor(ArrayList<String> javabHayeDor, String mozuat) throws FileNotFoundException {
         //***** aval javab har bazikon be surat joda chek mishavad ke aya dar file vojud darad ya na, sepas emtiaz ha be surat yek
         //araye az int bargardande mishavad.
-        Tashih.ayaDarFileHast(javabHayeDor, mozuat);
+        int[] emtiazHa = Tashih.ayaDarFileHast(javabHayeDor, mozuat);
+
+        //***** jam zadan emtiaz ha ba emtiaz haye zakhire shode dar araye emtiazHa
+        for(int i = 0; i < emtiazHa.length; i++){
+            this.emtiazHa[i] += emtiazHa[i];
+        }
+
+        //***** dar in method baraye har dor bazi check mishavad aya kalamat babari vojud darand yana.
+        emtiazHa = Tashih.ayaYeksanNeveshteAnd(javabHayeDor);
+
+        //***** jam zadan emtiaz ha ba emtiaz haye zakhire shode dar araye emtiazHa
+        for(int i = 0; i < emtiazHa.length; i++){
+            this.emtiazHa[i] += emtiazHa[i];
+        }
     }
 
 
