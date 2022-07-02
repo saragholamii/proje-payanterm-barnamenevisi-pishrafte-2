@@ -61,8 +61,12 @@ public class ClientManager implements Runnable{
                     case "SomeoneFinished":
                         someoneFinishedTheGame();
                         break;
-                    //***** yani mikhahad javab hara beferestad.
-                    case "AnswersComming":
+//                    //***** yani mikhahad javab hara beferestad.
+//                    case "AnswersComming":
+//                        getAnswers();
+//                        break;
+                    //***** yani javab 1 dor ke anjam shode dar hal ferestade shodan ast.
+                    case "JavabYekDor":
                         getAnswers();
                         break;
                 }
@@ -229,15 +233,20 @@ public class ClientManager implements Runnable{
 
     //***** in method java haye client ra gerefte va dar araye javab ha zakhire mikonad.
     public void getAnswers() throws IOException {
-        //***** tedad javab hara migirad.
-        int tedad = Integer.parseInt(in.readLine());
+//        //***** tedad javab hara migirad.
+//        int tedad = Integer.parseInt(in.readLine());
+//
+//        //***** be tedad ferestade shode javab daryaft karde va dar array list javab ha zakhire mikonad.
+//        for(int i = 0; i< tedad; i++){
+//            String javab = in.readLine();
+//            javabHa.add(javab);
+//            ServerHolder.print("dar method get ansers: " + javab);
+//        }
 
-        //***** be tedad ferestade shode javab daryaft karde va dar array list javab ha zakhire mikonad.
-        for(int i = 0; i< tedad; i++){
-            String javab = in.readLine();
-            javabHa.add(javab);
-            ServerHolder.print(javab);
-        }
+
+        //***** alan faghat reshte javab ra mikhanad va dar araye javab zakhire mikonad.
+        javabHa.add(in.readLine());
+        ServerHolder.print("javab zakhire shod baraye id: " + idClientManager);
     }
 
     //***** in method javab zakhire sode dar khune i om ra barmigardanad.
@@ -261,14 +270,17 @@ public class ClientManager implements Runnable{
     }
 
     //***** in method be be client miguyad javab dor akhar ra ham ke zakhire nashode ra zakhire konad.
-    public void ersalJavabAkhar(){
+    public void ersalJavabAkhar() throws InterruptedException {
+        Thread.sleep(2000);
         //***** command
+        ServerHolder.print("dar method ersal javab akhar dakhel client manager mehman:" + idClientManager);
         out.println("javabDorAkhar");
     }
 
     //***** in method be be client ke host ast miguyad javab dor akhar ra ham ke zakhire nashode ra zakhire konad.
     public void ersalJavabAkharHOST(){
         //***** command
+        ServerHolder.print("dar method ersal javab akhar dakhel client manager host:" + idClientManager);
         out.println("javabAkharHOST");
     }
 

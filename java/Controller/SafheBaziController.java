@@ -223,6 +223,9 @@ public class SafheBaziController implements Initializable {
 
                         timer.cancel();
 
+                        //***** chon javab hamija add mishavad bayad boolean didIFinishLastTime 1 shavad ta dobare add nashavad.
+                        clientFX.setDidIFinishedLastTime(true);
+
                         //***** bayad aval javab ha dar yek reshte zakhire shavand, be in surat ke agar mozu dar reshte
                         //mozuat bud, be reshte javab ezafe shode va ba khat fasele az ham joda mishavand.
                         clientFX.client.addJavab(getJavab());
@@ -304,6 +307,11 @@ public class SafheBaziController implements Initializable {
     //***** vaghti dokme payan tavasot yeki zade mishavad, methodi dar client seda zade mishavad ke be server miguyad
     // be baghie bazikonan payam payan bazi bedahad va dokme shoru bazi ra ba yeki digar beseparad.
     public void finish(ActionEvent actionEvent) {
+        //***** dor akhar ra zakhire mikonad.
+        clientFX.client.addJavab(getJavab());
+
+        //***** boolean didIfinisheLastTime ra true mikonim ta dafe badi dobare reshte ra zakhire nakonad.
+        clientFX.setDidIFinishedLastTime(true);
 
         //***** seda zadan method payan bazi
         clientFX.client.dorTamamShod();

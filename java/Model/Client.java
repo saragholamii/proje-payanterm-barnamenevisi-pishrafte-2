@@ -111,9 +111,18 @@ public class Client {
         }
     }
 
-    //***** javab haye har dor bazi, dar in reshte zakhire mishavad.
+    //***** in method javab haye bazi ra be clietn manager miferestad
     public void addJavab(String javab){
-        javabHa.add(javab);
+        clientGUI.print("dar method add javab, javab: " + javab);
+        //***** command
+        out.println("JavabYekDor");
+
+        clientGUI.print("dar method add javab, baz az command");
+        //***** ferestadan javab
+        out.println(javab);
+
+        clientGUI.print("dar method add javab, bad az ferestadan javab");
+
     }
 
 }

@@ -24,6 +24,8 @@ public class ClientFX extends Application {
     String mozuat;
     String type;
 
+    boolean didIFinishedLastTime;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         thisClientFX = this;
@@ -75,10 +77,13 @@ public class ClientFX extends Application {
     //***** safhe bazi ra ba harf mored nazar va element haye dakhel string mozuat bala, misazad va ruye stage asli miandazad.
     public void sakht_Safhe_Ba_In_Harf(char harf) throws IOException {
 
-        //***** gereftan javab dor ghabli, agar null bashad yani dor aval ast
-        if(guestController != null){
+        //***** gereftan javab dor ghabli, agar null bashad yani dor aval ast, hamchenin agar khodash bazi ra tamam nakarde bud.
+        // chon agar khodash bazi ra tamam karde bashad dar zaman zadan dokme javab zakhire shode ast.
+        if(guestController != null && !didIFinishedLastTime){
             client.addJavab(guestController.getJavab());
         }
+        //***** baraye dor haye badi dobare bayad ba halat false bargardad.
+        if(didIFinishedLastTime) {didIFinishedLastTime = false; }
 
         //***** chon component haye javaFX ra faghat dakhel hamin tread mitavan taghir dad, bayad dakhel yek
         //platform.runLater component hara taghir dahim.
@@ -131,8 +136,11 @@ public class ClientFX extends Application {
     //***** sakht safhe bazi ba yek harf baraye host
     public void sakht_Safhe_Ba_In_Harf_HOST(char harf){
 
-        //***** gereftan javab dor ghabli
-        client.addJavab(hostController.getJavab());
+        //***** gereftan javab dor ghabli agar kkhodash bazi ra tamam nakarde bud.
+        if(!didIFinishedLastTime) { client.addJavab(hostController.getJavab()); }
+
+        //***** baraye dor haye badi dobare bayad ba halat false bargardad.
+        if(didIFinishedLastTime) {didIFinishedLastTime = false; }
 
         Platform.runLater(new Runnable() {
             @Override
@@ -177,13 +185,11 @@ public class ClientFX extends Application {
     //***** in method safhe daraye dokme bazi ra load mikonad.
     public void myTurn(){
 
-        System.out.println("dakhel method myturn");
         //***** chon ruye yek tread digar hastim bayad dakhel runLater benevisim.
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
 
-                System.out.println("ghabl load");
                 FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/ShoruBaziGuestPage.fxml"));
 
                 Pane p = null;
@@ -193,14 +199,12 @@ public class ClientFX extends Application {
                     e.printStackTrace();
                 }
 
-                System.out.println("bad load");
                 ShoruBaziGuestPageController c = (ShoruBaziGuestPageController) l.getController();
 
                 //***** set kardan client fx baraye dashtan dastresi be method haye client.
                 c.setClientFX(thisClientFX);
 
                 if(p != null){
-                    System.out.println("dakhel shart");
                     Scene sc = new Scene(p);
                     setSceneJadid(sc);
                 }
@@ -284,11 +288,13 @@ public class ClientFX extends Application {
 
     //***** in method javab akhar ra ke zakhire nashode dar list javab haye client add mikonad.
     public void zakhireJavabAkhar(){
+        System.out.println("dar method zakhire javab akhar mehamn");
         client.addJavab(guestController.getJavab());
     }
 
     //***** in method javab akhar ra ke zakhire nashode dar list javab haye client add mikonad.
     public void zakhireJavabAkharHost(){
+        System.out.println("dar method zakhire javab akhar mizban");
         client.addJavab(hostController.getJavab());
     }
 
@@ -297,14 +303,15 @@ public class ClientFX extends Application {
         this.mozuat = mozuat;
         System.out.println(mozuat);
     }
-
     public void setType(String type){
         this.type = type;
         System.out.println(type);
     }
-
     public void setHostController(SafheBaziHostController c){
         hostController = c;
+    }
+    public void setDidIFinishedLastTime(boolean b){
+        didIFinishedLastTime = b;
     }
 
     //method baraye chap
