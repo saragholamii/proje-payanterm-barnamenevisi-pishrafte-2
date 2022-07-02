@@ -230,15 +230,20 @@ public class Server {
                 javabHayeDor.add(b.listPlayerHa.get(j).sendAnswerNumber(i));
             }
 
-            TashihDor(javabHayeDor, b.mozuatBaziBesuratReshte(), b.listPlayerHa);
+            TashihDor(javabHayeDor, b.mozuatBaziBesuratReshte());
 
+        }
+
+        //***** hala methodi az client manager ra seda mizanad ke emtiaz bazikon ra ruye safhe namayesh midahad.
+        for(int i = 0; i < b.listPlayerHa.size(); i++){
+            b.listPlayerHa.get(i).chapEmtiaz(emtiazHa[i]);
         }
 
 
     }
 
     //***** in method yek dor ra tashih mikonad.
-    public void TashihDor(ArrayList<String> javabHayeDor, String mozuat, ArrayList<ClientManager> listPlayerHa) throws FileNotFoundException, InterruptedException {
+    public void TashihDor(ArrayList<String> javabHayeDor, String mozuat) throws FileNotFoundException, InterruptedException {
         Tashih tashih = new Tashih(this);
 
         //***** aval javab har bazikon be surat joda chek mishavad ke aya dar file vojud darad ya na, sepas emtiaz ha be surat yek
@@ -247,6 +252,8 @@ public class Server {
 
         //***** jam zadan emtiaz ha ba emtiaz haye zakhire shode dar araye emtiazHa
         for(int i = 0; i < emtiazHa.length; i++){
+            System.out.println("bad az check shodan mojod dar file");
+            System.out.println("emtiaz nafar " + i + "om" + emtiazHa[i]);
             this.emtiazHa[i] += emtiazHa[i];
         }
 
@@ -255,16 +262,14 @@ public class Server {
 
         //***** jam zadan emtiaz ha ba emtiaz haye zakhire shode dar araye emtiazHa
         for(int i = 0; i < emtiazHa.length; i++){
+            System.out.println("bad az check shodan yeksan budan");
+            System.out.println("emtiaz nafar " + i + "om" + emtiazHa[i]);
             this.emtiazHa[i] += emtiazHa[i];
         }
 
         //***** tread ra be khab mibarad ta ba safhe entezar tadakhol peida nakonad.
         Thread.sleep(1500);
 
-        //***** hala methodi az client manager ra seda mizanad ke emtiaz bazikon ra ruye safhe namayesh midahad.
-        for(int i = 0; i < listPlayerHa.size(); i++){
-            listPlayerHa.get(i).chapEmtiaz(emtiazHa[i]);
-        }
     }
 
     //***** im method be client miguyad ke javab dor akhar ra ham ke zakhire nashode, zakhire konand.
