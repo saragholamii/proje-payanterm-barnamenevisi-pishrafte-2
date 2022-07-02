@@ -14,9 +14,9 @@ public class Tashih {
 
     //***** in method check mikonad aya javab ha dar file ha hastan ya na
     public int[] ayaDarFileHast(ArrayList<String> javabHa, String mozuat) throws FileNotFoundException {
+
         int[] emtiazHa = new int[javabHa.size()];
-        Scanner sc = new Scanner(mozuat);
-        sc.useDelimiter("-");
+        Scanner sc;
         Scanner scAnswer;
 
         server.print("tedad sherkat konandegan: " + javabHa.size());
@@ -26,6 +26,10 @@ public class Tashih {
 
             server.print("nafar " + i);
             server.print("javab: " + javabHa.get(i));
+
+            //***** mozuat baraye har bazikon dobare bayad be scanner dade shavad ta az aval itrate va moghayese shavad.
+            sc = new Scanner(mozuat);
+            sc.useDelimiter("-");
 
             //***** javab bazikon ra be scanner midahim ta pardazash shavad.
             scAnswer = new Scanner(javabHa.get(i));

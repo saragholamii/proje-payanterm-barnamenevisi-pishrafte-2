@@ -179,13 +179,13 @@ public class Server {
                 else{
                     //***** be client ha miguyad ke jabav dor akhar ra ham dar araye javab zakhire konand.
                     javabDorAkhar(b);
-                    Thread.sleep(10000);
-
 
                     //***** chon ehtemalan tashih tul mikeshad, yek safhe "bazi tamam shod, dar entezar tashih" baraye hame load mikonim.
                     for(int i = 0; i < b.listPlayerHa.size(); i++){
                         b.listPlayerHa.get(i).darEntezarMohasebeEmtiaz();
                     }
+
+                    Thread.sleep(1000);
 
                     for(int i = 0; i < b.listPlayerHa.size(); i++){
                         System.out.println("number " + i);
@@ -253,7 +253,7 @@ public class Server {
         //***** jam zadan emtiaz ha ba emtiaz haye zakhire shode dar araye emtiazHa
         for(int i = 0; i < emtiazHa.length; i++){
             System.out.println("bad az check shodan mojod dar file");
-            System.out.println("emtiaz nafar " + i + "om" + emtiazHa[i]);
+            System.out.println("emtiaz nafar " + i + "om:  " + emtiazHa[i]);
             this.emtiazHa[i] += emtiazHa[i];
         }
 
@@ -263,7 +263,7 @@ public class Server {
         //***** jam zadan emtiaz ha ba emtiaz haye zakhire shode dar araye emtiazHa
         for(int i = 0; i < emtiazHa.length; i++){
             System.out.println("bad az check shodan yeksan budan");
-            System.out.println("emtiaz nafar " + i + "om" + emtiazHa[i]);
+            System.out.println("emtiaz nafar " + i + "om:  " + emtiazHa[i]);
             this.emtiazHa[i] += emtiazHa[i];
         }
 
