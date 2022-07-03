@@ -2,6 +2,8 @@ package Controller;
 
 import Model.ClientFX;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +25,7 @@ import java.util.TimerTask;
 
 public class SafheBaziHostController implements Initializable {
     ClientFX clientFX;
+    char harff;
 
     @FXML
     private Label sanieLbl;
@@ -141,6 +146,7 @@ public class SafheBaziHostController implements Initializable {
 
     //***** gereftan harf bazi baraye set kardan dar lable
     public void getHarf(char harff){
+        this.harff = harff;
         harf.setText("حرف این دور: " + harff);
     }
 
@@ -318,5 +324,170 @@ public class SafheBaziHostController implements Initializable {
 
         //***** in ja methodi az client ra seda mizanad ke be server miguyad yek nafar bazi ra tamam karde ast.
         clientFX.client.dorTamamShod();
+    }
+
+    public void esmKeyType(KeyEvent keyEvent) {
+        name.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.isEmpty() && newValue.charAt(0) != harff){
+                    name.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                    name.setText(String.valueOf(newValue.charAt(0)));
+                }
+                else{
+                    name.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                }
+            }
+        });
+    }
+
+    public void familKeyType(KeyEvent keyEvent) {
+        famil.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.isEmpty() && newValue.charAt(0) != harff){
+                    famil.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                    famil.setText(String.valueOf(newValue.charAt(0)));
+                }
+                else{
+                    famil.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                }
+            }
+        });
+    }
+
+    public void shahrKeyType(KeyEvent keyEvent) {
+        shahr.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.isEmpty() && newValue.charAt(0) != harff){
+                    shahr.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                    shahr.setText(String.valueOf(newValue.charAt(0)));
+                }
+                else{
+                    shahr.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                }
+            }
+        });
+    }
+
+    public void keshvarKeyType(KeyEvent keyEvent) {
+        keshvar.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.isEmpty() && newValue.charAt(0) != harff){
+                    keshvar.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                    keshvar.setText(String.valueOf(newValue.charAt(0)));
+                }
+                else{
+                    keshvar.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                }
+            }
+        });
+    }
+
+    public void ghazaKeyType(KeyEvent keyEvent) {
+        ghaza.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.isEmpty() && newValue.charAt(0) != harff){
+                    ghaza.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                    ghaza.setText(String.valueOf(newValue.charAt(0)));
+                }
+                else{
+                    ghaza.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                }
+            }
+        });
+    }
+
+    public void pushakKeyType(KeyEvent keyEvent) {
+        pushak.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.isEmpty() && newValue.charAt(0) != harff){
+                    pushak.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                    pushak.setText(String.valueOf(newValue.charAt(0)));
+                }
+                else{
+                    pushak.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                }
+            }
+        });
+    }
+
+    public void miveKeyType(KeyEvent keyEvent) {
+        mive.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.isEmpty() && newValue.charAt(0) != harff){
+                    mive.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                    mive.setText(String.valueOf(newValue.charAt(0)));
+                }
+                else{
+                    mive.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                }
+            }
+        });
+    }
+
+    public void mashinKeyType(KeyEvent keyEvent) {
+        mashin.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.isEmpty() && newValue.charAt(0) != harff){
+                    mashin.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                    mashin.setText(String.valueOf(newValue.charAt(0)));
+                }
+                else{
+                    mashin.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                }
+            }
+        });
+    }
+
+    public void golKeyType(KeyEvent keyEvent) {
+        gol.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.isEmpty() && newValue.charAt(0) != harff){
+                    gol.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                    gol.setText(String.valueOf(newValue.charAt(0)));
+                }
+                else{
+                    gol.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                }
+            }
+        });
+    }
+
+    public void heyvanKeyType(KeyEvent keyEvent) {
+        heyvan.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.isEmpty() && newValue.charAt(0) != harff){
+                    heyvan.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                    heyvan.setText(String.valueOf(newValue.charAt(0)));
+                }
+                else{
+                    heyvan.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                }
+            }
+        });
+    }
+
+    public void ashyaKeyType(KeyEvent keyEvent) {
+        ashya.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!newValue.isEmpty() && newValue.charAt(0) != harff){
+                    ashya.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                    ashya.setText(String.valueOf(newValue.charAt(0)));
+                }
+                else{
+                    ashya.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+                }
+            }
+        });
     }
 }
