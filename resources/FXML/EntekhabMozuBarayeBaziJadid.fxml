@@ -1,59 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.geometry.Insets?>
 <BorderPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EntekhabItemBarayeIjadBaziController">
     <padding>
-        <Insets bottom="10" right="10" left="10" top="10"/>
+        <Insets bottom="20" left="20" right="20" top="40" />
     </padding>
 
     <center>
 
-        <VBox spacing="20">
+        <VBox spacing="40">
 
-            <Label nodeOrientation="RIGHT_TO_LEFT" text="لطفا آیتم‌های صفحه بازی خود را انتخاب کنید" />
+            <VBox spacing="20">
+                <Label nodeOrientation="RIGHT_TO_LEFT" text="لطفا آیتم‌های صفحه بازی خود را انتخاب کنید" />
 
-            <HBox spacing="20">
-                <CheckBox fx:id="esm" text="نام" />
-                <CheckBox fx:id="famil" text="فامیل" />
-                <CheckBox fx:id="shahr" text="شهر" />
-                <CheckBox fx:id="keshvar" text="کشور" />
-                <CheckBox fx:id="ghaza" text="غذا" />
-                <CheckBox fx:id="pushak" text="پوشاک" />
-            </HBox>
-            <HBox spacing="20">
-                <CheckBox fx:id="mive" text="میوه" />
-                <CheckBox fx:id="mashin" text="ماشین" />
-                <CheckBox fx:id="gol" text="گل" />
-                <CheckBox fx:id="heyvan" text="حیوان" />
-                <CheckBox fx:id="ashya" text="اشیا" />
-            </HBox>
+                <HBox spacing="20">
+                    <CheckBox fx:id="esm" text="نام" />
+                    <CheckBox fx:id="famil" text="فامیل" />
+                    <CheckBox fx:id="shahr" text="شهر" />
+                    <CheckBox fx:id="keshvar" text="کشور" />
+                    <CheckBox fx:id="ghaza" text="غذا" />
+                    <CheckBox fx:id="pushak" text="پوشاک" />
+                </HBox>
+                <HBox spacing="20">
+                    <CheckBox fx:id="mive" text="میوه" />
+                    <CheckBox fx:id="mashin" text="ماشین" />
+                    <CheckBox fx:id="gol" text="گل" />
+                    <CheckBox fx:id="heyvan" text="حیوان" />
+                    <CheckBox fx:id="ashya" text="اشیا" />
+                </HBox>
+            </VBox>
 
-            <Label nodeOrientation="RIGHT_TO_LEFT" text="لطفا نوع بازی خود را انتخاب کنید" />
+            <VBox spacing="20">
+                <Label nodeOrientation="RIGHT_TO_LEFT" text="لطفا نوع بازی خود را انتخاب کنید" />
 
-            <HBox spacing="20">
-                <CheckBox fx:id="time" text="با یک زمان مشخص" />
-                <TextField fx:id="saat" prefWidth="60" promptText="ساعت" />
-                <TextField fx:id="daghighe" prefWidth="60" promptText="دقیقه" />
-                <TextField fx:id="sanie" prefWidth="60" promptText="ثانیه" />
-            </HBox>
+                <HBox spacing="20">
+                    <CheckBox fx:id="time" text="با یک زمان مشخص" />
+                    <TextField fx:id="saat" prefWidth="60" promptText="ساعت" />
+                    <TextField fx:id="daghighe" prefWidth="60" promptText="دقیقه" />
+                    <TextField fx:id="sanie" prefHeight="26.0" prefWidth="67.0" promptText="ثانیه" />
+                </HBox>
 
-            <CheckBox fx:id="soonerChBox" text="هر کس زودتر تموم کرد" />
+                <CheckBox fx:id="soonerChBox" text="هر کس زودتر تموم کرد" />
+            </VBox>
 
-            <Label nodeOrientation="RIGHT_TO_LEFT" text="لطفا تعداد دور مورد نظر خود را برای بازی مشخص کنید" />
+            <VBox spacing="20">
+                <Label nodeOrientation="RIGHT_TO_LEFT" text="لطفا تعداد دور مورد نظر خود را برای بازی مشخص کنید" />
+                <TextField fx:id="tedadDor" prefHeight="26.0" prefWidth="278.0" promptText="تعداد دور" />
+            </VBox>
 
-            <TextField fx:id="tedadDor" promptText="تعداد دور" prefWidth="60"/>
 
         </VBox>
     </center>
 
     <bottom>
-        <Button fx:id="sakhtBaziBtn"  text="ایجاد صفحه بازی" onAction="#sakhtanSafheBazi"/>
+        <Button fx:id="sakhtBaziBtn" onAction="#sakhtanSafheBazi" text="ایجاد صفحه بازی" />
     </bottom>
 
 
