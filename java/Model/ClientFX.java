@@ -54,6 +54,7 @@ public class ClientFX extends Application {
         //***** sakht yek stage ba scope dar sath class.
         stageAsli = new Stage();
         stageAsli.setScene(sc);
+        stageAsli.setTitle("اسم و فاميل بزن!");
         stageAsli.show();
 
 

@@ -8,7 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,8 +36,18 @@ public class ShoruBaziPageController implements Initializable {
     //player ha payam shoru ferestade shavad.
     public void startGBtn(ActionEvent actionEvent) throws IOException {
 
-        //***** seda zadan method startGameAzSamtMizban va dadan harf dakhel textField.
-        clientFX.client.startGameAzSamtMizban(harfAval.getText().charAt(0));
+        //*****check mikonad agar text box khali bud, dorash ra ghermez mikonad va event ra consume mikonad.
+        if(harfAval.getText().isEmpty()){
+            harfAval.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+            harfAval.setPromptText("حرف رو وارد کن");
+            actionEvent.consume();
+        }
+        else {
+            harfAval.setBorder(new Border(new BorderStroke(Color.WHITE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(3))));
+
+            //***** seda zadan method startGameAzSamtMizban va dadan harf dakhel textField.
+            clientFX.client.startGameAzSamtMizban(harfAval.getText().charAt(0));
+        }
 
         FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/SafheBaziHost.fxml"));
         Pane p = l.load();
