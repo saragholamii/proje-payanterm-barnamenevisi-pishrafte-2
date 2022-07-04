@@ -2,11 +2,13 @@ package Model;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import Controller.*;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,8 +56,16 @@ public class ClientFX extends Application {
         //***** sakht yek stage ba scope dar sath class.
         stageAsli = new Stage();
         stageAsli.setScene(sc);
-        stageAsli.setTitle("اسم و فاميل بزن!");
+        stageAsli.setTitle("!اسم و فاميل بزن");
         stageAsli.show();
+
+        //***** ba zadan dokme khoruj, barname client motevaghef mishavad.
+        stageAsli.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                System.exit(0);
+            }
+        });
 
 
     }

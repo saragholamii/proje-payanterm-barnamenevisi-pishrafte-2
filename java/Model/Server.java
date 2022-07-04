@@ -12,6 +12,7 @@ public class Server {
     final static int PORT = 9010;
     ArrayList<ClientManager> listClientManager = new ArrayList<>();
     ArrayList<BaziRuyeServer> listBaziHa = new ArrayList<>();
+    ArrayList<BaziRuyeServer> listBaziToShow = new ArrayList<>();
     int[] emtiazHa;
 
 
@@ -43,12 +44,13 @@ public class Server {
     //***** in method yek shey bazi daryaft karde va an ra be list bazi ha ezafe mikonad.
     public void addNewGame(BaziRuyeServer bazi){
         listBaziHa.add(bazi);
+        listBaziToShow.add(bazi);
         System.out.println(listBaziHa.size());
     }
 
     //***** list bazi hara be surat array list miferestad.
     public ArrayList<BaziRuyeServer> getListBaziHa(){
-        return listBaziHa;
+        return listBaziToShow;
     }
 
     //***** add kardan yek client manager be yek bazi
@@ -69,6 +71,9 @@ public class Server {
 
         for (BaziRuyeServer b : listBaziHa) {
             if (b.getIDBazi() == idBazi) {
+                //***** chon bazi shoru shode ast az listBaziToShow hazf mishavad ta digar kasi be bazi napeyvandad.
+                listBaziToShow.remove(b);
+
                 b.addToTedadDorTaAlan();
                 for (int j = 0; j < b.listPlayerHa.size(); j++) {
                     if (b.listPlayerHa.get(j).idClientManager != idBazikonShoruKonande) {
