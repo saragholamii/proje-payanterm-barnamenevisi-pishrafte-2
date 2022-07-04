@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <BorderPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ChapEmtiazPageController">
 
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="40" />
+    </padding>
 
     <center>
         <Label fx:id="emtiazLbl" prefHeight="66.0" prefWidth="235.0" text="امتیاز شما در این بازی:   " textAlignment="CENTER" visible="false">
@@ -13,5 +17,12 @@
             <Font size="18.0" />
          </font></Label>
     </center>
+
+    <bottom>
+        <HBox prefHeight="62.0" prefWidth="625.0">
+            <Label prefHeight="18.0" prefWidth="592.0" text="        " />
+            <Button onAction="#bazGashtBeSafheAsli" fx:id="tamam" prefHeight="62.0" prefWidth="174.0" text="بازگشت به صفحه اصلی" />
+        </HBox>
+    </bottom>
 
 </BorderPane>

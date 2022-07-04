@@ -319,6 +319,14 @@ public class ClientManager implements Runnable{
         out.println(bazi.getIDBazi());
 
     }
+
+    //***** in method be client miguyad bazi ba in id ra az list bazi hayash haz konad.
+    public void hazfBazi(int idBazi){
+        //***** command
+        out.println("hazfBazi");
+
+        out.println(Integer.toString(idBazi));
+    }
     public int idClientManager() {
         return idClientManager;
     }

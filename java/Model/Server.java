@@ -133,6 +133,12 @@ public class Server {
                     //***** javabha ha bayad tashih shavand
                     tashih(b);
 
+                    //***** hazf bazi az list bazi ha, hamchenin ferestadan payam be hame client manager ha ke agar bazi ba in id ra dar
+                    //list bazi haye khod darand, an ra hazf konand.
+                    for(ClientManager c : listClientManager){
+                        c.hazfBazi(b.getIDBazi());
+                    }
+
                 }
 
             }
@@ -212,6 +218,11 @@ public class Server {
                     //***** javabha ha bayad tashih shavand
                     tashih(b);
 
+                    //***** hazf bazi az list bazi ha, hamchenin ferestadan payam be hame client manager ha ke agar bazi ba in id ra dar
+                    //list bazi haye khod darand, an ra hazf konand.
+                    for(ClientManager c : listClientManager){
+                        c.hazfBazi(b.getIDBazi());
+                    }
                 }
             }
         }

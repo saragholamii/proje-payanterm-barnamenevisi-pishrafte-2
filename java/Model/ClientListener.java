@@ -71,6 +71,10 @@ public class ClientListener implements Runnable {
                     case "BaziJadidSakhteShod":
                         baziJadidSakhteShod();
                         break;
+                    //***** yani in bazi tamam shode, an ra az listat hazf kon
+                    case "hazfBazi":
+                        hazfBazi();
+                        break;
                 }
 
 
@@ -174,6 +178,12 @@ public class ClientListener implements Runnable {
         String idBazi = in.readLine();
 
         clientFX.ezafeShodanBaziJadid(new BaziSamtClient(mozuat, client, type, tedadDor, idBazi));
+    }
+
+    public void hazfBazi() throws IOException {
+        //***** gereftan id bazi va seda zadan methodi az clientFX ke in bazi ra dar surat vojud az list baziHa hazf mikonad.
+        clientFX.hazfBazi(Integer.parseInt(in.readLine()));
+
     }
 
 }

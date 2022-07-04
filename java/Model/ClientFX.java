@@ -269,6 +269,9 @@ public class ClientFX extends Application {
 
                 ChapEmtiazPageController c = (ChapEmtiazPageController) l.getController();
 
+                //***** set kardan clientFX
+                c.setClientFX(thisClientFX);
+
                 //***** set kardan matn lable
                 c.chap(emtiaz);
 
@@ -328,6 +331,35 @@ public class ClientFX extends Application {
 
         //***** method set kardan list bazi ha va neshan dadan anha dar make or join controller ra seda mizanim ta bazi jadid ra ham neshan dahad.
         makeOrJoinController.setListBaziHa(listBaziHa);
+    }
+
+    //***** in method safhe avalie ra dobare load mikonad.
+    public void bazGashtBeSafheAval() throws IOException {
+
+        FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/MakeOrJoinPage.fxml"));
+        Pane p = l.load();
+
+        //***** yel shey az kelas MakeOrJoinController sakhte va Controller safle MakeOrJoinPage ra darun an mirizim
+        // ta be method haye setter va getter an dastresi dashte bashim.
+        MakeOrJoinController c = (MakeOrJoinController) l.getController();
+
+        //***** controller ra dar sath kelass ghabel dastresi mikonim ta agar kasi bazi jadid sakht, ruye safhe namayesh dade shavad.
+        makeOrJoinController = c;
+
+        //***** list bazi hara be controller miferestim ta betavanad dar zaman bala amadn page, ruye safhe namayesh dade shavad.
+        c.setListBaziHa(listBaziHa);
+        //***** ferestadan clientFX be controller safhe baraye dastresi dashtan be method haye client mojud dar in clientFX.
+        c.setClientFX(this);
+
+        Scene sc = new Scene(p);
+        stageAsli.setScene(sc);
+    }
+
+    //***** in method agar bazi ba in id vojud dashte bashad ra az list bazi ha hazf mikonad.
+    public void hazfBazi(int idBazi){
+        for(BaziSamtClient b : listBaziHa){
+            if(b.getIdBazi() == idBazi) { listBaziHa.remove(b); }
+        }
     }
 
     //***** setters...
