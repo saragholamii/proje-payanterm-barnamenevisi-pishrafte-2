@@ -302,7 +302,23 @@ public class ClientManager implements Runnable{
         ServerHolder.exitGame(game_That_I_Join_ID, this);
     }
 
+    //***** im method be client payam midahad ke bazi jadid sakhte shode ta be list bazi hayi ke neshan midahad ezafe konad.
+    public void BaziJadidEzafeShode(BaziRuyeServer bazi){
+        //***** cammnad
+        out.println("BaziJadidSakhteShod");
 
+        //***** ersal etelaat bazi ...
+        out.println(bazi.mozuatBaziBesuratReshte());
+
+        out.println(bazi.idClientHaBeSuratReshte());
+
+        out.println(bazi.getTypeBaziBeSuratReshte());
+
+        out.println(bazi.getTedadDor());
+
+        out.println(bazi.getIDBazi());
+
+    }
     public int idClientManager() {
         return idClientManager;
     }

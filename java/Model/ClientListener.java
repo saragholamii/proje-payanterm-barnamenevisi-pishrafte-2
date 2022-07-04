@@ -1,5 +1,7 @@
 package Model;
 
+import Controller.MakeOrJoinController;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -64,6 +66,10 @@ public class ClientListener implements Runnable {
                     //***** yani javab akhar host ra ke zakhire nashode zakhire kon
                     case "javabAkharHOST":
                         zakhireJavabAkharHOST();
+                        break;
+                    //***** yani yek bazi jadod sakhte shode va bayad be list bazi hayi ke neshan midahad ezafe shavad
+                    case "BaziJadidSakhteShod":
+                        baziJadidSakhteShod();
                         break;
                 }
 
@@ -151,6 +157,23 @@ public class ClientListener implements Runnable {
     public void zakhireJavabAkharHOST(){
         //***** methodi az clientFX seda zade mishavad ke javab zakhire shode dar hostController ra ba javab haye client add mikonad.
         clientFX.zakhireJavabAkharHost();
+    }
+
+    public void baziJadidSakhteShod() throws IOException {
+        //***** etelaat bazi ra daryaft va ba anha yek she misazad va be clientFX miferestad.
+
+        //***** mozuat be surat reshte
+        String mozuat = in.readLine();
+        //***** clientHaye Bazi be surat reshte
+        String client = in.readLine();
+        //***** type bazi
+        String type = in.readLine();
+        //***** tedad dor
+        String tedadDor = in.readLine();
+        //***** id bazi
+        String idBazi = in.readLine();
+
+        clientFX.ezafeShodanBaziJadid(new BaziSamtClient(mozuat, client, type, tedadDor, idBazi));
     }
 
 }

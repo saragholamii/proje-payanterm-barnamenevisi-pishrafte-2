@@ -29,6 +29,8 @@ public class ClientFX extends Application {
     boolean didIFinishedLastTime;
     boolean AmIHost;
 
+    MakeOrJoinController makeOrJoinController = null;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         thisClientFX = this;
@@ -46,6 +48,9 @@ public class ClientFX extends Application {
         //***** yel shey az kelas MakeOrJoinController sakhte va Controller safle MakeOrJoinPage ra darun an mirizim
         // ta be method haye setter va getter an dastresi dashte bashim.
         MakeOrJoinController c = (MakeOrJoinController) l.getController();
+
+        //***** controller ra dar sath kelass ghabel dastresi mikonim ta agar kasi bazi jadid sakht, ruye safhe namayesh dade shavad.
+        makeOrJoinController = c;
 
         //***** list bazi hara be controller miferestim ta betavanad dar zaman bala amadn page, ruye safhe namayesh dade shavad.
         c.setListBaziHa(listBaziHa);
@@ -315,6 +320,14 @@ public class ClientFX extends Application {
     public void exitFromGame(){
         if(AmIHost) { client.exitFromGameHost(); }
         else { client.exitFromGame();}
+    }
+
+    //***** in method bazi taze sakhte shode ra be list bazi hayi ke neshan midahad ezafe mikonad.
+    public void ezafeShodanBaziJadid(BaziSamtClient b){
+        listBaziHa.add(b);
+
+        //***** method set kardan list bazi ha va neshan dadan anha dar make or join controller ra seda mizanim ta bazi jadid ra ham neshan dahad.
+        makeOrJoinController.setListBaziHa(listBaziHa);
     }
 
     //***** setters...

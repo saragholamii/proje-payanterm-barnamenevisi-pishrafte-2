@@ -46,6 +46,11 @@ public class Server {
         listBaziHa.add(bazi);
         listBaziToShow.add(bazi);
         System.out.println(listBaziHa.size());
+
+        //***** be hame client manager haye mojud payam midahad ke yek bazi ezafe shode ast
+        for(ClientManager c : listClientManager){
+            c.BaziJadidEzafeShode(bazi);
+        }
     }
 
     //***** list bazi hara be surat array list miferestad.
@@ -303,6 +308,9 @@ public class Server {
                 baziRuyeServer.listPlayerHa.remove(player);
             }
         }
+
+        //***** client ra az list client manager ha ham hazf mikonad.
+        listClientManager.remove(player);
     }
 
 
