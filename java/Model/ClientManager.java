@@ -188,7 +188,7 @@ public class ClientManager implements Runnable{
     }
 
     //***** in method be server miguyad az beyn bazikonan bazi, yek nafar baraye shoru kardan bazi entekhab shavad.
-    public void DorJadid(){
+    public void DorJadid() throws FileNotFoundException, InterruptedException {
         //***** id host va id bazi be method server ferestad shode ta yek nafar entekhab gardad.
         ServerHolder.choosingPlayerForStart(game_That_I_Am_The_Host_ID, idClientManager);
     }

@@ -230,7 +230,7 @@ public class SafheBaziHostController implements Initializable {
                         clientFX.client.addJavab(getJavab());
 
                         //***** load shodan safhe entezar
-                        loadWaitingPage();
+                        //loadWaitingPage();
 
                         //***** be ellat tadakhol thread ha lazem ast ke in tread bekhabad.
                         try {

@@ -233,7 +233,7 @@ public class SafheBaziController implements Initializable {
                         clientFX.client.addJavab(getJavab());
 
                         //hala safhe dar entezar bazi jadid bayad load shavad ta zamani ke dobare bazi start zade shavad.
-                        loadWaitingPage();
+                        //loadWaitingPage();
 
                     }
                 }

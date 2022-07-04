@@ -81,20 +81,48 @@ public class Server {
     }
 
     //***** entekhab bazikon shoru konande badi.
-    public void choosingPlayerForStart(int idBazi, int idHost){
+    public void choosingPlayerForStart(int idBazi, int idHost) throws FileNotFoundException, InterruptedException {
 
         for (BaziRuyeServer b : listBaziHa) {
             if (b.getIDBazi() == idBazi) {
 
-                //***** peida kardan yek adad random az beyn player haye bazi, va adad nabayad barabar ba id host bashad.
-                Random r = new Random();
-                while(true){
-                    int n = r.nextInt(b.listPlayerHa.size());
+                //***** check mikonad aya be tedad dor moshakhas shode reside iem ya na.
+                if(b.getTedadDorTaAlan() < b.getTedadDor()){
 
-                    if(b.listPlayerHa.get(n).idClientManager != idHost){
-                        b.listPlayerHa.get(n).YourTurn();
-                        break;
+                    //***** peida kardan yek adad random az beyn player haye bazi, va adad nabayad barabar ba id host bashad.
+                    Random r = new Random();
+                    while(true){
+                        int n = r.nextInt(b.listPlayerHa.size());
+
+                        //***** baraye baghie bazikonan ( ham host ham guest ) safhe waiting ra load mikonad.
+                        for(int i = 0; i < b.listPlayerHa.size(); i++){
+                            if(i != n) b.listPlayerHa.get(i).waitingPage();
+                        }
+
+                        if(b.listPlayerHa.get(n).idClientManager != idHost){
+                            b.listPlayerHa.get(n).YourTurn();
+                            break;
+                        }
+
                     }
+
+                }
+                //***** yani bazi tamam shode va safhe dar hal mohasebe emtiaz ha bayad chap shavad.
+                else{
+                    for(int i = 0; i < b.listPlayerHa.size(); i++){
+                        b.listPlayerHa.get(i).darEntezarMohasebeEmtiaz();
+                    }
+
+                    for(int i = 0; i < b.listPlayerHa.size(); i++){
+                        System.out.println("number " + i);
+                        for(int j = 0; j < b.listPlayerHa.get(i).javabHa.size(); j++){
+                            System.out.println(b.listPlayerHa.get(i).javabHa.get(j));
+                        }
+                    }
+
+                    //***** javabha ha bayad tashih shavand
+                    tashih(b);
+
                 }
 
             }
@@ -108,45 +136,21 @@ public class Server {
 
         for (BaziRuyeServer b : listBaziHa){
             if(b.getIDBazi() == idBazi){
-                //***** bazi peida shode ra dar fiel bazi zakhire mikonad.
-                bazi = b;
-                //***** check mishavad aya tedad dor ha tamam shode ast ya na
-                if(b.getTedadDorTaAlan() < b.getTedadDor()){
-                    //*****id host
-                    int idHost = b.IDHost;
+                //*****id host
+                int idHost = b.IDHost;
 
-                    for (int i = 0; i < b.listPlayerHa.size(); i++){
-                        if(b.listPlayerHa.get(i).idClientManager != idHost){
-                            b.listPlayerHa.get(i).startGameWithTHisLetter(harf);
-                        }
-                        else {
-                            b.listPlayerHa.get(i).startGameWithTHisLetterHOST(harf);
-                        }
+                for (int i = 0; i < b.listPlayerHa.size(); i++){
+                    if(b.listPlayerHa.get(i).idClientManager != idHost){
+                        b.listPlayerHa.get(i).startGameWithTHisLetter(harf);
                     }
-
-                    //***** yek dor digar zade shod, pas be tadad dor ha yeki ezafe mikonim.
-                    b.addToTedadDorTaAlan();
-                    System.out.println("dor ta alan:" + b.getTedadDorTaAlan());
+                    else {
+                        b.listPlayerHa.get(i).startGameWithTHisLetterHOST(harf);
+                    }
                 }
 
-                else{
-
-                    //***** chon ehtemalan tashih tul mikeshad, yek safhe "bazi tamam shod, dar entezar tashih" baraye hame load mikonim.
-                    for(int i = 0; i < bazi.listPlayerHa.size(); i++){
-                        bazi.listPlayerHa.get(i).darEntezarMohasebeEmtiaz();
-                    }
-
-                    for(int i = 0; i < b.listPlayerHa.size(); i++){
-                        System.out.println("number " + i);
-                        for(int j = 0; j < b.listPlayerHa.get(i).javabHa.size(); j++){
-                            System.out.println(b.listPlayerHa.get(i).javabHa.get(j));
-                        }
-                    }
-
-                    //***** javabha ha bayad tashih shavand
-                    tashih(bazi);
-
-                }
+                //***** yek dor digar zade shod, pas be tadad dor ha yeki ezafe mikonim.
+                b.addToTedadDorTaAlan();
+                System.out.println("dor ta alan:" + b.getTedadDorTaAlan());
             }
         }
     }
