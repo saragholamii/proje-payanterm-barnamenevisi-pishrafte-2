@@ -327,6 +327,7 @@ public class ClientFX extends Application {
 
     //***** in method bazi taze sakhte shode ra be list bazi hayi ke neshan midahad ezafe mikonad.
     public void ezafeShodanBaziJadid(BaziSamtClient b){
+        System.out.println("dakhel method add bazi jadid");
         listBaziHa.add(b);
 
         //***** method set kardan list bazi ha va neshan dadan anha dar make or join controller ra seda mizanim ta bazi jadid ra ham neshan dahad.
@@ -348,6 +349,7 @@ public class ClientFX extends Application {
 
         //***** list bazi hara be controller miferestim ta betavanad dar zaman bala amadn page, ruye safhe namayesh dade shavad.
         c.setListBaziHa(listBaziHa);
+
         //***** ferestadan clientFX be controller safhe baraye dastresi dashtan be method haye client mojud dar in clientFX.
         c.setClientFX(this);
 
@@ -357,8 +359,8 @@ public class ClientFX extends Application {
 
     //***** in method agar bazi ba in id vojud dashte bashad ra az list bazi ha hazf mikonad.
     public void hazfBazi(int idBazi){
-        for(BaziSamtClient b : listBaziHa){
-            if(b.getIdBazi() == idBazi) { listBaziHa.remove(b); }
+        for(int i = 0; i < listBaziHa.size(); i++){
+            if(listBaziHa.get(i).getIdBazi() == idBazi) { listBaziHa.remove(i); }
         }
     }
 
