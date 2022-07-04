@@ -47,32 +47,33 @@ public class ShoruBaziPageController implements Initializable {
 
             //***** seda zadan method startGameAzSamtMizban va dadan harf dakhel textField.
             clientFX.client.startGameAzSamtMizban(harfAval.getText().charAt(0));
+
+            FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/SafheBaziHost.fxml"));
+            Pane p = l.load();
+
+            SafheBaziHostController c = (SafheBaziHostController) l.getController();
+
+            //***** zakhire kardan controller host dar field dakhel klass clientFX, baraye zakhire reshte dar dor haye badi.
+            clientFX.setHostController(c);
+
+            //***** set kardan client fx baraye in safhe jahat dashhtan dastrest be method haye client.
+            c.setClientFX(clientFX);
+
+            //***** ferestadn list mozuat ta field ha bar asas an entekhab shavad.
+            c.getMozuat(clientFX.getMozuat());
+
+            //***** ferestadan harf bazi baraye nashan dadan balaye safhe bazi.
+            c.getHarf(harfAval.getText().charAt(0));
+
+            //***** ferestadan type bazi baraye inke btn ya timer ra set konad.
+            c.getType(clientFX.getType());
+
+            //sakht scene
+            Scene sc = new Scene(p);
+
+            //***** ferestadan scene baraye add shodan dar stage asli.
+            clientFX.setSceneJadid(sc);
         }
 
-        FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/SafheBaziHost.fxml"));
-        Pane p = l.load();
-
-        SafheBaziHostController c = (SafheBaziHostController) l.getController();
-
-        //***** zakhire kardan controller host dar field dakhel klass clientFX, baraye zakhire reshte dar dor haye badi.
-        clientFX.setHostController(c);
-
-        //***** set kardan client fx baraye in safhe jahat dashhtan dastrest be method haye client.
-        c.setClientFX(clientFX);
-
-        //***** ferestadn list mozuat ta field ha bar asas an entekhab shavad.
-        c.getMozuat(clientFX.getMozuat());
-
-        //***** ferestadan harf bazi baraye nashan dadan balaye safhe bazi.
-        c.getHarf(harfAval.getText().charAt(0));
-
-        //***** ferestadan type bazi baraye inke btn ya timer ra set konad.
-        c.getType(clientFX.getType());
-
-        //sakht scene
-        Scene sc = new Scene(p);
-
-        //***** ferestadan scene baraye add shodan dar stage asli.
-        clientFX.setSceneJadid(sc);
     }
 }
