@@ -69,6 +69,14 @@ public class ClientManager implements Runnable{
                     case "JavabYekDor":
                         getAnswers();
                         break;
+                    //***** yani host mikhahad az game kharej shavad.
+                    case "exiteGameHost":
+                        exitHost();
+                        break;
+                    //***** yani bazikon mikhahad az bazi kharej shavad.
+                    case "exitGameGuest":
+                        exitGuest();
+                        break;
                 }
             }
 
@@ -283,6 +291,17 @@ public class ClientManager implements Runnable{
         ServerHolder.print("dar method ersal javab akhar dakhel client manager host:" + idClientManager);
         out.println("javabAkharHOST");
     }
+
+    //***** in method methodi az server ra seda mizanad ta client ke host ast ra az list player haye bazi hazf konad.
+    public void exitHost(){
+        ServerHolder.exitGame(game_That_I_Am_The_Host_ID, this);
+    }
+
+    //***** in method methodi az server ra seda mizanad ta client ra az list player haye bazi hazf konad.
+    public void exitGuest(){
+        ServerHolder.exitGame(game_That_I_Join_ID, this);
+    }
+
 
     public int idClientManager() {
         return idClientManager;

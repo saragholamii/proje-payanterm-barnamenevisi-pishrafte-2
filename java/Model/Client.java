@@ -125,4 +125,16 @@ public class Client {
 
     }
 
+    //***** in method be server miguyad host mikhahad az bazi kharej shavad
+    public void exitFromGameHost(){
+        //***** command
+        out.println("exiteGameHost");
+    }
+
+    //***** in method be server miguyad yek bazikon mikhahad az bazi kharej shavad.
+    public void exitFromGame(){
+        //***** command
+        out.println("exitGameGuest");
+    }
+
 }

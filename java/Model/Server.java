@@ -296,6 +296,15 @@ public class Server {
         }
     }
 
+    //***** in method bazikon ra az list player haye bazi hazf mikonad
+    public void exitGame(int idBazi, ClientManager player){
+        for (BaziRuyeServer baziRuyeServer : listBaziHa) {
+            if (baziRuyeServer.getIDBazi() == idBazi) {
+                baziRuyeServer.listPlayerHa.remove(player);
+            }
+        }
+    }
+
 
     public void print(String s){
         System.out.println(s);

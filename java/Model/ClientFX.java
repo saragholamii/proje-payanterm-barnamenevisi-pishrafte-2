@@ -27,6 +27,7 @@ public class ClientFX extends Application {
     String type;
 
     boolean didIFinishedLastTime;
+    boolean AmIHost;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -63,6 +64,7 @@ public class ClientFX extends Application {
         stageAsli.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
+                exitFromGame();
                 System.exit(0);
             }
         });
@@ -309,6 +311,12 @@ public class ClientFX extends Application {
         client.addJavab(hostController.getJavab());
     }
 
+    //***** in method be server payam midahad ta bazikon ra az list player haye bazi hazf konad.
+    public void exitFromGame(){
+        if(AmIHost) { client.exitFromGameHost(); }
+        else { client.exitFromGame();}
+    }
+
     //***** setters...
     public void setMozuat(String mozuat){
         this.mozuat = mozuat;
@@ -324,6 +332,7 @@ public class ClientFX extends Application {
     public void setDidIFinishedLastTime(boolean b){
         didIFinishedLastTime = b;
     }
+    public void setAmIHost(boolean b){ AmIHost = b; }
 
     //method baraye chap
     public void print(String p){

@@ -146,6 +146,9 @@ public class EntekhabItemBarayeIjadBaziController implements Initializable {
             clientFX.setMozuat(mozuat);
             clientFX.setType(type);
 
+            //***** AmIHost ra true mikonad.
+            clientFX.setAmIHost(true);
+
             //***** hala bayad dockme shoru bazi ruye safhe namayesh dade shavad.
             FXMLLoader l = new FXMLLoader(getClass().getResource("/FXML/ShorueBaziPage.fxml"));
             Pane p = l.load();
