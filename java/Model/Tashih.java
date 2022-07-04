@@ -39,9 +39,8 @@ public class Tashih {
 
                 //***** mozu khande mishavad.
                 String mozu = sc.next();
-                String javab = scAnswer.next();
-
                 server.print("mozu: " + mozu);
+                String javab = scAnswer.next();
                 server.print("javab: " + javab);
 
                 //***** check mishavad ba har kodam az mozuat barabar bud, method an mozu be hamrah kalame khande shode az reshte javab ha seda zade mishavad.
@@ -50,37 +49,42 @@ public class Tashih {
                         server.print("dakhel block esm");
                         //***** check mishvad agar javab reshte khali nabashad dakhel file donbal az migardad.
                         //***** method esm seda zade shode ta check shavad kalame dar file hast ya na
-                        if(!javab.equalsIgnoreCase("") && esm(javab)){ emtiazHa[i] += 10; }
+                        if(!javab.equalsIgnoreCase("hich") && esm(javab)){
+                            server.print("dakhel shart esm");
+                            emtiazHa[i] += 10; }
                         break;
                     case "famil":
-                        if(!javab.equalsIgnoreCase("") && famil(javab)){ emtiazHa[i] += 10; }
+                        server.print("dakhel block famil");
+                        if(!javab.equalsIgnoreCase("hich") && famil(javab)){
+                            server.print("dakhel sart famil");
+                            emtiazHa[i] += 10; }
                         break;
                     case "ghaza":
-                        if(!javab.equalsIgnoreCase("") && ghaza(javab)){ emtiazHa[i] += 10; }
+                        if(!javab.equalsIgnoreCase("hich") && ghaza(javab)){ emtiazHa[i] += 10; }
                         break;
                     case "gol":
-                        if(!javab.equalsIgnoreCase("") && gol(javab)){ emtiazHa[i] += 10; }
+                        if(!javab.equalsIgnoreCase("hich") && gol(javab)){ emtiazHa[i] += 10; }
                         break;
                     case "heyvan":
-                        if(!javab.equalsIgnoreCase("") && heyvan(javab)){ emtiazHa[i] += 10; }
+                        if(!javab.equalsIgnoreCase("hich") && heyvan(javab)){ emtiazHa[i] += 10; }
                         break;
                     case "keshvar":
-                        if(!javab.equalsIgnoreCase("") && keshvar(javab)){ emtiazHa[i] += 10; }
+                        if(!javab.equalsIgnoreCase("hich") && keshvar(javab)){ emtiazHa[i] += 10; }
                         break;
                     case "mashin":
-                        if(!javab.equalsIgnoreCase("") && mashin(javab)){ emtiazHa[i] += 10; }
+                        if(!javab.equalsIgnoreCase("hich") && mashin(javab)){ emtiazHa[i] += 10; }
                         break;
                     case "mive":
-                        if(!javab.equalsIgnoreCase("") && mive(javab)){ emtiazHa[i] += 10; }
+                        if(!javab.equalsIgnoreCase("hich") && mive(javab)){ emtiazHa[i] += 10; }
                         break;
                     case "pushak":
-                        if(!javab.equalsIgnoreCase("") && pushak(javab)){ emtiazHa[i] += 10; }
+                        if(!javab.equalsIgnoreCase("hich") && pushak(javab)){ emtiazHa[i] += 10; }
                         break;
                     case "shahr":
-                        if(!javab.equalsIgnoreCase("") && shahr(javab)){ emtiazHa[i] += 10; }
+                        if(!javab.equalsIgnoreCase("hich") && shahr(javab)){ emtiazHa[i] += 10; }
                         break;
                     case "ashya":
-                        if(!javab.equalsIgnoreCase("") && ashya(javab)){ emtiazHa[i] += 10; }
+                        if(!javab.equalsIgnoreCase("hich") && ashya(javab)){ emtiazHa[i] += 10; }
                         break;
                 }
             }
@@ -277,7 +281,7 @@ public class Tashih {
                     String s2 = sc2.next();
 
                     //***** check mishavad agar khali budand az emtiaz kam nemikonad chon ghablan emtiaz dade nashode ast.
-                    if(s1.isEmpty() || s2.isEmpty()){ continue; }
+                    if(s1.equalsIgnoreCase("hich") || s2.equalsIgnoreCase("hich")){ continue; }
 
                     //***** hala ke khali nistand, check mikonad agar barabar bashand az emtiazeshan kam mikonad.
                     if(s1.equalsIgnoreCase(s2)) { emtiazHa[i] -= 5;}

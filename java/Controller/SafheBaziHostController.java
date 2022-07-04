@@ -257,37 +257,48 @@ public class SafheBaziHostController implements Initializable {
         String mozuat = clientFX.getMozuat();
 
         if(mozuat.contains("esm")){
-            javab += name.getText() + "-";
+            if(name.getText().isEmpty()) { javab += "hich" + "-"; }
+            else {javab += name.getText() + "-"; }
         }
         if(mozuat.contains("famil")){
-            javab += famil.getText() + "-";
+            if(famil.getText().isEmpty()) { javab += "hich" + "-"; }
+            else { javab += famil.getText() + "-"; }
         }
         if(mozuat.contains("shahr")){
-            javab += shahr.getText() + "-";
+            if(shahr.getText().isEmpty()) { javab += "hich" + "-"; }
+            else { javab += shahr.getText() + "-"; }
         }
         if(mozuat.contains("keshvar")){
-            javab += keshvar.getText() + "-";
+            if(keshvar.getText().isEmpty()) { javab += "hich" + "-"; }
+            else { javab += keshvar.getText() + "-"; }
         }
         if(mozuat.contains("ghaza")){
-            javab += ghaza.getText() + "-";
+            if(ghaza.getText().isEmpty()) { javab += "hich" + "-"; }
+            else {javab += ghaza.getText() + "-";}
         }
         if(mozuat.contains("pushak")){
-            javab += pushak.getText() + "-";
+            if(pushak.getText().isEmpty()) { javab += "hich" + "-"; }
+            else { javab += pushak.getText() + "-"; }
         }
         if(mozuat.contains("mive")){
-            javab += mive.getText() + "-";
+            if(mive.getText().isEmpty()) { javab += "hich" + "-"; }
+            else { javab += mive.getText() + "-";}
         }
         if(mozuat.contains("mashin")){
-            javab += mashin.getText() + "-";
+            if(mashin.getText().isEmpty()) { javab += "hich" + "-"; }
+            else { javab += mashin.getText() + "-";}
         }
         if(mozuat.contains("gol")){
-            javab += gol.getText() + "-";
+            if(gol.getText().isEmpty()) { javab += "hich" + "-"; }
+            else { javab += gol.getText() + "-"; }
         }
         if(mozuat.contains("heyvan")){
-            javab += heyvan.getText() + "-";
+            if(heyvan.getText().isEmpty()) { javab += "hich" + "-"; }
+            else { javab += heyvan.getText() + "-"; }
         }
         if(mozuat.contains("ashya")){
-            javab += ashya.getText() + "-";
+            if(ashya.getText().isEmpty()) { javab += "hich" + "-"; }
+            else { javab += ashya.getText() + "-"; }
         }
 
         return javab;
