@@ -22,6 +22,8 @@ public class ClientFX extends Application {
 
     ArrayList<BaziSamtClient> listBaziHa = new ArrayList<>();
 
+    String horufBaziShode = "";
+
     Stage stageAsli;
     String mozuat;
     String type;
@@ -380,6 +382,9 @@ public class ClientFX extends Application {
         didIFinishedLastTime = b;
     }
     public void setAmIHost(boolean b){ AmIHost = b; }
+    public void setHorufBaziShode(char harf){
+        horufBaziShode += harf + "-";
+    }
 
     //method baraye chap
     public void print(String p){
@@ -392,5 +397,8 @@ public class ClientFX extends Application {
     }
     public String getMozuat(){
         return mozuat;
+    }
+    public String getHorufBaziShode(){
+        return horufBaziShode;
     }
 }

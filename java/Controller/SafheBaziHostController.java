@@ -148,6 +148,10 @@ public class SafheBaziHostController implements Initializable {
     public void getHarf(char harff){
         this.harff = harff;
         harf.setText("حرف این دور: " + harff);
+
+        //***** in harf ra dar reshte horuf bazi shode zakhire mikonim ta dar ayande agar khast harfi entekhab konad, check shavad
+        // ke tekrari nabashad.
+        clientFX.setHorufBaziShode(harff);
     }
 
 

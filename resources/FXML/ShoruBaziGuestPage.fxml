@@ -21,7 +21,7 @@
         <VBox spacing="20">
             <HBox spacing="10">
                 <Label text="شروع بازی با حرف : "/>
-                <TextField fx:id="harfAval"/>
+                <TextField onKeyTyped="#harfShoruKonande" fx:id="harfAval"/>
             </HBox>
             <Button onAction="#startGBtn" fx:id="shoruBaziBtn" prefHeight="84.0" prefWidth="313.0" text="شروع بازی" />
         </VBox>

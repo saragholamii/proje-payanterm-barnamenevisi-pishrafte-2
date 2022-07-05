@@ -152,6 +152,10 @@ public class SafheBaziController implements Initializable {
     public void getHarf(char harff){
         harf.setText("حرف این دور: " + harff);
         this.harff = harff;
+
+        //***** in harf ra dar string horuf add mikonad ta dar ayande agar khast harfi ra entekhab konad, check shavad jozv in horuf
+        //tekrari nabashad
+        clientFX.setHorufBaziShode(harff);
     }
 
 
